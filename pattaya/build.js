@@ -217,11 +217,11 @@ ${footer(key)}
       <p>${ui.footTagline}</p>
       <div class="socials"><a href="${site.social.facebook}" target="_blank" rel="noopener" aria-label="Facebook">${I.fb}</a><a href="${site.social.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${I.ig}</a><a href="${site.social.youtube}" target="_blank" rel="noopener" aria-label="YouTube">${I.yt}</a><a href="${site.social.tiktok}" target="_blank" rel="noopener" aria-label="TikTok">${I.tt}</a></div>
     </div>
-    <div><h4>${ui.footDiving}</h4><ul>${links([[ui.nav.dayTrips, 'dayTrips'], [text(P['try-dive']).name, 'try-dive'], [text(P['fun-diving']).name, 'fun-diving'], [text(P['snorkelling']).name, 'snorkelling'], [ui.nav.pricing, 'pricing']])}</ul></div>
-    <div><h4>${ui.footCourses}</h4><ul>${links([[ui.nav.courses, 'courses'], [text(P['open-water-20']).name, 'open-water-20'], [text(P['explorer-30']).name, 'explorer-30'], [text(P['advanced-35']).name, 'advanced-35'], [text(P['master-rescue']).name, 'master-rescue'], [text(P['nitrox']).name, 'nitrox']])}</ul></div>
-    <div><h4>${ui.footPro}</h4><ul>${links([[ui.nav.professional, 'professional'], [text(P['divemaster']).name, 'divemaster'], [text(P['instructor-training']).name, 'instructor-training'], [ui.nav.technical, 'technical'], [ui.nav.marine, 'marine']])}</ul></div>
-    <div><h4>${ui.footInfo}</h4><ul>${links([[ui.nav.about, 'about'], [ui.nav.team, 'team'], [ui.nav.locations, 'locations'], [ui.nav.boats, 'boats'], [ui.nav.blog, 'blog'], [ui.nav.contact, 'contact'], [ui.nav.book, 'book'], [ui.nav.terms, 'terms']])}</ul></div>
-    <div><h4>${ui.footLocations}</h4><ul class="foot-loc">
+    <div><h3>${ui.footDiving}</h3><ul>${links([[ui.nav.dayTrips, 'dayTrips'], [text(P['try-dive']).name, 'try-dive'], [text(P['fun-diving']).name, 'fun-diving'], [text(P['snorkelling']).name, 'snorkelling'], [ui.nav.pricing, 'pricing']])}</ul></div>
+    <div><h3>${ui.footCourses}</h3><ul>${links([[ui.nav.courses, 'courses'], [text(P['open-water-20']).name, 'open-water-20'], [text(P['explorer-30']).name, 'explorer-30'], [text(P['advanced-35']).name, 'advanced-35'], [text(P['master-rescue']).name, 'master-rescue'], [text(P['nitrox']).name, 'nitrox']])}</ul></div>
+    <div><h3>${ui.footPro}</h3><ul>${links([[ui.nav.professional, 'professional'], [text(P['divemaster']).name, 'divemaster'], [text(P['instructor-training']).name, 'instructor-training'], [ui.nav.technical, 'technical'], [ui.nav.marine, 'marine']])}</ul></div>
+    <div><h3>${ui.footInfo}</h3><ul>${links([[ui.nav.about, 'about'], [ui.nav.team, 'team'], [ui.nav.locations, 'locations'], [ui.nav.boats, 'boats'], [ui.nav.blog, 'blog'], [ui.nav.contact, 'contact'], [ui.nav.book, 'book'], [ui.nav.terms, 'terms']])}</ul></div>
+    <div><h3>${ui.footLocations}</h3><ul class="foot-loc">
       <li><b>Pattaya</b><a href="${site.maps}" target="_blank" rel="noopener">${site.address}</a><a href="tel:${site.phone.replace(/\s+/g, '')}">${site.phone}</a></li>
       <li><b>Bangkok</b><a href="${site.partners.equipmentStore}" target="_blank" rel="noopener">${locations[0].address}</a></li>
       <li><b>Koh Chang</b><a href="${site.partners.kohChang}" target="_blank" rel="noopener">${locations[2].address}</a></li></ul></div>
@@ -296,7 +296,7 @@ ${footer(key)}
   const blocks = arr => arr.map(b => {
     if (typeof b === 'string') return `<p>${rich(b)}</p>`;
     let h = '';
-    if (b.h) h += `<h4>${rich(b.h)}</h4>`;
+    if (b.h) h += `<h3>${rich(b.h)}</h3>`;
     if (b.p) h += b.p.map(t => `<p>${rich(t)}</p>`).join('');
     if (b.ul) h += `<ul class="ticks">${b.ul.map(t => `<li>${rich(t)}</li>`).join('')}</ul>`;
     if (b.links) h += `<ul class="ticks">${b.links.map(([slug, label, note]) => `<li><a href="${url(slug)}">${label}</a> — ${note}</li>`).join('')}</ul>`;
@@ -318,7 +318,7 @@ ${footer(key)}
     <div class="hero-actions"><a class="btn btn-primary btn-lg" href="${url('book')}">${ui.bookNow}</a><a class="btn btn-ghost btn-lg" href="${url('diving')}">${ui.nav.allDiving}${I.arrow}</a></div>
     <a class="gbadge" href="${site.maps}" target="_blank" rel="noopener">${I.g}<b>${site.rating.toFixed(1)}</b><span class="stars" aria-hidden="true">${I.star.repeat(5)}</span><span>${site.reviewCount} ${H.reviews}</span></a>
   </div>
-  <ul class="pillars wrap" aria-label="What we do">${H.pillars.map((t, i) => `<li><a href="${url(['courses', 'dayTrips', 'marine', 'contact'][i])}">${t}</a></li>`).join('')}</ul>
+  <ul class="pillars wrap" aria-label="What we do">${H.pillars.map((t, i) => `<li><a href="${url(['courses', 'dayTrips', 'marine', 'contact'][i])}"><span class="pn">0${i + 1}</span><span class="pt">${t}</span><i>${I.arrow}</i></a></li>`).join('')}</ul>
 </header>
 <section id="paths"><div class="wrap">
   <div class="grid grid-3 paths">${H.paths.map(([k, t, d], i) => `<a class="path rv" href="${url(k)}" style="--d:${i * .06}s"><span class="n">0${i + 1}</span><strong>${t}</strong><span>${d}</span><i>${I.arrow}</i></a>`).join('')}</div>
@@ -330,7 +330,7 @@ ${statsBar()}
 </div></section>
 <section class="split"><div class="wrap split-grid">
   <div class="split-img rv">${img('divers-togethr.jpg', 'Divers together on the boat', '', '(max-width: 900px) 100vw, 50vw')}</div>
-  <div class="split-text rv"><span class="eyebrow">${ui.nav.about}</span><h2>${H.whyTitle}</h2><p>${H.whyText}</p><p><em>${PG.about.motto1} ${PG.about.motto2}</em></p><a class="btn btn-dark" href="${url('about')}">${ui.readMore}${I.arrow}</a></div>
+  <div class="split-text rv"><span class="eyebrow">${ui.nav.about}</span><h2>${H.whyTitle}</h2><p>${H.whyText}</p><p><em>${PG.about.motto1} ${PG.about.motto2}</em></p><a class="btn btn-dark" href="${url('about')}" aria-label="${H.whyTitle} – ${ui.readMore}">${ui.readMore}${I.arrow}</a></div>
 </div></section>
 <section class="split alt"><div class="wrap split-grid">
   <div class="split-text rv"><span class="eyebrow">${ui.nav.boats}</span><h2>${H.boatsTitle}</h2><p>${H.boatsText}</p><a class="btn btn-dark" href="${url('boats')}">${PG.boats.names.grace} & ${PG.boats.names.princess}${I.arrow}</a></div>
