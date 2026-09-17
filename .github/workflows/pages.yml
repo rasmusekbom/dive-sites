@@ -1,0 +1,42 @@
+name: Demo sites → GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Build every project under its own sub-path
+        run: |
+          mkdir -p site
+          for p in */; do
+            p=${p%/}
+            [ -f "$p/build.js" ] || continue
+            echo "== $p"
+            (cd "$p" && npm ci --no-audit --no-fund && BASE="/dive-sites/$p" DEMO=1 npm run build)
+            mkdir -p "site/$p" && cp -r "$p/dist/." "site/$p/"
+          done
+          printf '<!doctype html><meta charset="utf-8"><title>dive-sites demos</title><ul>%s</ul>' "$(for d in site/*/; do d=${d#site/}; d=${d%/}; printf '<li><a href="%s/">%s</a></li>' "$d" "$d"; done)" > site/index.html
+          touch site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

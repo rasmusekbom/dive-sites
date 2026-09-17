@@ -1,0 +1,15 @@
+{
+  "name": "kohkood-divers-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static multilingual site for Koh Kood Divers",
+  "scripts": {
+    "build": "node build-images.js && node build.js",
+    "check": "node check.js",
+    "rates": "node update-rates.js",
+    "serve": "node ../serve.js kohkood"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}

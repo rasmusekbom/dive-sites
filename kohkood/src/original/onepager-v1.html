@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koh Kood Divers — 5★ PADI Dive Centre, Koh Kood, Thailand</title>
+<meta name="description" content="Fun dives, PADI courses and snorkelling trips from Koh Kood. Small groups (max 4 per guide), Koh Rang Marine Park three days a week, 4.9★ from 460+ reviews. Book online or on WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%230a7f8f'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#06182a; --navy-2:#0b2a44; --ink:#10233a; --muted:#5b6b7d;
+  --aqua:#12b8c9; --aqua-dark:#0a7f8f; --coral:#ff6b4a; --sand:#f6f1e7; --sand-2:#ede4d3;
+  --white:#fff; --line:rgba(16,35,58,.1);
+  --radius:20px; --shadow:0 20px 50px -20px rgba(6,24,42,.35);
+  --font-display:"Bricolage Grotesque",system-ui,sans-serif; --font-body:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);color:var(--ink);background:var(--white);line-height:1.6;font-size:16px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;letter-spacing:-.02em;font-weight:800}
+h2{font-size:clamp(2rem,4.5vw,3.25rem)}
+h3{font-size:1.35rem;font-weight:700}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+section{padding:96px 0}
+@media(max-width:720px){section{padding:64px 0}.wrap{width:min(1180px,100% - 32px)}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--aqua-dark);margin-bottom:14px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--aqua)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--coral);color:#fff;box-shadow:0 10px 30px -10px rgba(255,107,74,.7)}
+.btn-primary:hover{background:#ff5a35}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:rgba(255,255,255,.2)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-dark{background:var(--navy);color:#fff}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s,padding .3s;padding:18px 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav.solid{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:10px 0}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:800;font-size:1.2rem;color:#fff;letter-spacing:-.01em}
+.brand img{height:44px;width:auto;background:#fff;border-radius:10px;padding:4px}
+.nav.solid .brand{color:var(--ink)}
+.nav-links{display:flex;gap:28px;font-weight:500;font-size:.93rem;color:#fff}
+.nav.solid .nav-links{color:var(--ink)}
+.nav-links a{opacity:.9}.nav-links a:hover{opacity:1;color:var(--aqua)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.nav .btn{padding:11px 20px;font-size:.9rem}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;align-items:center;justify-content:center;cursor:pointer}
+.nav.solid .burger{border-color:var(--line);color:var(--ink)}
+@media(max-width:960px){.nav-links,.nav-cta .btn-dark{display:none}.burger{display:flex}}
+.mobile-menu{position:fixed;inset:0;background:var(--navy);z-index:60;display:none;flex-direction:column;padding:28px;gap:6px;color:#fff}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--font-display);font-size:2rem;font-weight:700;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.mobile-menu .close{align-self:flex-end;background:none;border:0;color:#fff;font-size:2rem;cursor:pointer;margin-bottom:12px}
+.mobile-menu .btn{margin-top:auto;justify-content:center;font-size:1.05rem}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;color:#fff;overflow:hidden;padding:0}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;transform:scale(1.04)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,24,42,.45) 0%,rgba(6,24,42,.05) 35%,rgba(6,24,42,.55) 70%,rgba(6,24,42,.92) 100%)}
+.hero .wrap{position:relative;z-index:2;padding:140px 0 56px}
+.hero h1{font-size:clamp(2.7rem,7.5vw,6rem);max-width:14ch;margin-bottom:20px;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--aqua)}
+.hero p{font-size:clamp(1.05rem,1.8vw,1.3rem);max-width:52ch;opacity:.92;margin-bottom:32px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.trust{display:flex;flex-wrap:wrap;gap:12px 36px;padding-top:28px;border-top:1px solid rgba(255,255,255,.2)}
+.trust div{display:flex;flex-direction:column;gap:2px}
+.trust b{font-family:var(--font-display);font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
+.trust span{font-size:.82rem;opacity:.8}
+.stars{color:#ffc53d;letter-spacing:.05em}
+@media(max-width:720px){.hero .wrap{padding:120px 0 40px}.hero-actions .btn{width:100%;justify-content:center}}
+
+/* CARDS */
+.grid{display:grid;gap:24px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:960px){.grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.grid-3,.grid-2{grid-template-columns:1fr}}
+.card{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--navy);color:#fff;min-height:440px;display:flex;align-items:flex-end;box-shadow:var(--shadow);transition:transform .35s}
+.card:hover{transform:translateY(-6px)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.card:hover img{transform:scale(1.06)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(6,24,42,.95) 100%)}
+.card-body{position:relative;z-index:2;padding:28px}
+.card-body h3{font-size:1.7rem;margin-bottom:6px}
+.card-body p{opacity:.85;font-size:.95rem;margin-bottom:16px}
+.price{display:inline-block;font-family:var(--font-display);font-weight:700;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);padding:7px 14px;border-radius:999px;font-size:.9rem;margin-bottom:14px}
+.tag{position:absolute;top:18px;left:18px;z-index:3;background:var(--coral);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.tag.aqua{background:var(--aqua);color:var(--navy)}
+.link{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--aqua)}
+.link::after{content:"→";transition:transform .2s}.link:hover::after{transform:translateX(4px)}
+
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:48px;flex-wrap:wrap}
+.section-head h2{max-width:20ch}
+
+/* SCHEDULE */
+.sand{background:var(--sand)}
+.sched{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+@media(max-width:900px){.sched{grid-template-columns:1fr}}
+.sched-card{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.sched-card h3{font-size:1.5rem;margin-bottom:6px}
+.sched-card .sub{color:var(--muted);margin-bottom:22px}
+.days{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.days span{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:600;font-size:.82rem;background:var(--sand-2);color:var(--muted)}
+.days span.on{background:var(--navy);color:#fff}
+.days span.on.aqua{background:var(--aqua);color:var(--navy)}
+.sched-card img{border-radius:14px;height:180px;width:100%;object-fit:cover;margin-bottom:22px}
+.note{font-size:.85rem;color:var(--muted);padding:12px 14px;background:var(--sand);border-radius:12px;border-left:3px solid var(--coral)}
+.wreck{background:var(--navy);color:#fff;grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden;padding:0}
+.wreck img{height:100%;min-height:280px;margin:0;border-radius:0}
+.wreck .in{padding:40px}
+.wreck .sub{color:rgba(255,255,255,.7)}
+.wreck .note{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85)}
+@media(max-width:720px){.wreck{grid-template-columns:1fr}}
+
+/* PRICING */
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:900px){.pricing{grid-template-columns:1fr}}
+.tiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.tier{border:1px solid var(--line);border-radius:16px;padding:18px 16px;transition:all .2s;background:#fff}
+.tier:hover{border-color:var(--aqua);box-shadow:0 10px 30px -15px rgba(18,184,201,.5)}
+.tier.pop{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tier small{display:block;font-size:.78rem;opacity:.7;margin-bottom:6px}
+.tier b{font-family:var(--font-display);font-size:1.45rem;font-weight:800;letter-spacing:-.02em;display:block}
+.tier i{font-style:normal;font-size:.75rem;opacity:.65;display:block}
+.tier .pp{display:inline-block;margin-top:8px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua)}
+.incl{list-style:none;display:grid;gap:10px;margin-top:20px}
+.incl li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem}
+.incl li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;background:var(--aqua);color:var(--navy);font-size:.8rem;font-weight:700;display:grid;place-items:center;margin-top:2px}
+
+/* COURSES */
+.courses{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:960px){.courses{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.courses{grid-template-columns:1fr}}
+.course{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:10px;transition:all .25s}
+.course:hover{border-color:transparent;box-shadow:var(--shadow);transform:translateY(-4px)}
+.course .lvl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--aqua-dark)}
+.course h3{font-size:1.3rem}
+.course p{color:var(--muted);font-size:.93rem;flex:1}
+.course .meta{display:flex;gap:14px;font-size:.82rem;color:var(--muted);flex-wrap:wrap}
+.course .meta span{display:flex;align-items:center;gap:5px}
+.course .cp{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--line);margin-top:6px}
+.course .cp b{font-family:var(--font-display);font-size:1.3rem;font-weight:800}
+.course.featured{background:var(--navy);color:#fff;border-color:var(--navy)}
+.course.featured p,.course.featured .meta{color:rgba(255,255,255,.7)}
+.course.featured .lvl{color:var(--aqua)}
+.course.featured .cp{border-color:rgba(255,255,255,.15)}
+
+/* DAY */
+.day{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:900px){.day{grid-template-columns:1fr;gap:40px}}
+.timeline{list-style:none;display:grid;gap:0;position:relative}
+.timeline li{display:grid;grid-template-columns:64px 24px 1fr;gap:16px;padding:16px 0;position:relative}
+.timeline li:not(:last-child)::after{content:"";position:absolute;left:91px;top:44px;bottom:-12px;width:2px;background:var(--line)}
+.timeline time{font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--navy)}
+.timeline .dot{width:24px;height:24px;border-radius:50%;background:#fff;border:5px solid var(--aqua);margin-top:2px;z-index:1}
+.timeline b{display:block;font-weight:600}
+.timeline span{color:var(--muted);font-size:.93rem}
+.day-img{position:relative}
+.day-img img{border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover;box-shadow:var(--shadow)}
+.day-img .float{position:absolute;bottom:-20px;left:-20px;background:#fff;border-radius:16px;padding:16px 20px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center}
+.day-img .float b{font-family:var(--font-display);font-size:1.6rem;font-weight:800;line-height:1}
+.day-img .float span{font-size:.8rem;color:var(--muted);line-height:1.2}
+@media(max-width:600px){.day-img .float{left:12px;bottom:12px}}
+
+/* MARINE LIFE */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:12px}
+.mosaic figure{position:relative;border-radius:16px;overflow:hidden;background:var(--navy)}
+.mosaic figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.mosaic figure:hover img{transform:scale(1.05)}
+.mosaic figcaption{position:absolute;left:14px;bottom:12px;color:#fff;font-weight:600;font-size:.88rem;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+@media(max-width:720px){.mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.mosaic figure:nth-child(1){grid-column:span 2;grid-row:span 1}}
+
+/* REVIEWS */
+.dark{background:var(--navy);color:#fff}
+.dark .eyebrow{color:var(--aqua)}
+.dark .lead{color:rgba(255,255,255,.7)}
+.rating-big{display:flex;align-items:center;gap:18px;margin-bottom:40px;flex-wrap:wrap}
+.rating-big b{font-family:var(--font-display);font-size:4rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+.rating-big .stars{font-size:1.5rem}
+.rating-big small{color:rgba(255,255,255,.7);display:block}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.reviews{grid-template-columns:1fr}}
+.review{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:14px}
+.review p{font-size:.97rem;line-height:1.65;color:rgba(255,255,255,.9)}
+.review .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+.review .av{width:40px;height:40px;border-radius:50%;background:var(--aqua);color:var(--navy);display:grid;place-items:center;font-weight:700;font-family:var(--font-display)}
+.review .who span{display:block;font-size:.8rem;color:rgba(255,255,255,.6)}
+.gbadge{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(255,255,255,.7)}
+
+/* TEAM */
+.team{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:900px){.team{grid-template-columns:1fr;gap:40px}}
+.people{display:grid;gap:16px}
+.person{display:flex;gap:18px;align-items:center;background:var(--sand);padding:18px 20px;border-radius:18px}
+.person .av{width:64px;height:64px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:1.3rem;flex:none}
+.person b{display:block;font-family:var(--font-display);font-size:1.15rem}
+.person small{display:block;color:var(--aqua-dark);font-weight:600;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.person span{font-size:.9rem;color:var(--muted)}
+.langs{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.langs i{font-style:normal;font-size:.72rem;font-weight:600;background:#fff;padding:3px 9px;border-radius:999px;border:1px solid var(--line)}
+.team-img img{border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover;box-shadow:var(--shadow)}
+
+/* FAQ */
+.faq{max-width:780px;margin-inline:auto}
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-family:var(--font-display);font-weight:700;font-size:1.12rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.6rem;font-weight:400;color:var(--aqua-dark);transition:transform .25s;flex:none}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 20px;color:var(--muted);max-width:65ch}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:32px;align-items:stretch}
+@media(max-width:900px){.contact{grid-template-columns:1fr}}
+.contact-card{background:var(--navy);color:#fff;border-radius:var(--radius);padding:40px;display:flex;flex-direction:column;gap:22px}
+.contact-card h2{font-size:2.2rem}
+.crow{display:flex;gap:14px;align-items:flex-start}
+.crow svg{width:22px;height:22px;flex:none;color:var(--aqua);margin-top:2px}
+.crow small{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.crow a:hover{color:var(--aqua)}
+.contact-card .btn{justify-content:center}
+.map{border-radius:var(--radius);overflow:hidden;min-height:420px;box-shadow:var(--shadow);background:var(--sand-2)}
+.map iframe{width:100%;height:100%;border:0;min-height:420px;filter:saturate(.9)}
+
+/* FOOTER */
+footer{background:#040f1b;color:rgba(255,255,255,.7);padding:56px 0 32px;font-size:.9rem}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:800px){.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.foot{grid-template-columns:1fr}}
+footer h4{color:#fff;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;font-family:var(--font-body);font-weight:600}
+footer ul{list-style:none;display:grid;gap:8px}
+footer a:hover{color:var(--aqua)}
+.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:.8rem;color:rgba(255,255,255,.45)}
+.socials{display:flex;gap:10px;margin-top:16px}
+.socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center}
+.socials svg{width:18px;height:18px}
+
+/* FLOATING WA */
+.fab{position:fixed;right:18px;bottom:18px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.7);transition:transform .2s}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:30px;height:30px;color:#fff}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/logo.webp" alt="Koh Kood Divers"></a>
+    <div class="nav-links">
+      <a href="#dive">Fun diving</a>
+      <a href="#courses">Courses</a>
+      <a href="#snorkel">Snorkelling</a>
+      <a href="#day">Your day</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-dark" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book now</a>
+      <button class="burger" aria-label="Menu" onclick="document.getElementById('mm').classList.add('open')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mm">
+  <button class="close" aria-label="Close" onclick="document.getElementById('mm').classList.remove('open')">×</button>
+  <a href="#dive" onclick="mm.classList.remove('open')">Fun diving</a>
+  <a href="#courses" onclick="mm.classList.remove('open')">Courses</a>
+  <a href="#snorkel" onclick="mm.classList.remove('open')">Snorkelling</a>
+  <a href="#day" onclick="mm.classList.remove('open')">Your day</a>
+  <a href="#reviews" onclick="mm.classList.remove('open')">Reviews</a>
+  <a href="#contact" onclick="mm.classList.remove('open')">Contact</a>
+  <a class="btn btn-primary" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book now</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <img src="img/1708649290066-5f617003b93f-2200.jpg" alt="Sunlight over a coral reef" fetchpriority="high">
+  <div class="wrap">
+    <h1>Dive Koh Kood.<br>Small groups, <em>big reefs.</em></h1>
+    <p>5-star PADI centre on Koh Kood since 2008. Max four divers per guide, lunch on the boat, and Koh Rang Marine Park three days a week.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book a dive</a>
+      <a class="btn btn-ghost" href="https://wa.me/66856984122" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+    <div class="trust">
+      <div><b>4.9 <span class="stars">★★★★★</span></b><span>460+ Google reviews</span></div>
+      <div><b>Since 2008</b><span>PADI 5-Star Dive Centre</span></div>
+      <div><b>Max 4</b><span>divers per guide</span></div>
+      <div><b>5 languages</b><span>EN · DE · FR · NL · ES</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- CHOOSE -->
+<section id="dive">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div>
+        <span class="eyebrow">Choose your day</span>
+        <h2>Three ways to get in the water</h2>
+      </div>
+      <p class="lead">Certified, curious, or just here for the reef from the surface — every trip includes hotel pickup, lunch on board and all equipment.</p>
+    </div>
+    <div class="grid grid-3">
+      <a class="card rv" href="#pricing">
+        <span class="tag">Most popular</span>
+        <img src="img/1682687982360-3fbab65f9d50-900.jpg" alt="Diver descending through sunlit water" loading="lazy">
+        <div class="card-body">
+          <span class="price">From 2,000 THB</span>
+          <h3>Fun diving</h3>
+          <p>Two boat dives a day for certified divers. Local reefs or Koh Rang Marine Park depending on the day.</p>
+          <span class="link">See prices & schedule</span>
+        </div>
+      </a>
+      <a class="card rv" href="#courses" style="transition-delay:.1s">
+        <span class="tag aqua">No experience needed</span>
+        <img src="img/1682687982049-b3d433368cd1-900.jpg" alt="Beginner diver over shallow coral" loading="lazy">
+        <div class="card-body">
+          <span class="price">From 3,500 THB</span>
+          <h3>Learn to dive</h3>
+          <p>Try scuba in a day, or get your PADI Open Water in three. Calm, shallow reefs make Koh Kood a perfect classroom.</p>
+          <span class="link">Explore courses</span>
+        </div>
+      </a>
+      <a class="card rv" href="#snorkel" style="transition-delay:.2s">
+        <img src="img/1579622754173-e2a9aad270e3-900.jpg" alt="Snorkeller at the surface over a reef" loading="lazy">
+        <div class="card-body">
+          <span class="price">From 1,000 THB</span>
+          <h3>Snorkelling</h3>
+          <p>Three sites, 45 minutes each, lunch in between. Suitable for all ages — even non-swimmers with a vest.</p>
+          <span class="link">Trip details</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="sand" id="schedule">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div>
+        <span class="eyebrow">Weekly schedule</span>
+        <h2>Where we dive, and when</h2>
+      </div>
+      <p class="lead">Boat leaves Bang Bao around 9:00 every morning. The destination depends on the day of the week.</p>
+    </div>
+    <div class="sched">
+      <div class="sched-card rv">
+        <img src="img/1651871756929-09d7bde4e97d-900.jpg" alt="Colourful soft coral" loading="lazy">
+        <h3>Koh Kood local reefs</h3>
+        <p class="sub">Coral gardens and pinnacles 45–60 minutes from the pier. Relaxed, shallow, long bottom times — ideal for training dives and easy fun dives.</p>
+        <div class="days"><span class="on">Mon</span><span>Tue</span><span class="on">Wed</span><span>Thu</span><span class="on">Fri</span><span>Sat</span><span class="on">Sun</span></div>
+        <p class="note">Back at the pier around 15:00. No park fee.</p>
+      </div>
+      <div class="sched-card rv" style="transition-delay:.1s">
+        <img src="img/1688541197205-02bd8c71074d-900.jpg" alt="Aerial view of a protected island reef" loading="lazy">
+        <h3>Koh Rang Marine Park</h3>
+        <p class="sub">A protected archipelago between Koh Kood and Koh Chang. No fishing, no anchoring — so the reefs are dense with life and visibility is often the best in the gulf.</p>
+        <div class="days"><span>Mon</span><span class="on aqua">Tue</span><span>Wed</span><span class="on aqua">Thu</span><span>Fri</span><span class="on aqua">Sat</span><span>Sun</span></div>
+        <p class="note">Marine park fee 400 THB per diver (200 THB snorkellers), paid in cash on the boat.</p>
+      </div>
+      <div class="sched-card wreck rv">
+        <img src="img/1573553467420-b2a90be8d317-1000.jpg" alt="Diver exploring a shipwreck" loading="lazy">
+        <div class="in">
+          <span class="eyebrow" style="color:var(--aqua)">On request</span>
+          <h3>Special & wreck trips</h3>
+          <p class="sub" style="margin-bottom:18px">Full-day trips towards Koh Chang for certified divers with recent experience. Wrecks down to 30 m, longer boat rides, smaller groups. We run them when the sea says yes.</p>
+          <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px">
+            <span class="price" style="margin:0">5,500 THB · 2 dives</span>
+            <span style="font-size:.85rem;opacity:.7">08:00 → ~17:00</span>
+          </div>
+          <a class="btn btn-wa" href="https://wa.me/66856984122?text=Hi!%20I'm%20interested%20in%20a%20wreck%20trip." target="_blank" rel="noopener">Ask about the next trip</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="pricing">
+      <div class="rv">
+        <span class="eyebrow">Fun diving prices</span>
+        <h2 style="margin-bottom:14px">The more you dive, the less you pay</h2>
+        <p class="lead" style="margin-bottom:28px">Two dives per day. Multi-dive packages can be spread over your stay. Refresher available if it's been a while.</p>
+        <div class="tiers">
+          <div class="tier"><small>1 dive</small><b>2,000</b><i>THB</i></div>
+          <div class="tier"><small>2 dives · 1 day</small><b>3,500</b><i>THB</i><span class="pp">1,750 / dive</span></div>
+          <div class="tier pop"><small>4 dives · 2 days</small><b>6,000</b><i>THB</i><span class="pp">1,500 / dive</span></div>
+          <div class="tier"><small>6 dives · 3 days</small><b>8,000</b><i>THB</i><span class="pp">1,333 / dive</span></div>
+          <div class="tier"><small>8 dives · 4 days</small><b>9,750</b><i>THB</i><span class="pp">1,219 / dive</span></div>
+          <div class="tier"><small>10 dives · 5 days</small><b>11,000</b><i>THB</i><span class="pp">1,100 / dive</span></div>
+        </div>
+        <p style="font-size:.85rem;color:var(--muted);margin-top:16px">3 dives: 4,500 THB. Minimum age 10, certification required. Koh Rang park fee not included.</p>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book fun dives</a>
+          <a class="btn btn-wa" href="https://wa.me/66856984122" target="_blank" rel="noopener">Ask a question</a>
+        </div>
+      </div>
+      <div class="rv" style="transition-delay:.1s">
+        <div style="background:var(--sand);border-radius:var(--radius);padding:36px">
+          <h3 style="font-size:1.5rem;margin-bottom:4px">Every trip includes</h3>
+          <p style="color:var(--muted);font-size:.93rem">No hidden extras. Turn up in swimwear.</p>
+          <ul class="incl">
+            <li>Pickup and drop-off at your resort</li>
+            <li>Full Aqualung / Scubapro equipment set</li>
+            <li>Lunch, fruit, coffee, tea and water on board</li>
+            <li>Never more than 4 divers per PADI guide</li>
+            <li>Dives of 50–65 minutes, depending on your air</li>
+            <li>Toilet and freshwater shower on the boat</li>
+            <li>Oxygen kit and first aid on board and at the shop</li>
+            <li>Briefings in English, German, French or Dutch</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="sand" id="courses">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div>
+        <span class="eyebrow">PADI courses</span>
+        <h2>From first breath to Divemaster</h2>
+      </div>
+      <p class="lead">Small classes, patient instructors, and eLearning so you can do the theory on the plane. All prices include materials, certification card, equipment and insurance.</p>
+    </div>
+    <div class="courses">
+      <div class="course rv">
+        <span class="lvl">Beginner · try it</span>
+        <h3>Discover Scuba Diving</h3>
+        <p>Your first breaths underwater with an instructor by your side the whole time. Two real ocean dives, no exam, no commitment.</p>
+        <div class="meta"><span>⏱ 1 day</span><span>🤿 1–2 dives</span><span>👶 8+</span></div>
+        <div class="cp"><b>3,500 THB</b><a class="link" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book</a></div>
+      </div>
+      <div class="course featured rv" style="transition-delay:.05s">
+        <span class="lvl">Beginner · get certified</span>
+        <h3>PADI Open Water Diver</h3>
+        <p>The world's most recognised dive certification. Skills in a shallow bay, then four open-water dives to 18 m. Junior version from age 10.</p>
+        <div class="meta"><span>⏱ 3–4 days</span><span>🤿 4 dives</span><span>👶 10+</span></div>
+        <div class="cp"><b>15,500 THB</b><a class="link" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book</a></div>
+      </div>
+      <div class="course rv" style="transition-delay:.1s">
+        <span class="lvl">Beginner · short on time</span>
+        <h3>PADI Scuba Diver</h3>
+        <p>Half the Open Water course, a full certification to dive with a professional to 12 m. Upgrade to Open Water later, anywhere.</p>
+        <div class="meta"><span>⏱ 2–3 days</span><span>🤿 2 dives</span><span>👶 10+</span></div>
+        <div class="cp"><b>13,000 THB</b><a class="link" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book</a></div>
+      </div>
+      <div class="course rv" style="transition-delay:.15s">
+        <span class="lvl">Continuing · go deeper</span>
+        <h3>PADI Advanced Open Water</h3>
+        <p>Five adventure dives, minimal theory. Deep and navigation are set; pick three more — night, wreck, drift, photography. Certifies you to 30 m.</p>
+        <div class="meta"><span>⏱ 2–3 days</span><span>🤿 5 dives</span><span>👶 12+</span></div>
+        <div class="cp"><b>14,500 THB</b><a class="link" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book</a></div>
+      </div>
+      <div class="course rv" style="transition-delay:.2s">
+        <span class="lvl">Continuing · be the hero</span>
+        <h3>PADI Rescue Diver</h3>
+        <p>Learn to prevent and manage problems in the water. Challenging, rewarding, and the course most divers say changed how they dive.</p>
+        <div class="meta"><span>⏱ 2–3 days</span><span>🤿 4 dives</span><span>👶 12+</span></div>
+        <div class="cp"><b>15,500 THB</b><a class="link" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book</a></div>
+      </div>
+      <div class="course rv" style="transition-delay:.25s">
+        <span class="lvl">Professional</span>
+        <h3>Divemaster & Internships</h3>
+        <p>Go pro on a quiet island with a small, multilingual team. Divemaster from 4 weeks, or a Zero-to-Hero programme over a full season.</p>
+        <div class="meta"><span>⏱ 4–8 weeks+</span><span>🌏 Internships available</span></div>
+        <div class="cp"><b>From 55,000 THB</b><a class="link" href="https://wa.me/66856984122?text=Hi!%20I'd%20like%20to%20know%20more%20about%20the%20Divemaster%20programme." target="_blank" rel="noopener">Ask us</a></div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:.9rem;margin-top:28px">Also: Junior Open Water, Junior Advanced, Adventure Diver, and Bubblemaker for kids from 8. Just ask.</p>
+  </div>
+</section>
+
+<!-- YOUR DAY -->
+<section id="day">
+  <div class="wrap">
+    <div class="day">
+      <div class="rv">
+        <span class="eyebrow">A day with us</span>
+        <h2 style="margin-bottom:12px">Pickup at your door, back for sunset</h2>
+        <p class="lead" style="margin-bottom:20px">A typical fun-dive or training day. Times shift slightly for Koh Rang trips.</p>
+        <ul class="timeline">
+          <li><time>08:15</time><span class="dot"></span><div><b>Pickup at your resort</b><span>We collect you anywhere on the island and drive to Bang Bao bay.</span></div></li>
+          <li><time>09:00</time><span class="dot"></span><div><b>Briefing & departure</b><span>Meet your guide, set up gear, go over the plan for the day.</span></div></li>
+          <li><time>10:00</time><span class="dot"></span><div><b>Dive one</b><span>50–65 minutes on the reef, depending on your air.</span></div></li>
+          <li><time>11:30</time><span class="dot"></span><div><b>Lunch on board</b><span>Thai lunch, fruit, coffee and tea. Vegetarian on request.</span></div></li>
+          <li><time>12:45</time><span class="dot"></span><div><b>Dive two</b><span>A different site, a different reef.</span></div></li>
+          <li><time>15:00</time><span class="dot"></span><div><b>Back on Koh Kood</b><span>Log your dives, rinse off, and we drive you home.</span></div></li>
+        </ul>
+      </div>
+      <div class="day-img rv" style="transition-delay:.1s">
+        <img src="img/1563967949-d97cba787cae-900.jpg" alt="Divers gearing up on the boat" loading="lazy">
+        <div class="float"><b>4:1</b><span>max divers<br>per guide</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARINE LIFE -->
+<section class="sand" id="marine">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div>
+        <span class="eyebrow">What you'll see</span>
+        <h2>Quiet reefs, curious residents</h2>
+      </div>
+      <p class="lead">The east gulf gets a fraction of the boats that Koh Tao does. The reefs show it.</p>
+    </div>
+    <div class="mosaic rv">
+      <figure><img src="img/1437622368342-7a3d73a34c8f-1200.jpg" alt="Green sea turtle" loading="lazy"><figcaption>Green & hawksbill turtles</figcaption></figure>
+      <figure><img src="img/1578854186802-b234962d05bc-700.jpg" alt="Nudibranch" loading="lazy"><figcaption>Nudibranchs everywhere</figcaption></figure>
+      <figure><img src="img/1544551763-46a013bb70d5-700.jpg" alt="Diver in a school of fish" loading="lazy"><figcaption>Schooling fish</figcaption></figure>
+      <figure><img src="img/1682687982470-8f1b0e79151a-700.jpg" alt="Diver over a coral wall" loading="lazy"><figcaption>Coral gardens & pinnacles</figcaption></figure>
+      <figure><img src="img/1637308109237-4ea1a7dd22f5-700.jpg" alt="Hard coral with reef fish" loading="lazy"><figcaption>Moray eels, rays, barracuda</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- SNORKEL -->
+<section id="snorkel">
+  <div class="wrap">
+    <div class="grid grid-2" style="align-items:center;gap:64px">
+      <div class="rv">
+        <span class="eyebrow">Snorkelling</span>
+        <h2 style="margin-bottom:14px">Same boat, same reefs, no tank</h2>
+        <p class="lead" style="margin-bottom:24px">Three snorkel sites for about 45 minutes each, with lunch on board in between. Life jackets, rings and lines on every trip — you don't need to be a strong swimmer.</p>
+        <div class="tiers" style="grid-template-columns:1fr 1fr;margin-bottom:24px">
+          <div class="tier"><small>Koh Kood · Mon Wed Fri Sun</small><b>1,000</b><i>THB per person</i></div>
+          <div class="tier pop"><small>Koh Rang · Tue Thu Sat</small><b>1,200</b><i>THB + 200 park fee</i></div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book snorkelling</a>
+          <a class="btn btn-dark" href="#courses">Or try a dive instead</a>
+        </div>
+      </div>
+      <div class="rv" style="transition-delay:.1s">
+        <img src="img/1537956965359-7573183d1f57-1000.jpg" alt="Aerial view of a tropical cove" loading="lazy" style="border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover;box-shadow:var(--shadow)">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="dark" id="reviews">
+  <div class="wrap">
+    <div class="rating-big rv">
+      <b>4.9</b>
+      <div>
+        <div class="stars">★★★★★</div>
+        <small>Based on 463 Google reviews</small>
+        <a class="gbadge" href="https://search.google.com/local/writereview?placeid=ChIJq7WFs6uQBjERravXWAqoSf4" target="_blank" rel="noopener" style="margin-top:6px">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.2H12v4.2h6a5.1 5.1 0 0 1-2.2 3.4v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.2Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.6H2.1v2.9A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14a6.6 6.6 0 0 1 0-4.2V6.9H2.1a11 11 0 0 0 0 9.9L5.8 14Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2A11 11 0 0 0 2.1 6.9L5.8 9.8c.9-2.7 3.3-4.4 6.2-4.4Z"/></svg>
+          Read all reviews on Google
+        </a>
+      </div>
+    </div>
+    <div class="reviews">
+      <div class="review rv">
+        <div class="stars">★★★★★</div>
+        <p>"Super friendly dive shop. Seamless onboarding, excellent value. We spent an amazing day in the marine park west of Koh Kood and the dives were all up to expectations. Kudos to Tino, our instructor — professional, knowledgeable and really welcoming."</p>
+        <div class="who"><div class="av">N</div><div><b>Nicolas S.</b><span>Fun diving, Koh Rang</span></div></div>
+      </div>
+      <div class="review rv" style="transition-delay:.1s">
+        <div class="stars">★★★★★</div>
+        <p>"10/10 diving day. Jose, my DM, was patient, kind, funny and knowledgeable. The boat was spacious and well equipped, lunch was awesome, dive sites were amazing. My partner snorkelled and also had a great time. Wish I had more days on the island."</p>
+        <div class="who"><div class="av">A</div><div><b>Angelic G.</b><span>Fun diving + snorkelling</span></div></div>
+      </div>
+      <div class="review rv" style="transition-delay:.2s">
+        <div class="stars">★★★★★</div>
+        <p>"Had a great time completing my PADI Open Water course with Koh Kood Divers. Joel was a great instructor. Most definitely one of the best things I've done while travelling. Big thanks to the whole team."</p>
+        <div class="who"><div class="av">H</div><div><b>Harry W.</b><span>PADI Open Water</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="wrap">
+    <div class="team">
+      <div class="team-img rv">
+        <img src="img/1633503917971-786146951799-1000.jpg" alt="Dive boat on calm turquoise water" loading="lazy">
+      </div>
+      <div class="rv" style="transition-delay:.1s">
+        <span class="eyebrow">Who we are</span>
+        <h2 style="margin-bottom:14px">Family-run from Klong Chao since 2008</h2>
+        <p class="lead" style="margin-bottom:28px">We stayed small on purpose: a handful of instructors, one well-kept boat, and guides who dive these reefs every day of the season.</p>
+        <div class="people">
+          <div class="person">
+            <div class="av">B</div>
+            <div><small>Founder · PADI Instructor</small><b>Bob Kosten</b><span>Opened the shop in 2008.</span><div class="langs"><i>EN</i><i>ES</i><i>NL</i><i>FR</i><i>DE</i></div></div>
+          </div>
+          <div class="person">
+            <div class="av">J</div>
+            <div><small>Co-owner · SSI & PADI Instructor</small><b>Jessie Kosten</b><span>Joined a year after opening.</span><div class="langs"><i>DE</i><i>NL</i><i>EN</i></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sand" id="faq">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:40px" class="rv">
+      <span class="eyebrow" style="justify-content:center">Good to know</span>
+      <h2>Questions people ask</h2>
+    </div>
+    <div class="faq rv">
+      <details open><summary>When is the best time to dive Koh Kood?</summary><p>November to April. The sea is calm, visibility is at its best and the water sits around 28–30 °C. We run trips through the season and pause when the monsoon makes conditions unsafe.</p></details>
+      <details><summary>I've never dived. Can I still join?</summary><p>Yes. Discover Scuba Diving needs no experience — you'll be with an instructor the whole time, in shallow, calm water. If you love it, the day counts towards your Open Water certification.</p></details>
+      <details><summary>How do I get to Koh Kood?</summary><p>Fly to Bangkok or Trat, then a speedboat or ferry from Laem Sok pier (about 1–1.5 hours). We're happy to recommend boats and resorts — just message us.</p></details>
+      <details><summary>Do I need to bring anything?</summary><p>Swimwear, a towel, sunscreen (reef-safe please) and your certification card or app if you're a certified diver. We provide everything else, including lunch and drinks.</p></details>
+      <details><summary>What if I haven't dived in a while?</summary><p>If it's been more than a year or so, book a refresher. It's a short skills session in shallow water before your first fun dive, and it makes the day a lot more relaxed.</p></details>
+      <details><summary>How do I book and pay?</summary><p>Book online through our booking page, or message us on WhatsApp and we'll hold your spot. Payment in Thai baht, cash or card at the shop. Marine park fees are paid in cash on the boat.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="contact-card rv">
+        <div>
+          <span class="eyebrow" style="color:var(--aqua)">Find us</span>
+          <h2>Klong Chao, Koh Kood</h2>
+        </div>
+        <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg><div><small>Dive shop</small>101 Klong Chao, Ko Kut, Trat 23000, Thailand</div></div>
+        <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><div><small>Phone / WhatsApp</small><a href="tel:+66856984122">+66 85 698 4122</a></div></div>
+        <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div><small>Email</small><a href="mailto:booking@kohkooddivers.com">booking@kohkooddivers.com</a></div></div>
+        <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><small>Open</small>Every day, 09:00 – 18:00</div></div>
+        <a class="btn btn-wa" href="https://wa.me/66856984122" target="_blank" rel="noopener" style="margin-top:8px">Message us on WhatsApp</a>
+        <a class="btn btn-primary" href="https://kohkooddivers57.rezdy.com/" target="_blank" rel="noopener">Book online</a>
+      </div>
+      <div class="map rv" style="transition-delay:.1s">
+        <iframe src="https://maps.google.com/maps?q=11.6321087,102.5478377&z=15&output=embed" loading="lazy" title="Map to Koh Kood Divers" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top" style="color:#fff"><img src="img/logo.webp" alt="Koh Kood Divers"></a>
+        <p style="margin-top:16px;max-width:36ch">PADI 5-Star Dive Centre on Koh Kood, Thailand. Fun diving, courses and snorkelling since 2008.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/kohkooddivers/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8Z"/></svg></a>
+          <a href="https://www.instagram.com/kohkooddivers/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Diving</h4><ul><li><a href="#dive">Fun diving</a></li><li><a href="#schedule">Koh Rang Marine Park</a></li><li><a href="#schedule">Wreck trips</a></li><li><a href="#snorkel">Snorkelling</a></li></ul></div>
+      <div><h4>Courses</h4><ul><li><a href="#courses">Discover Scuba</a></li><li><a href="#courses">Open Water</a></li><li><a href="#courses">Advanced</a></li><li><a href="#courses">Divemaster</a></li></ul></div>
+      <div><h4>Language</h4><ul><li><a href="#">English</a></li><li><a href="https://kohkooddivers.com/de/">Deutsch</a></li><li><a href="https://kohkooddivers.com/fr/">Français</a></li><li><a href="https://kohkooddivers.com/nl/">Nederlands</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Koh Kood Divers · Klong Chao, Ko Kut, Trat</span>
+      <span>Preview build — photography shown is placeholder stock, to be replaced with Koh Kood Divers originals.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/66856984122" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script>
+const nav=document.getElementById('nav');
+const onScroll=()=>nav.classList.toggle('solid',scrollY>40);onScroll();addEventListener('scroll',onScroll,{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

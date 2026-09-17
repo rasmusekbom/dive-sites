@@ -1,0 +1,165 @@
+{
+ "beginner-shallow-reef.jpg": {
+  "mtime": 1789645722945.9023,
+  "width": 900,
+  "height": 600,
+  "widths": [
+   480,
+   800,
+   900
+  ],
+  "fallback": 900
+ },
+ "boat-gearing-up.jpg": {
+  "mtime": 1789645722904.1587,
+  "width": 900,
+  "height": 607,
+  "widths": [
+   480,
+   800,
+   900
+  ],
+  "fallback": 900
+ },
+ "coral-wall.jpg": {
+  "mtime": 1789645722953.5413,
+  "width": 700,
+  "height": 467,
+  "widths": [
+   480,
+   700
+  ],
+  "fallback": 700
+ },
+ "cove-aerial.jpg": {
+  "mtime": 1789645722895.1584,
+  "width": 1000,
+  "height": 749,
+  "widths": [
+   480,
+   800,
+   1000
+  ],
+  "fallback": 1000
+ },
+ "dive-boat.jpg": {
+  "mtime": 1789645722942.019,
+  "width": 1000,
+  "height": 562,
+  "widths": [
+   480,
+   800,
+   1000
+  ],
+  "fallback": 1000
+ },
+ "diver-descending.jpg": {
+  "mtime": 1789645722950.65,
+  "width": 900,
+  "height": 600,
+  "widths": [
+   480,
+   800,
+   900
+  ],
+  "fallback": 900
+ },
+ "fish-school.jpg": {
+  "mtime": 1789645722899.1594,
+  "width": 700,
+  "height": 467,
+  "widths": [
+   480,
+   700
+  ],
+  "fallback": 700
+ },
+ "hard-coral.jpg": {
+  "mtime": 1789645723001.3928,
+  "width": 700,
+  "height": 394,
+  "widths": [
+   480,
+   700
+  ],
+  "fallback": 700
+ },
+ "island-aerial.jpg": {
+  "mtime": 1789645722978.1946,
+  "width": 900,
+  "height": 1600,
+  "widths": [
+   480,
+   800,
+   900
+  ],
+  "fallback": 900
+ },
+ "nudibranch.jpg": {
+  "mtime": 1789645722922.6138,
+  "width": 700,
+  "height": 467,
+  "widths": [
+   480,
+   700
+  ],
+  "fallback": 700
+ },
+ "reef-sunlight.jpg": {
+  "mtime": 1789645722996.4243,
+  "width": 2200,
+  "height": 1467,
+  "widths": [
+   480,
+   800,
+   1200,
+   1600,
+   2000
+  ],
+  "fallback": 1200
+ },
+ "snorkeller.jpg": {
+  "mtime": 1789645722926.608,
+  "width": 900,
+  "height": 675,
+  "widths": [
+   480,
+   800,
+   900
+  ],
+  "fallback": 900
+ },
+ "soft-coral.jpg": {
+  "mtime": 1789645723015.3936,
+  "width": 900,
+  "height": 600,
+  "widths": [
+   480,
+   800,
+   900
+  ],
+  "fallback": 900
+ },
+ "turtle.jpg": {
+  "mtime": 1789645722890.16,
+  "width": 1200,
+  "height": 750,
+  "widths": [
+   480,
+   800,
+   1200
+  ],
+  "fallback": 1200
+ },
+ "wreck.jpg": {
+  "mtime": 1789645722910.1602,
+  "width": 1000,
+  "height": 750,
+  "widths": [
+   480,
+   800,
+   1000
+  ],
+  "fallback": 1000
+ }
+}
