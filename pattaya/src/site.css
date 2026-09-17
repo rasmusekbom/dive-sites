@@ -146,15 +146,15 @@ body.menu-open { overflow: hidden; }
 .gbadge .stars { display: inline-flex; gap: 1px; color: #f5b301; }
 .gbadge .stars svg { width: 14px; height: 14px; }
 .gbadge:hover { text-decoration: none; }
-.pillars { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-.pillars li a { display: flex; align-items: center; gap: 12px; padding: 16px 16px 16px 18px; color: #fff; font-family: var(--font-h); font-weight: 600; font-size: 15.5px; background: rgba(4, 20, 41, .72); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, .16); border-radius: 14px 14px 0 0; border-bottom: 3px solid var(--cyan); transition: background .25s, transform .25s var(--ease); }
-.pillars .pn { font-size: 12px; letter-spacing: .16em; color: var(--cyan); font-weight: 700; }
+.pillars { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; align-items: stretch; }
+.pillars li { display: flex; }
+.pillars li a { display: flex; flex: 1; align-items: center; gap: 12px; padding: 16px 16px 16px 18px; min-height: 76px; color: #fff; font-family: var(--font-h); font-weight: 600; font-size: 15.5px; background: rgba(4, 20, 41, .72); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, .16); border-radius: 14px 14px 0 0; border-bottom: 3px solid var(--cyan); transition: background .25s, transform .25s var(--ease); }
 .pillars .pt { flex: 1; line-height: 1.25; }
 .pillars li a i { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .12); color: #fff; transition: background .25s, color .25s, transform .3s var(--ease); }
 .pillars li a i svg { width: 16px; height: 16px; }
 .pillars li a:hover { text-decoration: none; background: rgba(4, 20, 41, .92); transform: translateY(-3px); }
 .pillars li a:hover i { background: var(--coral); color: var(--navy); transform: rotate(-45deg); }
-@media (max-width: 700px) { .pillars { grid-template-columns: 1fr 1fr; gap: 8px; } .pillars li a { padding: 12px 12px 12px 14px; font-size: 14px; border-radius: 10px 10px 0 0; } .pillars .pn { display: none; } }
+@media (max-width: 700px) { .pillars { grid-template-columns: 1fr 1fr; gap: 8px; } .pillars li a { padding: 12px 12px 12px 14px; font-size: 14px; border-radius: 10px 10px 0 0; } }
 
 /* ---------- paths (6 entry cards) */
 #paths { padding-top: 40px; }

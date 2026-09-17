@@ -318,7 +318,7 @@ ${footer(key)}
     <div class="hero-actions"><a class="btn btn-primary btn-lg" href="${url('book')}">${ui.bookNow}</a><a class="btn btn-ghost btn-lg" href="${url('diving')}">${ui.nav.allDiving}${I.arrow}</a></div>
     <a class="gbadge" href="${site.maps}" target="_blank" rel="noopener">${I.g}<b>${site.rating.toFixed(1)}</b><span class="stars" aria-hidden="true">${I.star.repeat(5)}</span><span>${site.reviewCount} ${H.reviews}</span></a>
   </div>
-  <ul class="pillars wrap" aria-label="What we do">${H.pillars.map((t, i) => `<li><a href="${url(['courses', 'dayTrips', 'marine', 'contact'][i])}"><span class="pn">0${i + 1}</span><span class="pt">${t}</span><i>${I.arrow}</i></a></li>`).join('')}</ul>
+  <ul class="pillars wrap" aria-label="What we do">${H.pillars.map((t, i) => `<li><a href="${url(['courses', 'dayTrips', 'marine', 'contact'][i])}"><span class="pt">${t}</span><i>${I.arrow}</i></a></li>`).join('')}</ul>
 </header>
 <section id="paths"><div class="wrap">
   <div class="grid grid-3 paths">${H.paths.map(([k, t, d], i) => `<a class="path rv" href="${url(k)}" style="--d:${i * .06}s"><span class="n">0${i + 1}</span><strong>${t}</strong><span>${d}</span><i>${I.arrow}</i></a>`).join('')}</div>
