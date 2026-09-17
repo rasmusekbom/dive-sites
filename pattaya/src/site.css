@@ -76,9 +76,13 @@ section.dark .section-head .sub { color: #9fc3e0; }
 .brand-loc { font-family: var(--font-h); font-weight: 500; font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--sky-2); border-left: 1px solid rgba(255, 255, 255, .25); padding-left: 10px; line-height: 1; }
 .nav-links { list-style: none; margin: 0 0 0 auto; padding: 0; display: flex; gap: 10px; align-items: center; }
 .nav-links > li { position: relative; }
-.nav-links > li > a { display: inline-flex; align-items: center; padding: 10px 18px; color: #dbe9f6; font-family: var(--font-h); font-weight: 500; font-size: 15.5px; border-radius: 8px; }
-.nav-links > li > a:hover, .nav-links > li.on > a, .nav-links > li > a[aria-current] { color: #fff; background: rgba(255, 255, 255, .08); text-decoration: none; }
-.sub-toggle { background: none; border: 0; color: #9fc3e0; padding: 6px 10px 6px 0; margin-left: -12px; cursor: pointer; display: inline-flex; }
+.nav-links > li { display: flex; align-items: stretch; border-radius: 8px; transition: background .2s; }
+.nav-links > li > a { display: inline-flex; align-items: center; padding: 10px 18px; color: #dbe9f6; font-family: var(--font-h); font-weight: 500; font-size: 15.5px; }
+.nav-links > li:hover, .nav-links > li.on, .nav-links > li.open, .nav-links > li:focus-within, .nav-links > li:has(> a[aria-current]) { background: rgba(255, 255, 255, .08); }
+.nav-links > li:hover > a, .nav-links > li.on > a, .nav-links > li > a[aria-current] { color: #fff; text-decoration: none; }
+.nav-links > li.has-sub > a, .nav-links > li.has-mega > a { padding-right: 6px; }
+.sub-toggle { background: none; border: 0; color: #9fc3e0; padding: 0 14px 0 4px; cursor: pointer; display: inline-flex; align-items: center; }
+.nav-links > li:hover .sub-toggle { color: #fff; }
 .sub-toggle svg { transition: transform .25s; }
 .has-sub .navsub, .has-mega .mega { position: absolute; top: calc(100% + 6px); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .2s, transform .25s var(--ease), visibility 0s .25s; }
 .has-sub:hover .navsub, .has-sub:focus-within .navsub, .has-mega:hover .mega, .has-mega:focus-within .mega, .has-sub.open .navsub, .has-mega.open .mega { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .25s var(--ease); }
