@@ -85,6 +85,13 @@ function ctx(lang) {
   const heroImg = (file, alt) => img(file, alt, '', '100vw', true);
   const days = (on, aqua) => `<div class="days">${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(d => `<span class="${on.includes(d) ? 'on' + (aqua ? ' aqua' : '') : ''}">${ui.days[d]}</span>`).join('')}</div>`;
 
+  // Dropdown panels under "Fun diving" and "Courses": every product one click away from any page.
+  const subLink = (p, key) => `<a href="${url(p.slug)}"${p.slug === key ? ' aria-current="page"' : ''}><b>${text(p).name}</b><small>${text(p).level}</small></a>`;
+  const navSub = (k, key) => {
+    if (k === 'funDiving') return `<div class="sub-col">${products.filter(p => p.type === 'trip').map(p => subLink(p, key)).join('')}</div>`;
+    if (k === 'courses') return courseGroups.map(g => `<div class="sub-col"><span class="sub-head">${L.pages.courses.groups[g][0]}</span>${products.filter(p => p.group === g).map(p => subLink(p, key)).join('')}</div>`).join('') + `<a class="sub-all" href="${url('courses')}">${ui.seeAllCourses}</a>`;
+    return '';
+  };
   const NAV = [['funDiving', 'koh-kood-fun-diving'], ['courses', 'courses'], ['snorkelling', 'snorkeling-koh-kood-thailand'], ['diveSites', 'diveSites'], ['about', 'about'], ['contact', 'contact']];
 
   // ---------- layout
@@ -117,7 +124,10 @@ ${ld}
 <a class="skip" href="#main">${ui.skip}</a>
 <nav class="nav" id="nav"><div class="wrap">
   <a class="brand" href="${url('home')}" aria-label="${esc(site.name)}"><img src="${BASE}/img/logo.webp" alt="${esc(site.name)}" width="120" height="44"></a>
-  <div class="nav-links">${NAV.map(([k, s]) => `<a href="${url(s)}"${s === key ? ' aria-current="page"' : ''}>${ui.nav[k]}</a>`).join('')}</div>
+  <ul class="nav-links">${NAV.map(([k, s]) => {
+      const sub = navSub(k, key);
+      return `<li${sub ? ' class="has-sub"' : ''}><a href="${url(s)}"${s === key ? ' aria-current="page"' : ''}>${ui.nav[k]}</a>${sub ? `<button class="sub-toggle" aria-expanded="false" aria-label="${ui.nav[k]}"></button><div class="sub">${sub}</div>` : ''}</li>`;
+    }).join('')}</ul>
   <div class="nav-cta">
     <details class="dd dd-lang"><summary aria-label="${ui.language}">${I.globe}<span>${lang.code.toUpperCase()}</span></summary><div class="dd-menu">${langMenu}</div></details>
     ${curSel}
@@ -425,6 +435,11 @@ const mm=document.getElementById('mm'),burger=document.querySelector('.burger');
 function openMenu(){mm.classList.add('open');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';mm.querySelector('a,button').focus()}
 function closeMenu(){if(!mm.classList.contains('open'))return;mm.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';burger.focus()}
 window.openMenu=openMenu;window.closeMenu=closeMenu;
+// Nav dropdowns: hover/focus opens via CSS; the caret button toggles for touch and keyboard, outside click closes
+const subs=[...document.querySelectorAll('.nav-links .has-sub')];
+subs.forEach(li=>{const t=li.querySelector('.sub-toggle');t.addEventListener('click',()=>{const open=!li.classList.contains('open');subs.forEach(x=>{x.classList.remove('open');x.querySelector('.sub-toggle').setAttribute('aria-expanded','false')});li.classList.toggle('open',open);t.setAttribute('aria-expanded',String(open))})});
+document.addEventListener('click',e=>{if(!e.target.closest('.has-sub'))subs.forEach(x=>{x.classList.remove('open');x.querySelector('.sub-toggle').setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){subs.forEach(x=>{x.classList.remove('open');x.querySelector('.sub-toggle').setAttribute('aria-expanded','false')});if(e.target.closest&&e.target.closest('.has-sub'))e.target.blur()}});
 // Contact form: POST to the configured endpoint, else open the visitor's mail app with the message prefilled
 const cf=document.querySelector('.cform');
 if(cf){cf.addEventListener('submit',async e=>{e.preventDefault();if(!cf.reportValidity())return;const fd=new FormData(cf);if(fd.get('company'))return;
