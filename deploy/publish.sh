@@ -4,10 +4,11 @@
 # Once the gh token has the `workflow` scope (`gh auth refresh -s workflow`), move deploy/pages.yml to
 # .github/workflows/ and this script becomes unnecessary.
 set -euo pipefail
-cd "$(dirname "$0")/.."
+cd "$(cd "$(dirname "$0")/.." && pwd)"
 export MSYS_NO_PATHCONV=1
-OUT=$(mktemp -d)
+OUT=$PWD/.publish; rm -rf "$OUT"; mkdir -p "$OUT"
 for p in */; do
+  [ "$p" = ".publish/" ] && continue
   p=${p%/}
   [ -f "$p/build.js" ] || continue
   echo "== $p"
@@ -16,6 +17,9 @@ for p in */; do
 done
 { printf '<!doctype html><meta charset="utf-8"><title>dive-sites demos</title><ul>'; for d in "$OUT"/*/; do d=$(basename "$d"); printf '<li><a href="%s/">%s</a></li>' "$d" "$d"; done; printf '</ul>'; } > "$OUT/index.html"
 touch "$OUT/.nojekyll"
-cd "$OUT" && git init -q -b gh-pages && git add -A && git -c user.name="deploy" -c user.email="deploy@local" commit -q -m "Publish demos $(date -u +%Y-%m-%dT%H:%MZ)"
-git push -f "$(cd - >/dev/null && git remote get-url origin)" gh-pages:gh-pages
+ROOT=$PWD
+(cd "$OUT" && git init -q -b gh-pages && git -c core.autocrlf=false add -A && git -c user.name="deploy" -c user.email="deploy@local" commit -q -m "Publish demos $(date -u +%Y-%m-%dT%H:%MZ)")
+# push with the main checkout's credentials (repo-local credential helper)
+git fetch -q "$(cygpath -m "$OUT" 2>/dev/null || echo "$OUT")" gh-pages && git push -f origin FETCH_HEAD:refs/heads/gh-pages
+rm -rf "$OUT"
 echo "published → https://rasmusekbom.github.io/dive-sites/"
