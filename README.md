@@ -24,5 +24,8 @@ Production is a plain `npm run build` deployed to the client's domain (Cloudflar
 
 ## Deploy
 
-Pushing to `main` runs `.github/workflows/pages.yml`, which builds every project with `BASE=/dive-sites/<name>`
-and publishes them under https://rasmusekbom.github.io/dive-sites/<name>/ (all `noindex`).
+`./deploy/publish.sh` builds every project as a noindex demo (`BASE=/dive-sites/<name> DEMO=1`) and force-pushes the
+result to the `gh-pages` branch → https://rasmusekbom.github.io/dive-sites/<name>/.
+
+`deploy/pages.yml` is the equivalent GitHub Actions workflow; move it to `.github/workflows/` once the gh CLI token has
+the `workflow` scope (`gh auth refresh -s workflow`) and deploys happen on every push to `main`.
