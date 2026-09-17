@@ -106,6 +106,7 @@ section.dark .section-head .sub { color: #9fc3e0; }
 @media (max-width: 1080px) {
   .nav-links, .topbar-social { display: none; }
   .burger { display: inline-flex; }
+  .nav-cta { margin-left: auto; }
   .nav > .wrap { height: 66px; }
   .brand img { width: 128px; }
   .topbar .wrap { gap: 14px; overflow: hidden; }

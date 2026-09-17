@@ -12,8 +12,8 @@ for p in */; do
   p=${p%/}
   [ -f "$p/build.js" ] || continue
   echo "== $p"
-  (cd "$p" && npm install --no-audit --no-fund --silent && BASE="/dive-sites/$p" DEMO=1 npm run build)
-  mkdir -p "$OUT/$p" && cp -r "$p/dist/." "$OUT/$p/"
+  # build straight into the publish dir – dist/ (what `npm run serve` shows) is left untouched
+  (cd "$p" && npm install --no-audit --no-fund --silent && DIST="$OUT/$p" BASE="/dive-sites/$p" DEMO=1 npm run build)
 done
 { printf '<!doctype html><meta charset="utf-8"><title>dive-sites demos</title><ul>'; for d in "$OUT"/*/; do d=$(basename "$d"); printf '<li><a href="%s/">%s</a></li>' "$d" "$d"; done; printf '</ul>'; } > "$OUT/index.html"
 touch "$OUT/.nojekyll"

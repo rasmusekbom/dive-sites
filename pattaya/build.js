@@ -7,7 +7,8 @@ const { site, languages, stats, groups, products, hubs, priceList, team, locatio
 const IMG = fs.existsSync(path.join(__dirname, 'src', 'img-manifest.json')) ? JSON.parse(fs.readFileSync(path.join(__dirname, 'src', 'img-manifest.json'), 'utf8')) : {};
 const ogJpg = file => IMG[file] ? file.replace(/\.[^.]+$/, '') + '-' + IMG[file].fallback + '.jpg' : file;
 
-const OUT = path.join(__dirname, 'dist');
+// DIST=<dir> writes elsewhere (deploy/publish.sh builds the demos outside dist/ so a local preview keeps working)
+const OUT = process.env.DIST ? path.resolve(process.env.DIST) : path.join(__dirname, 'dist');
 const BASE = (process.env.BASE || '').replace(/\/$/, '');
 const DEMO = !!process.env.DEMO;
 const P = Object.fromEntries(products.map(p => [p.slug, p]));

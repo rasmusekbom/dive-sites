@@ -13,7 +13,8 @@ if (Date.now() - new Date(require(RATES_FILE).date).getTime() > 7 * 864e5 && !pr
 }
 const rates = JSON.parse(fs.readFileSync(RATES_FILE, 'utf8'));
 
-const OUT = path.join(__dirname, 'dist');
+// DIST=<dir> writes elsewhere (deploy/publish.sh builds the demos outside dist/ so a local preview keeps working)
+const OUT = process.env.DIST ? path.resolve(process.env.DIST) : path.join(__dirname, 'dist');
 const BASE = (process.env.BASE || '').replace(/\/$/, ''); // '' in production, e.g. '/dive-sites/kohkood' on GitHub Pages
 const DEMO = !!process.env.DEMO;
 const P = Object.fromEntries(products.map(p => [p.slug, p]));
