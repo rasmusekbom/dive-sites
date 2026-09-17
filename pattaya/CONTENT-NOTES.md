@@ -18,7 +18,7 @@ maps every original image URL to its local file in `src/img/`.
   `/recreational-courses/` + `/…/recreational-scuba-dive-courses-pattaya-thailand/`, the two marine-education pages and
   the two blog landing pages were identical or near-identical. Every old URL 301-redirects to the merged page (`_redirects`).
 - **Empty landing page** `/day-trips/` (only "Leave a Reply") is replaced by the real day-trips page.
-- **Placeholder headings** ("Add Your Heading Text Here") on two blog posts removed.
+- **Placeholders removed** – "Add Your Heading Text Here" on two blog posts, and the YouTube link on the courses/marine pages (it pointed at Elementor's stock "video placeholder" clip, not a TOCo video).
 - **Blog post links** that pointed at the Bangkok equipment site (`thaioceanacademy.com/trydive` etc.) now point at the
   matching pages on this site. External product links (Aneron Niscap, masks) are kept.
 - **Tags / categories** – the three categories are kept as listing pages; 13 posts were "Uncategorized" on the original and
@@ -45,7 +45,6 @@ maps every original image URL to its local file in `src/img/`.
 | Meeting time | course pages / divemaster page | 7:45am / 7:30am |
 | "5 Reasons…" | blog | published twice (diveinpattaya, pattayadivecenter) – both kept |
 | Blog dates | blog | many posts dated 2024-06-28/29 and 07-02 (bulk import) |
-| Video | courses & marine pages | YouTube MLpWrANjFbI is linked, not embedded – confirm it is theirs |
 | Logo | header | white PNG wordmark; a square crest exists (`toco-logo-square.jpg`) – SVG would be better |
 | Reviews | home | "5.0 · 202 reviews" from the Elfsight widget on 2026-09-17 – needs a link to the Google listing |
 

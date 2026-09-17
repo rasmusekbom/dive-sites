@@ -39,6 +39,16 @@ document.documentElement.classList.replace('no-js', 'js');
   var stats = document.querySelector('.stats');
   if (stats && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { runCounters(); o.disconnect(); } }, { threshold: .3 }).observe(stats);
 
+  // pricing: expand/collapse all, and open the group a jump link / hash points at
+  var pt = document.getElementById('price-toggle');
+  if (pt) {
+    var groups = document.querySelectorAll('details.pgroup');
+    var sync = function () { var allOpen = Array.prototype.every.call(groups, function (d) { return d.open; }); pt.textContent = allOpen ? pt.dataset.close : pt.dataset.open; };
+    pt.addEventListener('click', function () { var open = pt.textContent === pt.dataset.open; groups.forEach(function (d) { d.open = open; }); sync(); });
+    groups.forEach(function (d) { d.addEventListener('toggle', sync); });
+    var openHash = function () { var t = location.hash && document.querySelector('details.pgroup' + location.hash); if (t) t.open = true; };
+    window.addEventListener('hashchange', openHash); openHash();
+  }
   // booking form: preselect program from ?program=
   var q = new URLSearchParams(location.search), program = q.get('program'), sel = document.getElementById('program'), what = document.getElementById('what');
   if (program && sel) {

@@ -26,7 +26,6 @@ module.exports = {
   groups: { trips: 'Day Trips', rec: 'Recreational Courses', pro: 'Professional Training', tech: 'Technical Training', marine: 'Marine Education' },
   groupsShort: { trips: 'Trips', rec: 'Courses', pro: 'Pro', tech: 'Tech', marine: 'Marine' },
   reviewsLabel: 'reviews on Google',
-  watchVideo: 'Watch the video',
   mapTitle: 'Map',
   jump: 'Jump to',
 };

@@ -273,7 +273,6 @@ ${footer(key)}
   const statsBar = () => `<section class="stats"><div class="wrap stats-grid">${stats.map(([n, s, k]) => `<div class="stat rv"><b><span class="count" data-n="${n}">${n}</span>${s}</b><span>${PG.stats[k]}</span></div>`).join('')}</div></section>`;
   const quote = key => { const [q, who, ctxt] = PG.testimonials[key]; return `<figure class="quote rv"><blockquote>“${q}”</blockquote><figcaption><b>${who}</b><span>${ctxt}</span></figcaption></figure>`; };
   const faqBlock = (keys, title = ui.sections.faq) => `<section class="faq-sec" id="faq"><div class="wrap narrow"><h2 class="rv">${title}</h2><div class="faq rv">${keys.map((k, i) => `<details${i === 0 ? ' open' : ''}><summary>${PG.faq[k][0]}</summary><div>${richP(PG.faq[k][1])}</div></details>`).join('')}</div></div></section>`;
-  const video = () => `<a class="video rv" href="https://www.youtube.com/watch?v=${site.video}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${site.video}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play">${I.play}</span><span class="vlabel">${ui.watchVideo}</span></a>`;
   const contactCard = (loc = null) => {
     const c = loc || { address: site.address, phone: site.phone, email: site.email, hours: site.hours, maps: site.maps };
     return `<ul class="clist">
@@ -375,10 +374,10 @@ ${statsBar()}
     const linkList = (title, links) => `<div class="linklist rv"><h3>${title}</h3><ul>${links.map(([slug, label]) => slug ? `<li><a href="${url(slug)}">${label}${I.arrow}</a></li>` : `<li><span>${label}</span></li>`).join('')}</ul></div>`;
     let intro = '';
     if (key === 'dayTrips') intro = `${H.intro.map(t => `<p>${rich(t)}</p>`).join('')}<div class="two">${linkList(H.newTitle, H.newLinks)}${linkList(H.certTitle, H.certLinks)}</div>`;
-    if (key === 'courses') intro = `${H.intro.map(t => `<p>${rich(t)}</p>`).join('')}<div class="two">${linkList(H.newTitle, H.newLinks)}${linkList(H.certTitle, H.certLinks)}</div><p>${rich(H.intro2)}</p>${video()}`;
+    if (key === 'courses') intro = `${H.intro.map(t => `<p>${rich(t)}</p>`).join('')}<div class="two">${linkList(H.newTitle, H.newLinks)}${linkList(H.certTitle, H.certLinks)}</div><p>${rich(H.intro2)}</p>`;
     if (key === 'professional') intro = `${H.intro.map(t => `<p>${rich(t)}</p>`).join('')}${linkList(ui.nav.professional, H.links)}`;
     if (key === 'technical') intro = `<p>${rich(H.intro1)}</p><p>${rich(H.intro2)}</p>${linkList(ui.nav.technical, H.links)}`;
-    if (key === 'marine') intro = `${H.intro.map(t => `<p>${rich(t)}</p>`).join('')}${linkList(ui.nav.marine, H.links)}${video()}`;
+    if (key === 'marine') intro = `${H.intro.map(t => `<p>${rich(t)}</p>`).join('')}${linkList(ui.nav.marine, H.links)}`;
     const ladder = key === 'courses' ? `<section class="dark"><div class="wrap"><div class="section-head rv"><h2>${H.ladder.beginner} → ${H.ladder.advanced} → ${H.ladder.next}</h2><p class="sub">${PG.technical.depthText}</p></div>${depthLadder(list)}</div></section>`
       : key === 'technical' ? `<section class="dark"><div class="wrap"><div class="section-head rv"><h2>${PG.technical.depthTitle}</h2><p class="sub">${PG.technical.depthText}</p></div>${depthLadder(list)}</div></section>` : '';
     const body = pageHero({ imgFile: hub.img, alt: H.h1, crumbItems: [[ui.nav.diving, 'diving'], [ui.groups[hub.group], key]], kicker: H.kicker, h1: H.h1 }) +
@@ -429,17 +428,18 @@ ${statsBar()}
   function pricingPage() {
     const R = PG.pricing;
     const rows = list => `<table class="pt"><tbody>${list.map(([l, v]) => `<tr><td>${l}</td><td>${money(v)}</td></tr>`).join('')}</tbody></table>`;
+    const pg = (id, open, body, hub, n) => `<details class="pgroup rv" id="${id}"${open ? ' open' : ''}><summary><h2>${R.sections[id]}</h2><span class="pcount">${n} ${R.items}</span><span class="chev">${I.chev}</span></summary><div class="pbody-p">${body}${hub ? `<a class="link" href="${url(hub)}">${ui.groups[{ dayTrips: 'trips', courses: 'rec', professional: 'pro', technical: 'tech', marine: 'marine' }[hub]]}${I.arrow}</a>` : ''}</div></details>`;
     const body = pageHero({ imgFile: 'koh-sak-island-aerial.jpg', alt: 'Koh Sak island, Pattaya', crumbItems: [[R.h1, 'pricing']], h1: R.h1, kicker: R.kicker,
       extra: `<nav class="jump" aria-label="${ui.jump}">${Object.entries(R.sections).map(([k, v]) => `<a href="#${k}">${v}</a>`).join('')}</nav>` }) + `
 <section><div class="wrap narrow prose rv">${R.intro.map(t => `<p>${t}</p>`).join('')}</div></section>
-<section class="soft"><div class="wrap price-grid">
-  <div class="pgroup rv" id="dayTrips"><h2>${R.sections.dayTrips}</h2><h3>${R.sub.noExperience}</h3>${rows(priceList.dayTrips.noExperience)}<h3>${R.sub.certified}</h3>${rows(priceList.dayTrips.certified)}<a class="link" href="${url('dayTrips')}">${ui.nav.dayTrips}${I.arrow}</a></div>
-  <div class="pgroup rv" id="recreational"><h2>${R.sections.recreational}</h2><h3>${R.sub.noExperience}</h3>${rows(priceList.recreational.noExperience)}<h3>${R.sub.certified}</h3>${rows(priceList.recreational.certified)}<a class="link" href="${url('courses')}">${ui.nav.courses}${I.arrow}</a></div>
-  <div class="pgroup rv" id="professional"><h2>${R.sections.professional}</h2>${rows(priceList.professional)}<a class="link" href="${url('professional')}">${ui.nav.professional}${I.arrow}</a></div>
-  <div class="pgroup rv" id="technical"><h2>${R.sections.technical}</h2>${rows(priceList.technical)}<a class="link" href="${url('technical')}">${ui.nav.technical}${I.arrow}</a></div>
-  <div class="pgroup rv" id="marine"><h2>${R.sections.marine}</h2>${rows(priceList.marine)}<a class="link" href="${url('marine')}">${ui.nav.marine}${I.arrow}</a></div>
-  <div class="pgroup rv" id="other"><h2>${R.sections.other}</h2><h3>${R.sub.rental}</h3>${rows(priceList.other.rental)}<h3>${R.sub.servicing}</h3>${rows(priceList.other.servicing)}<h3>${R.sub.services}</h3>${rows(priceList.other.services)}</div>
-</div></section>
+<section class="soft"><div class="wrap"><div class="price-tools"><button type="button" id="price-toggle" data-open="${R.expandAll}" data-close="${R.collapseAll}">${R.expandAll}</button></div><div class="price-grid">
+  ${pg('dayTrips', true, `<h3>${R.sub.noExperience}</h3>${rows(priceList.dayTrips.noExperience)}<h3>${R.sub.certified}</h3>${rows(priceList.dayTrips.certified)}`, 'dayTrips', priceList.dayTrips.noExperience.length + priceList.dayTrips.certified.length)}
+  ${pg('recreational', false, `<h3>${R.sub.noExperience}</h3>${rows(priceList.recreational.noExperience)}<h3>${R.sub.certified}</h3>${rows(priceList.recreational.certified)}`, 'courses', priceList.recreational.noExperience.length + priceList.recreational.certified.length)}
+  ${pg('professional', false, rows(priceList.professional), 'professional', priceList.professional.length)}
+  ${pg('technical', false, rows(priceList.technical), 'technical', priceList.technical.length)}
+  ${pg('marine', false, rows(priceList.marine), 'marine', priceList.marine.length)}
+  ${pg('other', false, `<h3>${R.sub.rental}</h3>${rows(priceList.other.rental)}<h3>${R.sub.servicing}</h3>${rows(priceList.other.servicing)}<h3>${R.sub.services}</h3>${rows(priceList.other.services)}`, null, priceList.other.rental.length + priceList.other.servicing.length + priceList.other.services.length)}
+</div></div></section>
 <section id="club"><div class="wrap"><h2 class="rv">${R.club}</h2><div class="club rv">${priceList.clubImages.map((f, i) => `<figure>${img(f, R.clubAlts[i], '', '(max-width: 700px) 100vw, 45vw')}</figure>`).join('')}</div></div></section>
 ${ctaBand(ui.bookNowBang, PG.book.kicker)}`;
     return layout({ key: 'pricing', title: R.title, desc: R.desc, body, jsonld: [crumbsLd([[R.h1, 'pricing']])], ogImage: 'koh-sak-island-aerial.jpg' });

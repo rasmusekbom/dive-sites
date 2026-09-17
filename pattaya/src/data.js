@@ -29,7 +29,6 @@ const site = {
     raid: 'https://diveraid.com/',
     deepFacebook: 'https://www.facebook.com/DEEP.MARINE.SCIENCE',
   },
-  video: 'MLpWrANjFbI', // YouTube id linked from the recreational courses + marine education pages
   ogImage: 'diver-in-barracuda-school.jpg',
 };
 

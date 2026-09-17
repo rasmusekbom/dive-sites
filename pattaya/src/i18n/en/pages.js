@@ -150,6 +150,7 @@ module.exports = {
     ],
     sections: { dayTrips: 'Day Trips', recreational: 'Recreational Courses', professional: 'Professional Training', technical: 'Technical Training', marine: 'Marine Education and Conservation Program', other: 'Other Services not included in pricing' },
     sub: { noExperience: 'No Experience', certified: 'Experienced Divers with Certification', rental: 'Equipment Rental', servicing: 'Equipment servicing', services: 'Other Services' },
+    expandAll: 'Expand all', collapseAll: 'Collapse all', items: 'items',
     club: 'TOCo Dive Club!', clubAlts: ['TOCo Dive Club Prices', 'TOCo Dive Club Package Benefits'],
   },
 
