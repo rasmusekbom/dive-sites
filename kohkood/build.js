@@ -200,7 +200,9 @@ ${footer(key)}
   const scheduleBlock = () => `<div class="sched">
     <div class="sched-card rv">${img('soft-coral.jpg', L.site.schedule.local.title)}<h3>${L.site.schedule.local.title}</h3><p class="sub">${L.site.schedule.local.text}</p>${days(site.schedule.local)}<p class="note">${L.site.schedule.local.note}</p></div>
     <div class="sched-card rv" style="transition-delay:.1s">${img('island-aerial.jpg', L.site.schedule.park.title)}<h3>${L.site.schedule.park.title}</h3><p class="sub">${L.site.schedule.park.text}</p>${days(site.schedule.park, true)}<p class="note">${L.site.schedule.park.note}</p></div></div>`;
-  const dayTimeline = () => `<ul class="timeline">${L.site.day.map(([b, s], i) => `<li><time>${site.dayTimes[i]}</time><span class="dot"></span><div><b>${b}</b><span>${s}</span></div></li>`).join('')}</ul>`;
+  // English readers expect 12-hour times; every other locale on the site uses 24-hour.
+  const clock = (t) => { if (lang.code !== 'en') return t; const [h, m] = t.split(':').map(Number); return (h % 12 || 12) + (m ? ':' + String(m).padStart(2, '0') : '') + (h >= 12 ? ' PM' : ' AM'); };
+  const dayTimeline = () => `<ul class="timeline">${L.site.day.map(([b, s], i) => `<li><time>${clock(site.dayTimes[i])}</time><span class="dot"></span><div><b>${b}</b><span>${s}</span></div></li>`).join('')}</ul>`;
   const reviewsBlock = () => `<section class="dark" id="reviews"><div class="wrap">
     <div class="rating-big rv"><b>${site.rating}</b><div><div class="stars">★★★★★</div><small>${ui.reviewsBased(site.reviewCount)}</small>
       <a class="gbadge" href="${site.googleReviewUrl}" target="_blank" rel="noopener" style="margin-top:6px">${I.g} ${ui.readReviews}</a></div></div>

@@ -27,17 +27,17 @@ module.exports = {
     keepExploring: 'Keep exploring', alsoLike: 'You might also like', mostPopular: 'Most popular',
     reviewsBased: (n) => `Based on ${n} Google reviews`, readReviews: 'Read all reviews on Google', reviewsCount: (n) => `${n}+ Google reviews`,
     since: (y) => `Since ${y}`, padi5: 'PADI 5-Star Dive Centre', max4: 'Max 4', diversPerGuide: 'divers per guide', languagesN: (n) => `${n} languages`,
-    findUs: 'Find us', diveShop: 'Dive shop', phoneWa: 'Phone / WhatsApp', email: 'Email', open: 'Open', hours: 'Every day, 09:00 – 18:00',
+    findUs: 'Find us', diveShop: 'Dive shop', phoneWa: 'Phone / WhatsApp', email: 'Email', open: 'Open', hours: 'Every day, 9 AM – 6 PM',
     footTagline: 'PADI 5-Star Dive Centre on Koh Kood, Thailand. Fun diving, courses and snorkelling since 2008.',
     footDiving: 'Diving', footCourses: 'Courses', footInfo: 'Info', footContact: 'Contact & map', footTermsBooking: 'Booking terms', footTerms: 'Terms & conditions',
     footPreview: 'Preview build — photography is placeholder stock pending Koh Kood Divers originals.',
     rezdyNote: 'Online bookings get 10% off and are non-refundable. Prefer flexible?', rezdyNoteLink: 'Book on WhatsApp', loading: 'Loading availability…', close: 'Close', menu: 'Menu',
-    bookingNote: 'Book online for a 10% discount (non-refundable), or message us on WhatsApp for a flexible booking with free cancellation until 17:00 the day before.',
+    bookingNote: 'Book online for a 10% discount (non-refundable), or message us on WhatsApp for a flexible booking with free cancellation until 5 PM the day before.',
     notFound: 'That page has drifted off', notFoundText: 'Try the home page or all courses.', home: 'Home', diving: 'Diving',
     waHi: (name) => `Hi! I'm interested in ${name}.`, waAsk: (name) => `Hi! I'd like to ask about ${name}.`,
     ratesNote: (date) => `Converted prices are approximate. Rates from ${date}. All payments are in Thai baht.`,
     days: { Mon: 'Mon', Tue: 'Tue', Wed: 'Wed', Thu: 'Thu', Fri: 'Fri', Sat: 'Sat', Sun: 'Sun' },
-    facts: { duration: { '1d': '1 day', '2–3d': '2–3 days', '3–4d': '3–4 days', full: 'Full day · 08:00–17:00', '4–8w': '4–8 weeks+', '8w': '8 weeks+' }, dives: { '2/day': '2 per day', '3stops': '3 snorkel stops', flex: 'You decide' } },
+    facts: { duration: { '1d': '1 day', '2–3d': '2–3 days', '3–4d': '3–4 days', full: 'Full day · 8 AM – 5 PM', '4–8w': '4–8 weeks+', '8w': '8 weeks+' }, dives: { '2/day': '2 per day', '3stops': '3 snorkel stops', flex: 'You decide' } },
     tiers: { d1: '1 dive', d2: '2 dives · 1 day', d3: '3 dives', d4: '4 dives · 2 days', d6: '6 dives · 3 days', d8: '8 dives · 4 days', d10: '10 dives · 5 days', snkKood: 'Koh Kood · Mon Wed Fri Sun', snkRang: 'Koh Rang · Tue Thu Sat', dsd1: '1 dive', dsd2: '2 dives' },
     tierUnits: { snkKood: 'per person', snkRang: '+ 200 THB park fee' },
     priceLabels: { 'special-wreck-dives-koh-kood': '5,500 THB · 2 dives', 'private-dive-trips-koh-kood': 'Price on request', 'divemaster-internship-thailand': 'From 123,200 THB', 'padi-zero-to-hero': 'Ask for price' },
@@ -67,7 +67,7 @@ module.exports = {
     chooseLead: 'Certified, curious, or just here for the reef from the surface — every trip includes hotel pickup, lunch on board and all equipment.',
     scheduleEyebrow: 'Weekly schedule', scheduleTitle: 'Where we dive, and when', scheduleLead: 'Boat leaves Bang Bao around 9:00 every morning. The destination depends on the day of the week.',
     schedule: {
-      local: { title: 'Koh Kood local reefs', text: 'Coral gardens and pinnacles 45–80 minutes from the pier. Relaxed, shallow, long bottom times — ideal for training dives and easy fun dives.', note: 'Back at the pier around 15:00. No park fee.' },
+      local: { title: 'Koh Kood local reefs', text: 'Coral gardens and pinnacles 45–80 minutes from the pier. Relaxed, shallow, long bottom times — ideal for training dives and easy fun dives.', note: 'Back at the pier around 3 PM. No park fee.' },
       park: { title: 'Koh Rang Marine Park', text: 'A protected archipelago between Koh Kood and Koh Chang. No fishing, no anchoring — so the reefs are dense with life and visibility is often the best in the gulf.', note: 'Marine park fee 400 THB per diver (200 THB snorkellers), paid in cash on the boat.' },
     },
     whyEyebrow: 'Why divers choose us', whyTitle: 'Small on purpose',
@@ -97,7 +97,7 @@ module.exports = {
       ['How do I get to Koh Kood?', "Fly to Bangkok or Trat, then a speedboat or ferry from Laem Sok pier (about 1–1.5 hours). We're happy to recommend boats and resorts — just message us."],
       ['Do I need to bring anything?', "Swimwear, a towel, reef-safe sunscreen (non-reef-safe sunscreen is not allowed on our trips) and your certification card or app if you're a certified diver. We provide everything else, including lunch and drinks."],
       ["What if I haven't dived in a while?", "If it's been more than a year or so, book a refresher. It's a short skills session in shallow water before your first fun dive, and it makes the day a lot more relaxed."],
-      ['How do I book and pay?', 'Book online for a 10% discount (non-refundable), or message us on WhatsApp for a flexible booking you can cancel until 17:00 the day before. Full payment before the activity, in Thai baht, cash or card at the shop. Marine park fees are paid in cash on the boat.'],
+      ['How do I book and pay?', 'Book online for a 10% discount (non-refundable), or message us on WhatsApp for a flexible booking you can cancel until 5 PM the day before. Full payment before the activity, in Thai baht, cash or card at the shop. Marine park fees are paid in cash on the boat.'],
     ],
   },
 
@@ -127,7 +127,7 @@ module.exports = {
         ['Can I dive if I am only Open Water certified?', 'Yes. All regular fun dives are within Open Water limits. Only the wreck trips need more experience.'],
         ['Do you have Nitrox?', 'Ask us when booking; availability depends on the season.'],
         ['Can my non-diving partner come?', 'Yes — snorkellers are welcome on the same boat and pay the snorkelling price.'],
-        ['What is the cancellation policy?', 'We arrange food, taxis and boat crew the day before, so please cancel before 17:00 the day prior for a refund of your deposit. Later cancellations, or not showing up within 10 minutes at the pickup point, are treated as no-shows.'],
+        ['What is the cancellation policy?', 'We arrange food, taxis and boat crew the day before, so please cancel before 5 PM the day prior for a refund of your deposit. Later cancellations, or not showing up within 10 minutes at the pickup point, are treated as no-shows.'],
       ],
     },
     'koh-rang-diving': {
@@ -168,7 +168,7 @@ module.exports = {
       steps: [
         ['Message us', 'Tell us your dates, certification level and roughly how many dives you have.'],
         ['We check conditions', 'Forecast, swell, visibility and who else wants to go. We confirm the day when it looks right.'],
-        ['Full day out', 'Depart 08:00, two dives with a long surface interval and lunch, back around 17:00.'],
+        ['Full day out', 'Depart 8 AM, two dives with a long surface interval and lunch, back around 5 PM.'],
       ],
       sections: [
         { h: 'What makes these trips different', p: 'Unlike standard reef dives, special trips are about variety and exploration. They require more detailed planning, suitable weather and sea conditions, and certified, experienced divers. Briefings are more detailed, groups stay small, and profiles are adjusted to the experience of everyone on board — so you get more advanced dives without pressure or rush.' },
@@ -219,7 +219,7 @@ module.exports = {
         'We stop at three sites for about 45 minutes each with lunch on board in between. The mild current makes it easy and enjoyable even for non-swimmers — the boat carries life jackets, life rings and ropes, and the crew keeps an eye on everyone.',
       ],
       sections: [
-        { h: 'Koh Kood trips — Mon, Wed, Fri, Sun', p: 'Depart 08:00, a short and comfortable drive to Bang Bao, then a maximum of 45 minutes by boat to the reefs around Koh Kood. Three snorkel stops of about 45 minutes each, lunch on board (vegetarian on request), back mid-afternoon. 1,000 THB per person including hotel transfers, boat, equipment, lunch and drinks.' },
+        { h: 'Koh Kood trips — Mon, Wed, Fri, Sun', p: 'Depart 8 AM, a short and comfortable drive to Bang Bao, then a maximum of 45 minutes by boat to the reefs around Koh Kood. Three snorkel stops of about 45 minutes each, lunch on board (vegetarian on request), back mid-afternoon. 1,000 THB per person including hotel transfers, boat, equipment, lunch and drinks.' },
         { h: 'Koh Rang Marine Park — Tue, Thu, Sat', p: 'About 90 minutes by boat to the protected islands of Koh Rang. Three snorkel sites with the healthiest coral in the area. 1,200 THB per person plus the national park fee (200 THB adults, 100 THB kids, 40 THB Thai nationals), paid in cash to the rangers on the boat.' },
         { h: 'Want to go under?', p: "If you're curious about what's below the surface, Discover Scuba Diving lets you try a real dive with an instructor on the same boat. Many snorkellers switch halfway through their holiday." },
       ],
@@ -250,7 +250,7 @@ module.exports = {
         ['First dive in calm water', 'Straight off the boat at a calm, shallow site. Because conditions are gentle and visibility is usually very good, most beginners feel comfortable within minutes.'],
         ['Lunch on the boat', 'A relaxed break with a view of the Koh Kood coastline. Rest, hydrate, and get ready for round two.'],
         ['Second dive at another reef', 'A different site, with your instructor again at your side while you explore coral, tropical fish and the marine life that makes Koh Kood special. Most people want this one.'],
-        ['Back to Bang Bao', 'Cruise back to Koh Kood around 15:00 and we drive you home. Two dives, and your first day as a diver.'],
+        ['Back to Bang Bao', 'Cruise back to Koh Kood around 3 PM and we drive you home. Two dives, and your first day as a diver.'],
       ],
       sections: [
         { h: 'Two dives, double the confidence', p: 'Each dive builds familiarity with the equipment and the feeling of breathing underwater. The second dive is where it usually clicks — which is why the two-dive option is the one we recommend.' },
@@ -309,7 +309,7 @@ module.exports = {
         ['Before you arrive: eLearning', 'The PADI Open Water code is included in the course. Study on the PADI app on your phone at home or on the plane, so your days here are spent in the water — and you have time for excursions and extra dives after certification.'],
         ['Day 1: theory check and confined water', 'We pick you up between 8 and 9 at your resort. Your instructor assesses your theory, answers questions and familiarises you with the equipment. After a full briefing you start confined-water training in a shallow bay: setting up equipment, buddy checks and the essential skills.'],
         ['Day 2: open-water dives 1 & 2', 'From the boat. Each dive starts with a few skills from your confined-water training, but most of the time is spent exploring the reef. Lunch on board and a rest before the second dive.'],
-        ['Day 3: open-water dives 3 & 4', 'Two more dives, to a maximum of 18 metres, fine-tuning your skills among fish, coral and marine life. Sites are 45–80 minutes away; we return to Bang Bao beach around 15:00, review with your instructor, and your certification is processed the same day.'],
+        ['Day 3: open-water dives 3 & 4', 'Two more dives, to a maximum of 18 metres, fine-tuning your skills among fish, coral and marine life. Sites are 45–80 minutes away; we return to Bang Bao beach around 3 PM, review with your instructor, and your certification is processed the same day.'],
       ],
       sections: [
         { h: 'What you learn', p: 'Equipment and how to look after it, how pressure affects your body, dive planning and the PADI tables or computer, buoyancy control, buddy procedures, and how to handle the small problems that come up underwater — calmly and without fuss.' },
@@ -395,8 +395,8 @@ module.exports = {
       ],
       steps: [
         ['Choose your dives', 'Meet your instructor and talk through your preferences to pick your three electives. Complete the matching chapters and knowledge reviews in the Adventures in Diving manual — we can send the PADI eBook for pre-course reading at home.'],
-        ['Day 1: two dives', 'Pickup between 08:15 and 08:50, drive to Bang Bao bay, dive briefing and plan for the day at the centre. At the site around 10:00, two adventure dives with lunch in between, then knowledge review and debrief with your instructor. Back on Koh Kood between 14:15 and 15:00.'],
-        ['Day 2: three dives', 'A similar day with a third dive — possibly a night dive, in which case we pick you up from your resort around 17:30 and return around 19:30. Back at the dive school you finish the knowledge reviews and your Advanced certification is processed.'],
+        ['Day 1: two dives', 'Pickup between 8:15 AM and 8:50 AM, drive to Bang Bao bay, dive briefing and plan for the day at the centre. At the site around 10 AM, two adventure dives with lunch in between, then knowledge review and debrief with your instructor. Back on Koh Kood between 2:15 PM and 3 PM.'],
+        ['Day 2: three dives', 'A similar day with a third dive — possibly a night dive, in which case we pick you up from your resort around 5:30 PM and return around 7:30 PM. Back at the dive school you finish the knowledge reviews and your Advanced certification is processed.'],
       ],
       sections: [
         { h: 'Deep and navigation', p: 'The deep dive takes you to 30 metres on a Koh Rang pinnacle or the wreck, and teaches you how depth changes colour, air consumption and your thinking. Navigation is compass and natural navigation over the reef — the skill that makes you independent.' },
@@ -611,7 +611,7 @@ module.exports = {
       ],
     },
     contact: {
-      title: 'Contact Koh Kood Divers | WhatsApp, Phone, Email & Map', desc: 'Contact Koh Kood Divers in Klong Chao, Koh Kood: WhatsApp +66 85 698 4122, booking@kohkooddivers.com, open every day 09:00–18:00. Map and directions.',
+      title: 'Contact Koh Kood Divers | WhatsApp, Phone, Email & Map', desc: 'Contact Koh Kood Divers in Klong Chao, Koh Kood: WhatsApp +66 85 698 4122, booking@kohkooddivers.com, open every day 9 AM – 6 PM. Map and directions.',
       h1: 'Find us in Klong Chao', eyebrow: 'Get in touch',
       lead: 'WhatsApp is the fastest way to reach us — we usually answer within the hour during the day. The shop is in Klong Chao, a few minutes from most resorts; the boat leaves from Bang Bao bay. Note that the road to the shop is unpaved — we come and pick you up.',
       cardTitle: 'Klong Chao, Koh Kood',
