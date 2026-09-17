@@ -1,6 +1,7 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "kohkood", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "kohkood"], "port": 8765 }
+    { "name": "kohkood", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "kohkood"], "port": 8765 },
+    { "name": "pattaya", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "pattaya", "8766"], "port": 8766 }
   ]
 }

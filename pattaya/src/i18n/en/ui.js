@@ -1,0 +1,32 @@
+// UI strings (navigation, buttons, labels). Keep short; page copy lives in pages.js, products in products.js.
+module.exports = {
+  htmlLang: 'en',
+  slugs: {
+    diving: 'diving', dayTrips: 'day-trips', courses: 'courses', professional: 'professional', technical: 'technical', marine: 'marine-education',
+    pricing: 'pricing', about: 'about', team: 'about/team', locations: 'about/locations', boats: 'about/boats',
+    contact: 'contact', book: 'book', terms: 'terms', blog: 'blog',
+  },
+  nav: {
+    diving: 'Diving', dayTrips: 'Day Trips', courses: 'Recreational Courses', professional: 'Professional Training', technical: 'Technical Training', marine: 'Marine Education and Conservation',
+    pricing: 'Pricing', about: 'About Us', team: 'Team', locations: 'Our Locations', boats: 'Our Boats', blog: 'Blog', contact: 'Contact Us', book: 'Book now', terms: 'Terms and Conditions', allDiving: 'All diving options & prices',
+  },
+  skip: 'Skip to content', menu: 'Menu', close: 'Close', language: 'Language',
+  bookNow: 'Book now', bookNowBang: 'Book now!', readMore: 'Read More', enquire: 'Enquire', callUs: 'Call us', emailUs: 'Email us',
+  from: 'from', perSpecialty: 'per specialty', thb: 'THB', day: 'day', days: 'days', dives: 'dives', dive: 'dive', depth: 'to {n} m', maxDepth: 'Max depth', duration: 'Duration', price: 'Price', priceRange: 'Price range',
+  level: { none: 'No experience needed', certified: 'Certified divers', pro: 'Dive professionals', tech: 'Technical divers' },
+  levelShort: { none: 'Beginner', certified: 'Certified', pro: 'Pro', tech: 'Tech' },
+  agency: 'Agency', neverExpires: 'Your certification never expires!',
+  sections: { overview: 'Course Overview', logistics: 'Logistics', upgrades: 'Course upgrades', prerequisites: 'Prerequisites', includes: 'Course Includes', faq: 'Frequent Questions', options: 'Course Options', related: 'Keep exploring', whatToExpect: 'What to expect', dayByDay: 'Day by day' },
+  save: 'Save {n} THB', total: 'total', meetTime: 'We meet at 7:45am',
+  hours: 'Opening hours', phone: 'Phone', email: 'Email', address: 'Address', directions: 'Directions',
+  footTagline: 'Educate. Equip. Explore. Come as a friend, leave as family.',
+  footDiving: 'Diving', footCourses: 'Courses', footPro: 'Pro & Tech', footInfo: 'Information', footLocations: 'Locations',
+  footPreview: 'Site preview – content transcribed from pattaya-dive.com',
+  breadcrumbHome: 'Home',
+  groups: { trips: 'Day Trips', rec: 'Recreational Courses', pro: 'Professional Training', tech: 'Technical Training', marine: 'Marine Education' },
+  groupsShort: { trips: 'Trips', rec: 'Courses', pro: 'Pro', tech: 'Tech', marine: 'Marine' },
+  reviewsLabel: 'reviews on Google',
+  watchVideo: 'Watch the video',
+  mapTitle: 'Map',
+  jump: 'Jump to',
+};

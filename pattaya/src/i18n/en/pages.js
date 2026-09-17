@@ -1,0 +1,273 @@
+// Page copy, FAQ bank and testimonials — transcribed from pattaya-dive.com.
+module.exports = {
+  faq: {
+    cannotSwim: ['I Cannot swim, Can I dive?', 'For basic diving experiences, no experience is necessary. Our instructors are patient and will take the time to make sure you are comfortable and safe before entering the water!'],
+    photos: ['Will I get Photos?', 'Our team will always strive to take photos and videos of you underwater, however due to laws and regulations in Thailand, instructors supervising activities such as try dive cannot carry cameras.\n\nAt Thai Ocean Academy we have dedicated photographers for photos and videos daily, that will always try and get you free photos of your experience!'],
+    bestTime: ['When is the best time to dive in Pattaya?', 'In Pattaya we dive all year round. Even though at some times throughout the year we have more wind or rain, our large comfortable dive boats make sure you are always safe and have a great day!'],
+    refresher: ['I have not dived in a long time, should I do a refresher?', 'As long as you let us know before you arrive that you have not dived in a while, our team will make sure you are refreshed, usually free of charge.\n\nWe believe that divers should always leave stronger, more confident and more knowledgeable than when they arrived!'],
+    snorkelGood: ['Is Snorkelling Good in Pattaya?', 'Yes Snorkelling is amazing in Pattaya. There is lots to see and when you join a dive boat you will visit sites that will take you away from all the main tourist spots to see the beautiful ocean around our local islands.'],
+    snorkelSwim: ['Do I need to be a strong swimmer to go snorkelling in Pattaya?', 'Each day we will have snorkel leaders on the boat to take care of you. Although you will have a more enjoyable experience if you can swim, our team is trained to handle all types of snorkellers from first time water experiences to freediving champions!'],
+    padi: ['Can I get my PADI with you?', 'At Thai Ocean Academy we focus on training the RAID way. We find that RAID is better aligned with our pace and high standards of diver training. The certifications issued are recognized world wide, and are accepted by all other major agencies'],
+    advancedWhen: ['When Should I complete my Advanced Scuba Training?', 'We typically recommend to complete your Explorer 30 (Advanced) training soon after your Open Water training. This allows you to quickly reinforce all the basic skills you learned, while task loading with more advanced ideas.'],
+    wreckPenetration: ['Will I be able to penetrate wrecks after this program?', 'Although there will be limited wreck penetration during the last dive of this program, you will gain the skills necessary to use reels to keep your self safe during penetration. For Full penetration options, please visit our [Advanced Wreck Diver](technical) program'],
+    sidemountBenefit: ['What Is the benefit of Sidemount?', 'The benefits of Sidemount are many. Firstly you have 2 redundant air sources, this means you have double the air and systems to help your self if there is ever a failure. It also provides a more streamlined way through the water, and allows you to look super super cool!'],
+    crossoverIdc: ['Will I have to re-do my entire Instructor Development Course (IDC) or take an IE?', 'No. Because you are already a certified instructor in good standing, you do not need to repeat basic instructional methodology or take another formal Instructor Examination (IE). The RAID Crossover focuses specifically on orienting you to RAID standards, mastering our digital learning portal, and demonstrating RAID’s signature high-performance, neutrally-buoyant teaching techniques.'],
+    proWhy: ['Why Should I do my Dive Master training in Pattaya', 'At Thai Ocean Academy, our professional programs are designed to not just check boxes, but to ensure you leave here with the confidence, knowledge and skills needed to compete in an incredibly difficult market. Most of our professional students are working immediately after their training, at various places around the world.'],
+    boatToilets: ['Do the boats have toilets?', 'Yes, all of our boats come equipped with fully functioning western style toilets. You will also find multiple outdoor showers, as well as private indoor showers in the toilets.'],
+    boatFood: ['Will there be food on your trip?', 'Yes all of our trips serve a hot lunch between sites, as well as there are snacks, fruits, hot and cold drinks available all day with your trip.'],
+    boatSpeed: ['How fast do the boats go?', 'The boats travel at speeds up to 9 knots/hr. These are some of the fastest dive boats in Pattaya and allow us to get to the sites first, and then get back home to the bar first.'],
+  },
+
+  testimonials: {
+    john: ['I did my first diving experience with TOCo, and I cannot wait to go back for more!', 'John Michaels', 'Traveler from America'],
+    alex: ['Good experience on my dives today. Great service and comfortable boat. Rental equipment was decent. Food was tasty, so where the fruit. Soft drinks, water and more included', 'Alex Binder', 'Old School Pattaya Diver'],
+    mary: ['Snorkeling in Pattaya really surprised me, we got to see turtles!', 'Mary Nguen', 'First time Snorkeller 10 years old'],
+    ali: ['TOCo Instructors were so patient with me and helping me to overcome my fears!', 'Ali Tyler', 'Completed RAID open water diver after doing her first try dive'],
+    thomas: ['The training I received at Thai Ocean Academy was one of the best experiences of my life', 'Thomas Real', 'Dive Master'],
+    richard: ['There was no ego and no rush when training with Thai Ocean Academy’s experienced technical instructors.', 'Richard Stevens', 'American Diver in Thailand'],
+    ashley: ['The Amount of work that TOCo is contributing on is amazing for a local dive center.', 'Ashley Clemmens', 'Marine Researcher'],
+  },
+
+  stats: { satisfaction: 'Customer Satisfaction', diveSites: 'Dive sites', customers: 'Customers per year', stores: 'Dive stores in Thailand and growing!!' },
+
+  home: {
+    title: 'Scuba Diving Pattaya – Thai Ocean Academy Pattaya Scuba Diving Center',
+    desc: 'Thai Ocean Academy Pattaya: try dives, fun diving, RAID courses from Open Water to Instructor, technical training to 60 m and marine conservation programs. Custom-built dive boats, small groups, 7 days a week.',
+    h1: 'Diving Pattaya',
+    kicker: 'Educate, Equip, Explore',
+    intro: 'Scuba Diving in Pattaya is always interesting. We have shipwrecks, coral sites, and restoration sites! For first time try divers or experienced technical divers we will get you on the site that suits you. Our team is ready to help you have an awesome experience diving with us!',
+    paths: [
+      ['try-dive', 'First Time Try Dive', 'For Information for people who have never dived before, start your adventure here!'],
+      ['fun-diving', 'Experienced Fun Diver', 'For Experienced Divers who want to join our daily trips!'],
+      ['courses', 'Recreational Training', 'For New divers looking to certify or divers doing continued education'],
+      ['professional', 'Professional Training', 'For Divers looking to level up to professional Ratings'],
+      ['marine', 'Marine Conservation', 'For Divers ready to start engaging in conservation and education programs'],
+      ['technical', 'Technical Training', 'For experienced divers looking to go deeper for longer'],
+    ],
+    pillars: ['Scuba Diving Courses', 'Scuba Diving Trips', 'Marine Education and Conservation', 'Boat Charter'],
+    contactNow: 'Contact Now',
+    reviews: 'reviews on Google',
+    whyTitle: 'Why TOCo?',
+    whyText: 'At Thai Ocean Academy Pattaya (TOCO), we’re more than just a dive centre—we’re a community of passionate ocean lovers dedicated to creating safe, unforgettable diving experiences.',
+    boatsTitle: 'Custom built dive boats',
+    boatsText: 'All of our boats are custom built dive boats, designed and managed by our team. Hot lunch, snacks, fruit and drinks on every trip.',
+    marineTitle: 'Actions first',
+    marineText: 'We have full time Marine Biologists on our staff who are actively engaging various communities for education, as well as undertaking research efforts on our unique eco-systems',
+    blogTitle: 'Latest Blog & Articles',
+    blogText: 'Random tidbits of information from our team!',
+    contactInfo: 'Contact Info',
+    stayConnected: 'Stay Connected',
+    stayConnectedText: 'Engage with our vibrant social community and stay connected.',
+  },
+
+  diving: {
+    title: 'All Diving Courses in Pattaya Thailand – Scuba Diving Pattaya',
+    desc: 'Every diving option at Thai Ocean Academy Pattaya with prices: try dive, fun diving, RAID recreational courses, professional training and technical diving.',
+    h1: 'Scuba Dive in Pattaya',
+    kicker: 'Scuba Diving Options For Pattaya Thailand',
+    intro: 'Let us join your underwater journey and help you become the best diver you can be!',
+    sections: { trips: '1 day Scuba Diving', rec: 'Recreational Scuba Diving Programs', pro: 'Professional Scuba Dive Training', tech: 'Technical Scuba Dive Training', marine: 'Marine Education and Conservation' },
+    // The "Deco 40 / Deco 50" cards from the original overview page (not linked to a page there)
+    techCards: [['Deco 40', 25000, 'RAID Deco 40', 'Tired of not getting to see as much of the wreck as you want? Deco 40 is for you.'], ['Deco 50', 45000, 'RAID Deco 50', 'already got your Deep 40? Skip straight to Deco 50 and get deeper for longer!']],
+  },
+
+  dayTrips: {
+    title: 'Scuba Diving Day trips Pattaya with Thai Ocean Academy – Scuba Diving Pattaya',
+    desc: 'One day of scuba diving in Pattaya: try diving for first-timers, 2 or 3 fun dives for certified divers, and snorkelling trips. Hot lunch on board, small groups.',
+    h1: '1 day Scuba dive in Pattaya', kicker: 'Try diving or Fun diving for certified divers',
+    h2: 'What is Scuba Diving in Pattaya really like?',
+    intro: [
+      'Scuba diving in Pattaya is well known for its low visibility, strong currents and big waves. What we like to say at TOCo is “still better than a day not diving”',
+      'The reason all our divers come back happy is because our team knows where to go on which day, and your enjoyment is our #1 priority. We want you to come back again and again and spend more money so we can keep living this crazy life we have chosen to pursue.',
+    ],
+    newTitle: 'If you have never dived before!', newLinks: [['snorkelling', 'Snorkelling'], ['try-dive', 'Try Scuba First time']],
+    certTitle: 'If you are a CERTIFIED DIVER!', certLinks: [['fun-diving', '1 day 2 dives'], ['fun-diving', '1 day 3 dives']],
+  },
+
+  courses: {
+    title: 'Recreational Scuba Diving Courses Pattaya – Scuba Diving Pattaya',
+    desc: 'Learn to scuba dive in Thailand with RAID: Open Water 20, Explorer 30, Advanced 35, Master Rescue, Deep 40, Nitrox, Wreck and Sidemount courses in Pattaya, 7 days a week.',
+    h1: 'Recreational Scuba Dive Course Pattaya', kicker: 'Learn to Scuba in Thailand',
+    h2: 'Should I Do Scuba training in Pattaya?',
+    intro: [
+      'Training with our experience team at Thai Ocean Academy Pattaya is the best choice you could make!',
+      'From your first course all the way through to professional and technical training we have you covered.',
+      'At Thai Ocean Academy we train the RAIDway, however we also offer ALL courses from PADI, TDI, SDI and SSI…',
+    ],
+    intro2: 'Whether you are just starting or taking your SCUBA skills to the next level, we can help! Below is a list of general Recreational courses that we offer at Thai Ocean Academy Pattaya. We train 7 days a week with an instructor always available to help you with your goals and become the best scuba diver you can be.',
+    newTitle: 'If you have never dived before!', newLinks: [['open-water-20', 'RAID Open Water Diver']],
+    certTitle: 'If you are a CERTIFIED DIVER!', certLinks: [['explorer-30', 'RAID Explorer 30 (Advanced Diver)'], ['deep-40', 'RAID Deep 40 Diver'], ['advanced-35', 'RAID Advanced 35'], ['master-rescue', 'RAID Master Rescue'], ['nitrox', 'RAID Nitrox Diver'], ['sidemount', 'RAID Sidemount Diver'], ['wreck-diver', 'RAID Wreck Diver']],
+    ladder: { beginner: 'Beginner Courses', advanced: 'Advanced Scuba Training', next: 'Next Level and Specialties' },
+    faq: ['padi', 'advancedWhen'],
+  },
+
+  professional: {
+    title: 'Scuba Dive Professional Training – Scuba Diving Pattaya',
+    desc: 'Become a dive professional in Thailand: RAID Divemaster internships, the 14-day Instructor Training Program, Instructor Crossover and Instructor Specialty ratings in Pattaya.',
+    h1: 'Professional Scuba Training in Pattaya', kicker: 'Dive master and Instructor Training',
+    h2: 'Thinking to become a dive professional in Thailand?',
+    intro: [
+      'Dive training at Thai Ocean Academy is all about class. We have specific instructors dedicated to our Dive Master programs that work closely with our Instructor Trainers to ensure that you are being trained thoroughly and set up for success on your journey to become a Scuba Diving Professional',
+      'In our experience, diving professionals who train with Thai Ocean Academy easily obtain work around the world, as we have a vast network of Dive Centers world wide.',
+    ],
+    links: [['divemaster', 'Dive Master Training and Internships'], ['instructor-training', 'RAID Instructor Training Programs'], ['instructor-crossover', 'RAID Instructor Crossover'], ['instructor-specialty', 'RAID Instructor Specialty Training']],
+    faq: ['padi', 'proWhy'],
+  },
+
+  technical: {
+    title: 'Technical Dive Training Pattaya – Scuba Diving Pattaya',
+    desc: 'Technical diving courses in Pattaya: RAID Nitrox+, TDI ANDP, RAID Decompression, Advanced Decompression and Normoxic Decompression Diver to 60 m, plus sidemount training.',
+    h1: 'Technical Dive Education in Pattaya', kicker: 'Deeper for longer',
+    h2: 'Technical Dive training',
+    intro1: 'Our technical diver training programs are supported by an experienced, and fun community of local tech divers. Our Technical instructors, led by Douglas Docherty of [Dark Water Diving Asia](darkWater), offer unparalleled experience, advice and patience for your technical diving journey. We firmly believe in quality over quantity, and dedicate the time and space needed for you to have the best experience possible',
+    intro2: 'To begin your journey into technical diving, most people will start with a basic Nitrox/Decompression course, providing you with the fundamental knowledge required. These, combined along with sidemount or twinset training, will open the doors and depths to everything else you dream of diving. Below is a list of our most common courses.',
+    links: [['sidemount', 'Sidemount Training'], ['nitrox-plus', 'RAID Nitrox Plus (40m)'], ['tdi-andp', 'TDI ANDP 45m (Advanced Nitrox Decompression Procedures)'], ['decompression-diver', 'RAID Decompression Diver (45m)'], ['advanced-decompression', 'RAID Advanced Decompression Diver (50m)'], ['normoxic-decompression', 'RAID Normoxic Decompression Diver (60m)']],
+    depthTitle: 'The technical pathway', depthText: 'Each program certifies you deeper and for longer decompression. Hover a stop to see the course.',
+  },
+
+  marine: {
+    title: 'Marine Education and Conservation Pattaya Thailand – Scuba Diving Pattaya',
+    desc: 'Marine education and conservation with Thai Ocean Academy Pattaya: school ECA programs, citizen science trips, Neptune’s Cup research, artificial reefs and research internships.',
+    h1: 'Marine Education in Pattaya', kicker: 'Research, education and conservation',
+    h2: 'Learn about our research and conservation programs',
+    intro: [
+      'Our team believes in actions first. We have dedicated an immense amount of manpower, time and resources to protecting, learning about and restoring our local marine eco systems. We have full time Marine Biologists on our staff who are actively engaging various communities for education, as well as undertaking research efforts on our unique eco-systems',
+      'Our programs can be broken down into a few developing categories, please pick one that you are most interested in!',
+    ],
+    links: [['marine-education-eca', 'Marine Ed ECA for schools in Thailand'], ['citizen-science', 'Citizen scientist education and trips'], [null, 'Hands on research and ongoing programs'], [null, 'Research Internships']],
+    faq: ['padi', 'advancedWhen'],
+  },
+
+  pricing: {
+    title: 'Scuba Dive Prices Pattaya Thailand – Scuba Diving Pattaya',
+    desc: 'Full price list for diving in Pattaya with Thai Ocean Academy: day trips, recreational and professional courses, technical training, marine programs, equipment rental and transport.',
+    h1: 'Pricing', kicker: 'All prices in Thai Baht (THB), VAT included',
+    intro: [
+      'All of our Day trip pricing includes dive leader, snacks, fruits, hot and cold drinks as well as a hot lunch on our boats. The try dive and snorkel package includes equipment rental, but the fun dive prices do not',
+      'In addition our course pricing includes everything you need for certification including equipment rental',
+      'None of our trip or course pricing includes transportation or accommodation costs, unless otherwise stated. Technical training does not include the cost of Gases or additional boat costs for specific trips.',
+      'All Prices include VAT and payment is due before departure on the date of your trip.',
+    ],
+    sections: { dayTrips: 'Day Trips', recreational: 'Recreational Courses', professional: 'Professional Training', technical: 'Technical Training', marine: 'Marine Education and Conservation Program', other: 'Other Services not included in pricing' },
+    sub: { noExperience: 'No Experience', certified: 'Experienced Divers with Certification', rental: 'Equipment Rental', servicing: 'Equipment servicing', services: 'Other Services' },
+    club: 'TOCo Dive Club!', clubAlts: ['TOCo Dive Club Prices', 'TOCo Dive Club Package Benefits'],
+  },
+
+  about: {
+    title: 'About Us – Scuba Diving Pattaya',
+    desc: 'Thai Ocean Academy Pattaya (TOCo) is a community of passionate ocean lovers: experienced instructors, premium equipment, small groups and a commitment to marine conservation.',
+    h1: 'About Scuba Diving Pattaya', kicker: 'Why TOCo?',
+    why: [
+      'At Thai Ocean Academy Pattaya (TOCO), we’re more than just a dive centre—we’re a community of passionate ocean lovers dedicated to creating safe, unforgettable diving experiences. Whether you’re taking your first breath underwater or advancing your diving career, our experienced instructors provide personalised training, premium equipment, and small group experiences that put your comfort and confidence first.',
+      'With a deep respect for the marine environment and a commitment to sustainable diving practices, we don’t just teach you how to dive—we inspire you to protect the ocean for generations to come.',
+    ],
+    motto1: 'Educate. Equip. Explore.', motto2: 'Come as a friend. Leave as family.',
+    missionTitle: 'Our Mission',
+    mission: [
+      'At Thai Ocean Academy Pattaya, our mission is to inspire a lifelong passion for the ocean through exceptional education, hands-on experience, and responsible exploration. Guided by our philosophy to Educate, Equip, Explore, we empower divers of all levels with the knowledge, skills, and confidence to safely discover the underwater world.',
+      'We believe that every dive is an opportunity to become a steward of the marine environment. Through environmentally responsible diving practices, marine conservation awareness, and a commitment to protecting Thailand’s unique coastal ecosystems, we encourage every student to leave the ocean better than they found it.',
+      'Whether you’re taking your first breath underwater or advancing your diving journey, we are dedicated to providing professional training, high-quality equipment, and unforgettable experiences that foster respect for the sea and the incredible life it supports.',
+      'Educate. Equip. Explore. Together, we’re creating confident divers and passionate ocean ambassadors.',
+    ],
+    whyChooseTitle: 'Why Choose Us',
+    whyChoose: 'At Thai Ocean Academy Pattaya, we offer world-class scuba diving courses, guided dive experiences, and professional dive training for every level—from complete beginners to aspiring dive professionals. With experienced instructors, premium equipment, and a strong commitment to safety and marine conservation, we provide unforgettable underwater adventures while helping you build the skills and confidence to explore the ocean responsibly. Whether you’re taking your first dive or continuing your diving journey, we’re here to help you Educate, Equip, and Explore.',
+    familyTitle: 'Come as friend, leave as family',
+    family: 'Dive into unforgettable adventures, meet amazing people, and become part of the Thai Ocean Academy family. Come as a friend. Leave as family. Your next adventure starts here.',
+    more: [['team', 'Team'], ['locations', 'Our Locations'], ['boats', 'Our Boats']],
+  },
+
+  team: {
+    title: 'Team – Scuba Diving Pattaya',
+    desc: 'Meet the Thai Ocean Academy team in Pattaya and Bangkok: instructors, boat crew, marine biologists and the people keeping things straight.',
+    h1: 'Scuba Trainers Pattaya', kicker: 'Thai Ocean Academy Team',
+    intro: 'Our team comprises the best diving instructors in Pattaya, with years of experience in teaching and guiding divers of all skill levels. We are dedicated to providing a safe and comfortable environment for all our clients, ensuring that their diving experience is both thrilling and unforgettable. Our team is passionate about preserving the marine ecosystem and raising awareness about the need for sustainable diving practices. Whether you are a beginner or an experienced diver, our team is committed to helping you discover the beauty of Thai Ocean like never before.',
+    coreTitle: 'The Core Team', bangkokTitle: 'Bangkok Emotional Support Workers',
+    roles: { 'Tim McCabe': 'Big Boss', 'Thana "Jeep" Jantarakolica': 'The Boat Master', 'Nitiya "Mint" Oraphat': 'Keeping things Straight...', 'Tuangpon "Nan" Chusri': 'Tim\'s Boss', 'Adam Stoddard': 'Educating Everyone About Fish', 'Jettana "Tak" Lasoi': 'He don\'t say much...' },
+  },
+
+  locations: {
+    title: 'Our Locations – Scuba Diving Pattaya',
+    desc: 'Thai Ocean Academy locations: equipment store in Bangkok, the dive centre on Thappraya Road in Pattaya, and daily trips to the HTMS Chang from Koh Chang.',
+    h1: 'Scuba Dive Locations', kicker: 'Thai Ocean Academy locations',
+    intro: 'Thai Ocean Academy offers a range of locations to cater to your diving needs. In Bangkok, you can find our well-stocked equipment store, providing everything you need for your underwater adventures. Pattaya is a popular destination for scuba diving, with its vibrant marine life and diverse dive sites. Koh Chang is another fantastic location for scuba diving, offering pristine waters and stunning coral reefs and the HTMS Chang. Additionally, we are excited to announce that Samaesan will be joining our lineup of diving destinations in the near future.',
+    names: { bangkok: 'Bangkok', pattaya: 'Pattaya', kohChang: 'Koh Chang' },
+    text: {
+      bangkok: 'Our Bangkok location specializes in equipment sales. With a full stock always on hand, we do our best to serve you quickly. We also offer equipment cleaning and servicing!',
+      pattaya: 'Our Pattaya location is where we operate our diving activities. A large open space with air conditioning and parking. This is where we meet each morning for diving',
+      kohChang: 'Our Koh Chang location specializes in daily trips to the HTMS chang as well as providing all ranges of courses to new and experienced scuba divers from all over the world!',
+    },
+    siteLabel: { bangkok: 'Equipment Website', kohChang: 'Website' },
+  },
+
+  boats: {
+    title: 'Our Boats – Scuba Diving Pattaya',
+    desc: 'MV Scuba Grace and MV Scuba Princess: custom built, solar-powered dive boats with toilets, showers, hot lunch and licensed crews.',
+    h1: 'Dive Boats Pattaya', kicker: 'Custom built, by divers for divers',
+    intro: 'All of our boats are custom built dive boats, designed and managed by our team. They keep environmentally friendly with solar panels, as well as holding tanks for waste and grey water. Our boats are dry docked yearly, and are fully insured as well as registered within the laws of Thailand. Our crews all hold captains or engineers licenses’ to make sure safety and maintenance are of top quality.',
+    names: { grace: 'MV Scuba Grace', princess: 'MV Scuba Princess' },
+    text: {
+      grace: 'Scuba Grace is our flagship vessel, the largest of our fleet and can handle up to 40 divers. However we rarely will put that many divers on board. We enjoy the extra space, and the comfort of a less busy dive boat. It comes fully equipped to survive an zombie apocalypse.',
+      princess: 'Scuba Princess is our favorite little boat, with room for up to 20 divers. Its fast and comfortable in the waves, and is mainly designed for research and education programs. It will not be as spacious as the queen, but it gets the job done just fine.',
+    },
+    faqTitle: 'FAQ About boats in Pattaya', faq: ['boatToilets', 'boatFood', 'boatSpeed'],
+    capacity: 'up to {n} divers',
+  },
+
+  contact: {
+    title: 'Contact Us – Scuba Diving Pattaya',
+    desc: 'Contact Thai Ocean Academy Pattaya on Thappraya Road: phone, email, opening hours 08:00–20:00 every day, and directions.',
+    h1: 'Contact Us', kicker: 'Leave A Message',
+    intro: 'If you have any questions about diving with us, please send us a message and we will get back to you soon!',
+    form: { name: 'Name', email: 'Email', message: 'Message', send: 'Send message' },
+    mailSubject: 'Contact message from pattaya-dive.com',
+    directions: 'Open in Google Maps',
+  },
+
+  book: {
+    title: 'Book now – Scuba Diving Pattaya',
+    desc: 'Book your try dive, fun dives, snorkelling trip or course with Thai Ocean Academy Pattaya. Tell us your experience level and dates and our team will respond shortly.',
+    h1: 'Book now!', kicker: 'Please complete the form below and our team will respond shortly.',
+    form: {
+      first: 'First', last: 'Last', name: 'Name', email: 'Email',
+      level: 'What is your experience level?', levelHelp: 'Please indicate if you are certified diver already, or a new diver who has never dived before',
+      what: 'What to do',
+      program: 'What Program would you like to sign up for?',
+      programs: ['Try Diving (For new divers)', 'Fun diving (For certified divers)', 'Snorkelling', 'Other (Please specify Below)'],
+      dates: 'What dates would you like to join us?', datesHelp: 'Please indicate the day or dates that you would like to join us for diving!',
+      message: 'Comment or Message', submit: 'Submit', sending: 'Sending...',
+      thanks: 'Thank you! Your request has been sent — our team will respond shortly.',
+      mailFallback: 'Your email app will open with the booking request. If it doesn’t, email us at {email}.',
+    },
+    mailSubject: 'Booking request from pattaya-dive.com',
+  },
+
+  terms: {
+    title: 'Terms and Conditions – Scuba Diving Pattaya',
+    desc: 'Terms and conditions for courses, trips, equipment rentals and sales at Thai Ocean Academy.',
+    h1: 'Thai Ocean Academy', kicker: 'Terms and Conditions',
+    sections: [
+      ['1. Introduction', ['These Terms and Conditions (“Terms”) govern the use of services, courses, and products provided by Thai Ocean Academy (“we,” “us,” or “our”). By booking a course, purchasing equipment, or participating in any of our activities, you (“customer” or “participant”) agree to comply with these Terms. Please read them carefully before proceeding.']],
+      ['2. Services Provided', ['Thai Ocean Academy offers scuba diving courses, fun dives, try dives, marine conservation programs, and equipment sales and rentals. For more information on specific marine conservation programs, please refer to our pricing page.']],
+      ['3. Booking and Cancellation Policy', [], ['Free Cancellations: Cancellations made at least 7 days before the scheduled activity are eligible for a full refund or store credit.', 'Partial Refunds: For cancellations made less than 7 days before the scheduled activity, a store credit will be offered, unless otherwise agreed upon, in which case a refund may be granted.', 'Rescheduling: Rescheduling requests are subject to availability and must be made at least 48 hours in advance.']],
+      ['4. Payment Terms', [], ['A deposit is required at the time of booking to secure your reservation.', 'Full payment must be made prior to boarding the boat for dive trips.', 'For equipment purchases, a deposit is required to confirm the order, and full payment is required before the product is received.', 'We accept major payment methods, including credit cards, bank transfers, and PayPal.']],
+      ['5. Participant Requirements', ['Participants in all diving activities must meet the minimum requirements as outlined in the RAID General Diving Standards under the “Pre-Requisites” section for each program. These requirements vary by course.'], ['All participants must complete a liability waiver prior to any scuba diving activity. Failure to sign or complete this form will result in the cancellation of the activity without refund.', 'Participants must ensure they are physically fit for diving and provide accurate medical information during registration.']],
+      ['6. Equipment Rentals and Sales', [], ['Rental Equipment: All rental equipment must be returned in the same condition as provided. Damage, loss, or failure to return equipment will result in repair or replacement fees.', 'Sales: For equipment sales, full payment is required prior to delivery of the product. All sales are final, except in cases where a product is defective.']],
+      ['7. Liability and Waivers', ['Diving is a physically demanding activity and involves certain risks. By participating, you acknowledge and accept these risks. All participants must sign a liability waiver before commencing any diving activity. Thai Ocean Academy is not responsible for any injuries, accidents, or losses that may occur, except in cases of proven negligence on our part.']],
+      ['8. Personal Data and Privacy', ['We collect and store personal data, such as your name, contact details, insurance information, and rental sizing information, for internal use and to provide you with appropriate services. We do not share your personal information with third parties, except as required by law or in the event of an accident.', 'By providing your information, you consent to its use in accordance with our privacy practices. All data is stored with appropriate protections in place.']],
+      ['9. Intellectual Property', ['All content, including photos, text, logos, and media found on our website and marketing materials, is the property of Thai Ocean Co., Ltd. You may not reproduce, distribute, or use any content without our express written permission.']],
+      ['10. Dispute Resolution', ['Any disputes arising from the use of our services or products will be governed by the laws of Thailand. Customers agree to resolve disputes in good faith, and where necessary, disputes will be referred to the appropriate legal forum under Thai law.']],
+      ['11. Changes to Terms', ['Thai Ocean Academy reserves the right to modify these Terms at any time without prior notice. Please ensure that you review these Terms periodically to remain informed of any updates.']],
+    ],
+  },
+
+  blog: {
+    title: 'Thai Ocean Academy Scuba Diving Blog Pattaya – Scuba Diving Pattaya',
+    desc: 'Random tidbits of information from the Thai Ocean Academy team: diving in Pattaya, marine life, RAID training, nitrox and equipment.',
+    h1: 'Thai Ocean Blog', kicker: 'Explore Pattaya',
+    intro: 'Discover information about scuba diving in Pattaya Thailand',
+    all: 'All articles', category: 'Category', readMore: 'Read More', continueReading: 'Continue Reading »', seeAll: 'See All Articles',
+    moreTitle: 'Read More from Thai Ocean Blog!', share: 'Share the Post:', prev: 'Previous', next: 'Next', by: 'By',
+  },
+
+  notFound: { title: 'Page not found', h1: 'Lost at sea?', text: 'The page you were looking for isn’t here. Try one of these instead.' },
+};

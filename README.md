@@ -6,6 +6,7 @@ site generator (Node) with its own `src/` (content, i18n, images) and `build.js`
 | Project | Client | Demo |
 |---|---|---|
 | [`kohkood/`](kohkood/) | Koh Kood Divers, Thailand | https://rasmusekbom.github.io/dive-sites/kohkood/ |
+| [`pattaya/`](pattaya/) | Thai Ocean Academy Pattaya (pattaya-dive.com), Thailand | https://rasmusekbom.github.io/dive-sites/pattaya/ |
 
 ## Working on a project
 

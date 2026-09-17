@@ -1,0 +1,14 @@
+{
+  "name": "thai-ocean-academy-pattaya-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static multilingual site for Thai Ocean Academy Pattaya (pattaya-dive.com)",
+  "scripts": {
+    "build": "node build-images.js && node build.js",
+    "check": "node check.js",
+    "serve": "node ../serve.js pattaya"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}
