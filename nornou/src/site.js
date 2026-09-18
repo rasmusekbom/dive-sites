@@ -61,7 +61,7 @@ document.documentElement.classList.replace('no-js', 'js');
 
   // route finder: LEGS = [{from,to,dep,arr,fare}], STOPNAMES = {key: label}
   document.querySelectorAll('.tool').forEach(function (tool) {
-    var from = tool.querySelector('[name=from]'), to = tool.querySelector('[name=to]'), out = tool.querySelector('.tool-result'), btn = tool.querySelector('button');
+    var from = tool.querySelector('[name=from]'), to = tool.querySelector('[name=to]'), out = tool.querySelector('.tool-result');
     if (!from || !to || !window.LEGS) return;
     function show() {
       var leg = LEGS.filter(function (l) { return l.from === from.value && l.to === to.value; })[0];
@@ -71,7 +71,8 @@ document.documentElement.classList.replace('no-js', 'js');
         '<div class="fare"><span class="money" data-thb="' + leg.fare + '">' + moneyHtml(leg.fare) + '</span> <i>' + tool.dataset.oneway + '</i></div>' +
         '<a class="btn btn-primary" href="' + tool.dataset.book + '?type=transfer&from=' + leg.from + '&to=' + leg.to + '">' + tool.dataset.bookLabel + '</a>';
     }
-    if (btn) btn.addEventListener('click', function (e) { e.preventDefault(); show(); });
+    tool.addEventListener('submit', function (e) { e.preventDefault(); show(); });
+    show();
     from.addEventListener('change', function () { if (to.value === from.value) { var o = Array.prototype.find.call(to.options, function (x) { return x.value !== from.value; }); if (o) to.value = o.value; } show(); });
     to.addEventListener('change', show);
   });

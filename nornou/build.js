@@ -235,10 +235,9 @@ ${footer(key)}
       <li>${I.mail}<a href="mailto:${site.email}">${site.email}</a></li>
       <li>${I.clock}<span>${ui.hoursText}</span></li></ul>`;
   const seasonNote = () => `<p class="season-note">${I.info}<span>${ui.season}</span></p>`;
-  const routeTool = () => `<form class="tool rv" data-none="${esc(ui.tools.noRoute)}" data-book="${url('book')}" data-book-label="${esc(ui.bookTransfer)}" data-dep="${esc(ui.departure)}" data-arr="${esc(ui.arrival)}" data-oneway="${esc(ui.perPerson + ', ' + ui.oneWay)}">
+  const routeTool = () => `<form class="tool rv" action="${url('transfers')}#timetable" data-none="${esc(ui.tools.noRoute)}" data-book="${url('book')}" data-book-label="${esc(ui.bookTransfer)}" data-dep="${esc(ui.departure)}" data-arr="${esc(ui.arrival)}" data-oneway="${esc(ui.perPerson + ', ' + ui.oneWay)}">
     <label>${ui.tools.from}<select name="from">${stops.map(s => `<option value="${s}">${stopName(s)}</option>`).join('')}</select></label>
     <label>${ui.tools.to}<select name="to">${stops.map(s => `<option value="${s}"${s === 'kohkood' ? ' selected' : ''}>${stopName(s)}</option>`).join('')}</select></label>
-    <button class="btn btn-dark btn-lg" type="submit">${ui.tools.find}</button>
     <div class="tool-result" aria-live="polite"></div></form>`;
   const tripCard = (t, i = 0) => { const c = C.trips[t.slug]; return `<a class="pcard rv" href="${url('trip:' + t.slug)}" style="--d:${i * .06}s">
     <span class="pimg">${img(t.img, c.name)}<span class="tag${t.full ? ' red' : ''}">${t.full ? ui.fullDay : ui.halfDay}</span>${t.parkFee ? `<span class="tag right">${PG.islandsPage.park}</span>` : ''}</span>
