@@ -1,6 +1,7 @@
 // ไทย – deep-merged over English (src/i18n/en/*). Missing keys fall back to English.
 module.exports = {
   ui: {
+    hoursText: 'ทุกวัน 08:00–17:00',
     htmlLang: 'th', numberLocale: 'th-TH', dateLocale: 'th-TH',
     nav: { transfers: 'เรือข้ามเกาะ', snorkelling: 'ทริปดำน้ำตื้น', charter: 'เหมาเรือส่วนตัว', islands: 'หมู่เกาะ', fleet: 'เรือของเรา', about: 'เกี่ยวกับเรา', contact: 'ติดต่อ', book: 'จอง', terms: 'ข้อกำหนดและเงื่อนไข', allRoutes: 'ทุกเส้นทาง เวลา และค่าโดยสาร', allTrips: 'ทริปดำน้ำตื้นทั้งหมด' },
     skip: 'ข้ามไปยังเนื้อหา', menu: 'เมนู', close: 'ปิด', language: 'ภาษา', currency: 'สกุลเงิน',

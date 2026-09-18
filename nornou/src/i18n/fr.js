@@ -1,6 +1,7 @@
 // Français – deep-merged over English (src/i18n/en/*). Missing keys fall back to English.
 module.exports = {
   ui: {
+    hoursText: 'Tous les jours 08:00–17:00',
     htmlLang: 'fr', numberLocale: 'fr-FR', dateLocale: 'fr-FR',
     slugs: { transfers: 'transferts-speedboat', snorkelling: 'snorkeling', charter: 'bateau-prive', islands: 'les-iles', fleet: 'nos-bateaux', about: 'a-propos', contact: 'contact', book: 'reserver', terms: 'conditions' },
     nav: { transfers: 'Transferts entre îles', snorkelling: 'Sorties snorkeling', charter: 'Bateau privé', islands: 'Les îles', fleet: 'Nos bateaux', about: 'À propos', contact: 'Contact', book: 'Réserver', terms: 'Conditions générales', allRoutes: 'Toutes les liaisons, horaires et tarifs', allTrips: 'Toutes les sorties snorkeling' },

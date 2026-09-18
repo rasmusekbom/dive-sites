@@ -149,7 +149,7 @@ ${ld}
 <body class="${cls}" data-lang="${lang.code}" data-cur="${lang.currency}">
 <a class="skip" href="#main">${ui.skip}</a>
 <header class="top" id="top">
-  <div class="topbar"><div class="wrap"><span>${I.clock}${site.hours}</span><a href="${tel(site.phone)}">${I.phone}${site.phone}</a><a href="${site.whatsapp}" target="_blank" rel="noopener">${I.wa}${ui.whatsapp}</a><span class="season-pill">${I.info}${ui.season.split('.')[0]}</span></div></div>
+  <div class="topbar"><div class="wrap"><span>${I.clock}${ui.hoursText}</span><a href="${tel(site.phone)}">${I.phone}${site.phone}</a><a href="${site.whatsapp}" target="_blank" rel="noopener">${I.wa}${ui.whatsapp}</a><span class="season-pill">${I.info}${ui.season.split('.')[0]}</span></div></div>
   <nav class="nav" aria-label="Main"><div class="wrap">
     ${brand()}
     <ul class="nav-links">
@@ -233,7 +233,7 @@ ${footer(key)}
       <li>${I.wa}<a href="${site.whatsapp}" target="_blank" rel="noopener">${ui.whatsapp}: ${site.phone2}</a></li>
       <li>${I.phone}<span><a href="${tel(site.phone)}">${site.phone}</a><small><a href="${tel(site.phone2)}">${site.phone2}</a> · <a href="${tel(site.phoneOffice)}">${site.phoneOffice}</a></small></span></li>
       <li>${I.mail}<a href="mailto:${site.email}">${site.email}</a></li>
-      <li>${I.clock}<span>${site.hours}</span></li></ul>`;
+      <li>${I.clock}<span>${ui.hoursText}</span></li></ul>`;
   const seasonNote = () => `<p class="season-note">${I.info}<span>${ui.season}</span></p>`;
   const routeTool = () => `<form class="tool rv" data-none="${esc(ui.tools.noRoute)}" data-book="${url('book')}" data-book-label="${esc(ui.bookTransfer)}" data-dep="${esc(ui.departure)}" data-arr="${esc(ui.arrival)}" data-oneway="${esc(ui.perPerson + ', ' + ui.oneWay)}">
     <label>${ui.tools.from}<select name="from">${stops.map(s => `<option value="${s}">${stopName(s)}</option>`).join('')}</select></label>

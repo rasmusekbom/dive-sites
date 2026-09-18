@@ -1,6 +1,7 @@
 // 中文 – deep-merged over English (src/i18n/en/*). Missing keys fall back to English. First-pass translation – have a native speaker proofread.
 module.exports = {
   ui: {
+    hoursText: '每天 08:00–17:00',
     htmlLang: 'zh-Hans', numberLocale: 'zh-CN', dateLocale: 'zh-CN',
     nav: { transfers: '岛际快艇', snorkelling: '浮潜一日游', charter: '包船', islands: '岛屿介绍', fleet: '我们的船', about: '关于我们', contact: '联系我们', book: '预订', terms: '条款与条件', allRoutes: '全部航线、时间与票价', allTrips: '全部浮潜行程' },
     skip: '跳到内容', menu: '菜单', close: '关闭', language: '语言', currency: '货币',

@@ -1,6 +1,7 @@
 // Svenska – deep-merged over English (src/i18n/en/*). Missing keys fall back to English.
 module.exports = {
   ui: {
+    hoursText: 'Alla dagar 08:00–17:00',
     htmlLang: 'sv', numberLocale: 'sv-SE', dateLocale: 'sv-SE',
     slugs: { transfers: 'batransfer', snorkelling: 'snorkling', charter: 'privat-bat', islands: 'oarna', fleet: 'vara-batar', about: 'om-oss', contact: 'kontakt', book: 'boka', terms: 'villkor' },
     nav: { transfers: 'Båttransfer', snorkelling: 'Snorkelturer', charter: 'Privat båt', islands: 'Öarna', fleet: 'Våra båtar', about: 'Om oss', contact: 'Kontakt', book: 'Boka', terms: 'Villkor', allRoutes: 'Alla rutter, tider & priser', allTrips: 'Alla snorkelturer' },

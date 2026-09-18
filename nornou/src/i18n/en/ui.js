@@ -1,5 +1,6 @@
 // UI strings (navigation, buttons, labels). Keep short; page copy lives in pages.js, content in content.js.
 module.exports = {
+  hoursText: 'Every day 8:00 am – 5:00 pm',
   htmlLang: 'en', numberLocale: 'en-US', dateLocale: 'en-GB',
   slugs: { transfers: 'speedboat-transfers', snorkelling: 'snorkelling', charter: 'private-charter', islands: 'islands', fleet: 'our-boats', about: 'about', contact: 'contact', book: 'book', terms: 'terms' },
   nav: { transfers: 'Island transfers', snorkelling: 'Snorkelling trips', charter: 'Private charter', islands: 'The islands', fleet: 'Our boats', about: 'About us', contact: 'Contact', book: 'Book', terms: 'Terms & conditions', allRoutes: 'All routes, times & fares', allTrips: 'All snorkelling trips' },

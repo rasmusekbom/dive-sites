@@ -1,6 +1,7 @@
 // Русский – deep-merged over English (src/i18n/en/*). Missing keys fall back to English.
 module.exports = {
   ui: {
+    hoursText: 'Ежедневно 08:00–17:00',
     htmlLang: 'ru', numberLocale: 'ru-RU', dateLocale: 'ru-RU',
     slugs: { transfers: 'transfery', snorkelling: 'snorkling', charter: 'arenda-katera', islands: 'ostrova', fleet: 'nashi-katera', about: 'o-nas', contact: 'kontakty', book: 'bronirovanie', terms: 'usloviya' },
     nav: { transfers: 'Трансферы между островами', snorkelling: 'Снорклинг-туры', charter: 'Аренда катера', islands: 'Острова', fleet: 'Наши катера', about: 'О нас', contact: 'Контакты', book: 'Бронировать', terms: 'Условия', allRoutes: 'Все маршруты, время и цены', allTrips: 'Все снорклинг-туры' },
