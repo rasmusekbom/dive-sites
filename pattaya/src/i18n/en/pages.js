@@ -46,6 +46,7 @@ module.exports = {
     ],
     pillars: ['Scuba Diving Courses', 'Scuba Diving Trips', 'Marine Education and Conservation', 'Boat Charter'],
     contactNow: 'Contact Now',
+    reviewsTitle: 'What divers say', reviewsText: 'Every review below is a public Google review – the newest first.', readAllReviews: 'All reviews on Google', writeReview: 'Review us on Google', readOnGoogle: 'Read on Google',
     reviews: 'reviews on Google',
     whyTitle: 'Why TOCo?',
     whyText: 'At Thai Ocean Academy Pattaya (TOCO), we’re more than just a dive centre—we’re a community of passionate ocean lovers dedicated to creating safe, unforgettable diving experiences.',

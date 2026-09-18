@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const { site, languages, currencies, stats, groups, products, hubs, priceList, team, locations, boats, categories, redirects } = require('./src/data.js');
+const REVIEWS = JSON.parse(fs.readFileSync(path.join(__dirname, 'src', 'reviews.json'), 'utf8'));
 const IMG = fs.existsSync(path.join(__dirname, 'src', 'img-manifest.json')) ? JSON.parse(fs.readFileSync(path.join(__dirname, 'src', 'img-manifest.json'), 'utf8')) : {};
 const ogJpg = file => IMG[file] ? file.replace(/\.[^.]+$/, '') + '-' + IMG[file].fallback + '.jpg' : file;
 
@@ -126,6 +127,7 @@ function ctx(lang) {
     if (site.partners[h]) return site.partners[h];
     try { return url(h); } catch (e) { return h; }
   };
+  const fmtDate = d => new Date(d + 'T00:00:00Z').toLocaleDateString(ui.dateLocale || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   const rich = s => inline(s, resolve);
   const richP = s => s.split(/\n\n+/).map(t => `<p>${rich(t)}</p>`).join('');
 
@@ -303,6 +305,13 @@ ${footer(key)}
       <li>${I.mail}<a href="mailto:${c.email}">${c.email}</a></li>
       <li>${I.clock}<span>${c.hours}</span></li></ul>`;
   };
+  const reviewsBlock = () => {
+    const H = PG.home;
+    const card = (r, i) => { const long = r.text.length > 300; const t = long ? r.text.slice(0, 280).replace(/\s+\S*$/, '') + '…' : r.text; return `<figure class="review rv" style="--d:${(i % 4) * .06}s" lang="${r.lang}"><div class="stars" aria-label="5/5">${I.star.repeat(5)}</div><blockquote>${esc(t)}</blockquote>${long ? `<a class="more" href="${r.url}" target="_blank" rel="noopener">${H.readOnGoogle}${I.arrow}</a>` : ''}<figcaption><span class="av" aria-hidden="true">${esc(r.name.trim()[0].toUpperCase())}</span><div><b>${esc(r.name)}</b><time datetime="${r.date}">${fmtDate(r.date)}</time></div></figcaption></figure>`; };
+    return `<section class="dark reviews" id="reviews"><div class="wrap">
+    <div class="reviews-head rv"><div class="rating-big"><b>${site.rating.toFixed(1)}</b><div><div class="stars">${I.star.repeat(5)}</div><span>${site.reviewCount} ${H.reviews}</span></div></div><div><h2>${H.reviewsTitle}</h2><p class="sub">${H.reviewsText}</p></div><div class="reviews-actions"><a class="btn btn-ghost" href="${site.googleReviews}" target="_blank" rel="noopener">${I.g}${H.readAllReviews}</a><a class="btn btn-primary" href="${site.googleWriteReview}" target="_blank" rel="noopener">${H.writeReview}</a></div></div>
+    <div class="reviews-grid">${REVIEWS.reviews.slice(0, 8).map(card).join('')}</div></div></section>`;
+  };
   const ctaBand = (title, textStr, p = null) => `<section class="cta-band rv"><div class="wrap"><div><h2>${title}</h2><p>${textStr}</p></div><div class="cta-actions"><a class="btn btn-primary btn-lg" href="${bookUrl(p)}">${ui.bookNowBang}</a><a class="btn btn-ghost btn-lg" href="tel:${site.phone.replace(/\s+/g, '')}">${I.phone}${site.phone}</a></div></div></section>`;
   const pageHero = ({ imgFile, alt, crumbItems, kicker, h1, lead = '', extra = '', cls = '' }) => `<header class="page-hero ${cls}">${heroImg(imgFile, alt || '')}
     <div class="wrap">${crumbs(crumbItems)}${kicker ? `<span class="kicker">${kicker}</span>` : ''}<h1>${h1}</h1>${lead ? `<p class="lead">${lead}</p>` : ''}${extra}</div></header>`;
@@ -337,7 +346,7 @@ ${footer(key)}
     <h1>${H.h1}</h1>
     <p class="lead">${H.intro}</p>
     <div class="hero-actions"><a class="btn btn-primary btn-lg" href="${url('book')}">${ui.bookNow}</a><a class="btn btn-ghost btn-lg" href="${url('diving')}">${ui.nav.allDiving}${I.arrow}</a></div>
-    <a class="gbadge" href="${site.maps}" target="_blank" rel="noopener">${I.g}<b>${site.rating.toFixed(1)}</b><span class="stars" aria-hidden="true">${I.star.repeat(5)}</span><span>${site.reviewCount} ${H.reviews}</span></a>
+    <a class="gbadge" href="${site.googleReviews}" target="_blank" rel="noopener">${I.g}<b>${site.rating.toFixed(1)}</b><span class="stars" aria-hidden="true">${I.star.repeat(5)}</span><span>${site.reviewCount} ${H.reviews}</span></a>
   </div>
   <ul class="pillars wrap" aria-label="What we do">${H.pillars.map((t, i) => `<li><a href="${url(['courses', 'dayTrips', 'marine', 'contact'][i])}"><span class="pt">${t}</span><i>${I.arrow}</i></a></li>`).join('')}</ul>
 </header>
@@ -345,6 +354,7 @@ ${footer(key)}
   <div class="grid grid-3 paths">${H.paths.map(([k, t, d], i) => `<a class="path rv" href="${url(k)}" style="--d:${i * .06}s"><span class="n">0${i + 1}</span><strong>${t}</strong><span>${d}</span><i>${I.arrow}</i></a>`).join('')}</div>
 </div></section>
 ${statsBar()}
+${reviewsBlock()}
 <section class="soft"><div class="wrap">
   <div class="section-head rv"><h2>${ui.groups.trips} & ${ui.groups.rec}</h2><a class="link" href="${url('diving')}">${ui.nav.allDiving}${I.arrow}</a></div>
   ${cardGrid(featured)}
@@ -567,7 +577,6 @@ ${faqBlock(B.faq, B.faqTitle)}`;
 
   // ---------- blog
   const catName = slug => (categories.find(c => c.slug === slug) || {}).name;
-  const fmtDate = d => new Date(d + 'T00:00:00Z').toLocaleDateString(ui.dateLocale || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   function postCard(post, i = 0) {
     return `<a class="post-card rv" href="${url('post:' + post.slug)}" style="--d:${i * .06}s"${post.lang ? ` lang="${post.lang}"` : ''}><span class="pimg${post.imageSmall ? ' contain' : ''}">${img(post.image, post.title)}</span><span class="pbody"><span class="pmeta"><time datetime="${post.date}">${fmtDate(post.date)}</time>${post.category ? `<span>${catName(post.category)}</span>` : ''}</span><strong>${post.title}</strong><span class="pdesc">${post.excerpt}</span><span class="more">${PG.blog.readMore}${I.arrow}</span></span></a>`;
   }

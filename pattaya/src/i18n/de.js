@@ -65,6 +65,7 @@ module.exports = {
       ],
       pillars: ['Tauchkurse', 'Tauchausflüge', 'Meeresbildung & Naturschutz', 'Bootscharter'],
       contactNow: 'Jetzt Kontakt aufnehmen', reviews: 'Bewertungen auf Google',
+      reviewsTitle: 'Was Taucher sagen', reviewsText: 'Alle Bewertungen unten sind öffentliche Google-Bewertungen – die neuesten zuerst.', readAllReviews: 'Alle Bewertungen auf Google', writeReview: 'Bewerte uns auf Google', readOnGoogle: 'Auf Google lesen',
       whyTitle: 'Warum TOCo?',
       whyText: 'Thai Ocean Academy Pattaya (TOCO) ist mehr als ein Tauchcenter – wir sind eine Gemeinschaft leidenschaftlicher Meeresliebhaber, die sichere, unvergessliche Taucherlebnisse schaffen.',
       boatsTitle: 'Eigens gebaute Tauchboote',

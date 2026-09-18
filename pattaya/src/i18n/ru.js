@@ -65,6 +65,7 @@ module.exports = {
       ],
       pillars: ['Курсы дайвинга', 'Дайв-выезды', 'Морское образование и охрана', 'Аренда лодки'],
       contactNow: 'Связаться с нами', reviews: 'отзывов в Google',
+      reviewsTitle: 'Что говорят дайверы', reviewsText: 'Все отзывы ниже — публичные отзывы в Google, сначала новые.', readAllReviews: 'Все отзывы в Google', writeReview: 'Оставить отзыв в Google', readOnGoogle: 'Читать в Google',
       whyTitle: 'Почему TOCo?',
       whyText: 'Thai Ocean Academy Pattaya (TOCO) — больше, чем дайв-центр: мы сообщество увлечённых океаном людей, создающих безопасные и незабываемые погружения.',
       boatsTitle: 'Лодки, построенные для дайвинга',

@@ -65,6 +65,7 @@ module.exports = {
       ],
       pillars: ['Dykkurser', 'Dykturer', 'Marin utbildning & bevarande', 'Båtcharter'],
       contactNow: 'Kontakta oss', reviews: 'recensioner på Google',
+      reviewsTitle: 'Vad dykarna säger', reviewsText: 'Alla recensioner nedan är publika Google-recensioner – nyast först.', readAllReviews: 'Alla recensioner på Google', writeReview: 'Recensera oss på Google', readOnGoogle: 'Läs på Google',
       whyTitle: 'Varför TOCo?',
       whyText: 'Thai Ocean Academy Pattaya (TOCO) är mer än ett dykcenter – vi är en gemenskap av passionerade havsälskare som skapar trygga, oförglömliga dykupplevelser.',
       boatsTitle: 'Specialbyggda dykbåtar',

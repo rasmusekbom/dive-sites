@@ -65,6 +65,7 @@ module.exports = {
       ],
       pillars: ['Formations de plongée', 'Sorties plongée', 'Éducation marine & conservation', 'Location de bateau'],
       contactNow: 'Contactez-nous', reviews: 'avis sur Google',
+      reviewsTitle: 'Ce que disent les plongeurs', reviewsText: 'Tous les avis ci-dessous sont des avis Google publics, du plus récent au plus ancien.', readAllReviews: 'Tous les avis sur Google', writeReview: 'Laissez-nous un avis Google', readOnGoogle: 'Lire sur Google',
       whyTitle: 'Pourquoi TOCo ?',
       whyText: 'Thai Ocean Academy Pattaya (TOCO) est plus qu’un centre de plongée : une communauté de passionnés de l’océan qui créent des expériences sûres et inoubliables.',
       boatsTitle: 'Des bateaux de plongée sur mesure',

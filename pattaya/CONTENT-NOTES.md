@@ -26,6 +26,7 @@ maps every original image URL to its local file in `src/img/`.
 - **Google Maps** – the original embedded maps with an exposed API key; the new site uses key-less embeds.
 - **Booking form** – same fields as the WPForms form. On Netlify it posts to Netlify Forms; without a backend it opens
   the visitor's mail app with the request pre-filled. The typo "What to to" became "What to do".
+- **Reviews** – the Elfsight widget is replaced by a static section: 14 public Google reviews (newest first, 5★, text only, no avatars) in `src/reviews.json`, read from the widget's own feed on 2026-09-18, plus links to the Google listing (place ID ChIJv7RTqHSXAjERDiHF7W_PufQ). Refresh the file now and then or wire the feed up at build time.
 - **Photos** – all 87 photos used on the original site plus 23 unused photos from their media library (barracuda, batfish,
   Koh Sak aerial, boats, tech divers…) for heroes. Team photos renamed `team-*.jpg`.
 
@@ -46,7 +47,6 @@ maps every original image URL to its local file in `src/img/`.
 | "5 Reasons…" | blog | published twice (diveinpattaya, pattayadivecenter) – both kept |
 | Blog dates | blog | many posts dated 2024-06-28/29 and 07-02 (bulk import) |
 | Logo | header | white PNG wordmark; a square crest exists (`toco-logo-square.jpg`) – SVG would be better |
-| Reviews | home | "5.0 · 202 reviews" from the Elfsight widget on 2026-09-17 – needs a link to the Google listing |
 
 ## Still to do
 

@@ -15,7 +15,10 @@ const site = {
   maps: 'https://maps.app.goo.gl/XuhxQwUa9Tv3dCDx8',
   mapsEmbed: 'https://www.google.com/maps?q=Thai+Ocean+Academy+Pattaya&z=14&output=embed',
   geo: { lat: 12.9058, lng: 100.8677 },
-  rating: 5.0, reviewCount: 202,     // Google reviews widget on the original home page
+  rating: 5.0, reviewCount: 202,     // Google reviews widget on the original home page; reviews themselves live in src/reviews.json
+  googlePlaceId: 'ChIJv7RTqHSXAjERDiHF7W_PufQ',
+  googleReviews: 'https://www.google.com/maps/place/?q=place_id:ChIJv7RTqHSXAjERDiHF7W_PufQ',
+  googleWriteReview: 'https://search.google.com/local/writereview?placeid=ChIJv7RTqHSXAjERDiHF7W_PufQ',
   social: {
     facebook: 'https://www.facebook.com/thaioceanacademypattaya',
     instagram: 'https://www.instagram.com/thaioceanpattaya/',

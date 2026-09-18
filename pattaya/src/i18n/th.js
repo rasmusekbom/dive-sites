@@ -65,6 +65,7 @@ module.exports = {
       ],
       pillars: ['คอร์สดำน้ำ', 'ทริปดำน้ำ', 'การศึกษาและอนุรักษ์ทางทะเล', 'เช่าเรือเหมาลำ'],
       contactNow: 'ติดต่อเราเลย', reviews: 'รีวิวบน Google',
+      reviewsTitle: 'นักดำน้ำพูดถึงเราว่าอย่างไร', reviewsText: 'รีวิวด้านล่างทั้งหมดเป็นรีวิวสาธารณะบน Google เรียงจากใหม่ล่าสุด', readAllReviews: 'ดูรีวิวทั้งหมดบน Google', writeReview: 'รีวิวเราบน Google', readOnGoogle: 'อ่านบน Google',
       whyTitle: 'ทำไมต้อง TOCo?',
       whyText: 'Thai Ocean Academy พัทยา (TOCO) เป็นมากกว่าศูนย์ดำน้ำ เราคือชุมชนคนรักทะเลที่มุ่งมั่นสร้างประสบการณ์ดำน้ำที่ปลอดภัยและน่าจดจำ',
       boatsTitle: 'เรือดำน้ำสร้างเองโดยเฉพาะ',

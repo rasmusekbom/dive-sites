@@ -65,6 +65,7 @@ module.exports = {
       ],
       pillars: ['潜水课程', '潜水行程', '海洋教育与保育', '包船'],
       contactNow: '立即联系', reviews: '条 Google 评价',
+      reviewsTitle: '潜水员怎么说', reviewsText: '以下所有评价均为公开的 Google 评价，最新的在前。', readAllReviews: 'Google 上的全部评价', writeReview: '在 Google 上评价我们', readOnGoogle: '在 Google 上阅读',
       whyTitle: '为什么选择 TOCo？',
       whyText: 'Thai Ocean Academy 芭提雅（TOCO）不只是一家潜店——我们是一群热爱海洋的人，致力于创造安全、难忘的潜水体验。',
       boatsTitle: '专为潜水打造的船',
