@@ -39,6 +39,27 @@ document.documentElement.classList.replace('no-js', 'js');
   var stats = document.querySelector('.stats');
   if (stats && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { runCounters(); o.disconnect(); } }, { threshold: .3 }).observe(stats);
 
+  // currency: prices are rendered in THB; convert client-side with the rates baked into the page
+  var cur = null; try { cur = localStorage.getItem('cur'); } catch (e) {}
+  if (!cur || !window.CURS || CURS.indexOf(cur) < 0) cur = document.body.dataset.cur || 'THB';
+  var fmt = function (n) { return Math.round(n).toLocaleString(window.LOC || 'en-US'); };
+  function applyCur() {
+    document.querySelectorAll('.money').forEach(function (m) {
+      var n = +m.dataset.thb, max = m.dataset.thbMax ? +m.dataset.thbMax : null;
+      if (cur === 'THB' || !RATES[cur]) { m.innerHTML = '<b>' + n.toLocaleString('en-US') + (max ? '–' + max.toLocaleString('en-US') : '') + '</b> <i>THB</i>'; return; }
+      m.innerHTML = '<b>≈ ' + fmt(n * RATES[cur]) + (max ? '–' + fmt(max * RATES[cur]) : '') + '</b> <i>' + cur + '</i><small>' + n.toLocaleString('en-US') + (max ? '–' + max.toLocaleString('en-US') : '') + ' THB</small>';
+    });
+    document.querySelectorAll('.cur-code').forEach(function (s) { s.textContent = cur; });
+    document.querySelectorAll('.dd-menu [data-cur]').forEach(function (a) { a.classList.toggle('active', a.dataset.cur === cur); });
+  }
+  document.querySelectorAll('.dd-menu [data-cur]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); cur = a.dataset.cur; try { localStorage.setItem('cur', cur); } catch (x) {} applyCur(); var d = a.closest('details'); if (d) d.removeAttribute('open'); }); });
+  if (window.RATES) applyCur();
+  // dropdowns (language / currency): one open at a time, outside click and Escape close
+  var dds = Array.prototype.slice.call(document.querySelectorAll('details.dd'));
+  dds.forEach(function (d) { d.querySelector('summary').addEventListener('click', function (e) { e.preventDefault(); var was = d.open; dds.forEach(function (x) { x.removeAttribute('open'); }); if (!was) d.setAttribute('open', ''); }); });
+  document.addEventListener('click', function (e) { if (!e.target.closest('details.dd')) dds.forEach(function (x) { x.removeAttribute('open'); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') dds.forEach(function (x) { x.removeAttribute('open'); }); });
+
   // pricing: expand/collapse all, and open the group a jump link / hash points at
   var pt = document.getElementById('price-toggle');
   if (pt) {

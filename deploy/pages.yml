@@ -2,6 +2,8 @@ name: Demo sites → GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '17 3 * * 1'   # Mondays 03:17 UTC: rebuild so the baked-in exchange rates (src/rates.json, refreshed when >7 days old) stay current
   workflow_dispatch:
 permissions:
   contents: read

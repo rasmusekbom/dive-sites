@@ -34,7 +34,18 @@ const site = {
 
 // Languages: English lives at the root, others under /<path>/ (hreflang alternates are emitted for all).
 const languages = [
-  { code: 'en', path: '', name: 'English', htmlLang: 'en' },
+  { code: 'en', path: '', name: 'English', currency: 'THB' },
+  { code: 'de', path: 'de', name: 'Deutsch', currency: 'EUR' },
+  { code: 'fr', path: 'fr', name: 'Français', currency: 'EUR' },
+  { code: 'sv', path: 'sv', name: 'Svenska', currency: 'SEK' },
+  { code: 'th', path: 'th', name: 'ไทย', currency: 'THB' },
+  { code: 'ru', path: 'ru', name: 'Русский', currency: 'RUB' },
+  { code: 'zh', path: 'zh', name: '中文', currency: 'CNY' },
+];
+const currencies = [
+  { code: 'THB', symbol: '฿' }, { code: 'USD', symbol: '$' }, { code: 'EUR', symbol: '€' }, { code: 'GBP', symbol: '£' },
+  { code: 'SEK', symbol: 'kr' }, { code: 'NOK', symbol: 'kr' }, { code: 'DKK', symbol: 'kr' }, { code: 'CHF', symbol: 'CHF' },
+  { code: 'AUD', symbol: 'A$' }, { code: 'CNY', symbol: '¥' }, { code: 'RUB', symbol: '₽' }, { code: 'JPY', symbol: '¥' }, { code: 'KRW', symbol: '₩' },
 ];
 
 // Stats shown on the original landing pages (Elementor counters)
@@ -203,4 +214,4 @@ const redirects = {
   '/category/scuba-dive-training-bangkok-pattaya/': '/blog/category/scuba-diving-and-training/',
 };
 
-module.exports = { site, languages, stats, groups, products, hubs, priceList, team, locations, boats, categories, redirects };
+module.exports = { site, languages, currencies, stats, groups, products, hubs, priceList, team, locations, boats, categories, redirects };

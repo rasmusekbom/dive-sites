@@ -12,7 +12,7 @@ const exists = (url) => {
 };
 
 let broken = 0, leaks = 0;
-const enMarkers = ['Book now', 'Frequent Questions', 'Course Overview', 'Read More'];
+const enMarkers = ['Book now', 'Frequent Questions', 'Course Overview', 'Read More', 'Keep exploring', 'Customer Satisfaction', 'Logistics', 'No experience needed', 'Certified divers'];
 for (const p of pages) {
   const html = fs.readFileSync(p, 'utf8');
   const rel = path.relative(dist, p).replace(/\\/g, '/');

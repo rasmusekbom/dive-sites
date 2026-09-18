@@ -3,11 +3,17 @@
 //   BASE=/dive-sites/pattaya DEMO=1 npm run build   → GitHub Pages demo (sub-path + noindex)
 const fs = require('fs');
 const path = require('path');
-const { site, languages, stats, groups, products, hubs, priceList, team, locations, boats, categories, redirects } = require('./src/data.js');
+const { site, languages, currencies, stats, groups, products, hubs, priceList, team, locations, boats, categories, redirects } = require('./src/data.js');
 const IMG = fs.existsSync(path.join(__dirname, 'src', 'img-manifest.json')) ? JSON.parse(fs.readFileSync(path.join(__dirname, 'src', 'img-manifest.json'), 'utf8')) : {};
 const ogJpg = file => IMG[file] ? file.replace(/\.[^.]+$/, '') + '-' + IMG[file].fallback + '.jpg' : file;
 
 // DIST=<dir> writes elsewhere (deploy/publish.sh builds the demos outside dist/ so a local preview keeps working)
+// Exchange rates (THB base): refreshed automatically when older than 7 days; offline builds keep the old file.
+const RATES_FILE = path.join(__dirname, 'src', 'rates.json');
+if (Date.now() - new Date(require(RATES_FILE).date).getTime() > 7 * 864e5 && !process.env.OFFLINE) {
+  try { require('child_process').execFileSync(process.execPath, [path.join(__dirname, 'update-rates.js')], { stdio: 'inherit', timeout: 15000 }); } catch (e) { console.warn('rates not refreshed:', e.message); }
+}
+const rates = JSON.parse(fs.readFileSync(RATES_FILE, 'utf8'));
 const OUT = process.env.DIST ? path.resolve(process.env.DIST) : path.join(__dirname, 'dist');
 const BASE = (process.env.BASE || '').replace(/\/$/, '');
 const DEMO = !!process.env.DEMO;
@@ -62,6 +68,7 @@ const I = {
   cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4m8-4v4"/></svg>',
   tank: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6V3h6v3M7 8h10v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V8Z"/></svg>',
   user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
+  globe: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
 };
 
 // ---------------------------------------------------------------- MARKDOWN (small, for blog posts and rich text)
@@ -89,6 +96,8 @@ function markdown(md, { linkResolver, imgResolver }) {
   return out.join('\n');
 }
 
+const isBlogKey = key => key === 'blog' || key.startsWith('post:') || key.startsWith('cat:');
+
 // ---------------------------------------------------------------- PER-LANGUAGE CONTEXT
 function ctx(lang) {
   const L = locales[lang.code];
@@ -98,8 +107,7 @@ function ctx(lang) {
   const pathOf = (code, key) => {
     const l = languages.find(x => x.code === code), loc = locales[code], pre = BASE + (l.path ? `/${l.path}` : '');
     if (key === 'home') return `${pre}/`;
-    if (key.startsWith('post:')) return `${pre}/${loc.ui.slugs.blog}/${key.slice(5)}/`;
-    if (key.startsWith('cat:')) return `${pre}/${loc.ui.slugs.blog}/category/${key.slice(4)}/`;
+    if (isBlogKey(key)) { const en = BASE; const es = locales.en.ui.slugs.blog; if (key === 'blog') return `${en}/${es}/`; if (key.startsWith('post:')) return `${en}/${es}/${key.slice(5)}/`; return `${en}/${es}/category/${key.slice(4)}/`; }
     if (loc.ui.slugs[key]) return `${pre}/${loc.ui.slugs[key]}/`;
     const p = P[key];
     if (p) { const hub = { trips: '', rec: 'courses', pro: 'professional', tech: 'technical', marine: 'marine' }[p.group]; return `${pre}/${hub ? loc.ui.slugs[hub] + '/' : ''}${key}/`; }
@@ -121,14 +129,14 @@ function ctx(lang) {
   const rich = s => inline(s, resolve);
   const richP = s => s.split(/\n\n+/).map(t => `<p>${rich(t)}</p>`).join('');
 
+  const money = (n, cls = '') => typeof n === 'number' ? `<span class="money ${cls}" data-thb="${n}"><b>${thb(n)}</b> <i>${ui.thb}</i></span>` : esc(n);
   const price = (p, cls = '') => {
     if (text(p).priceText) return `<span class="price ${cls}">${text(p).priceText}</span>`;
     if (p.price == null) return `<span class="price ${cls}">${ui.enquire}</span>`;
     const pre = p.from ? `<small>${ui.from}</small> ` : '';
-    const range = p.priceMax ? `${thb(p.price)}–${thb(p.priceMax)}` : thb(p.price);
-    return `<span class="price ${cls}">${pre}<b>${range}</b> <i>${ui.thb}</i>${p.perUnit ? ` <small>${ui.perSpecialty}</small>` : ''}</span>`;
+    const range = p.priceMax ? `<span class="money range" data-thb="${p.price}" data-thb-max="${p.priceMax}"><b>${thb(p.price)}–${thb(p.priceMax)}</b> <i>${ui.thb}</i></span>` : money(p.price);
+    return `<span class="price ${cls}">${pre}${range}${p.perUnit ? ` <small>${ui.perSpecialty}</small>` : ''}</span>`;
   };
-  const money = n => typeof n === 'number' ? `<b>${thb(n)}</b> <i>${ui.thb}</i>` : esc(n);
   const dur = p => p.days ? `${p.days} ${p.days === 1 ? ui.day : ui.days}` : '';
   // Responsive <img>
   const img = (file, alt, extra = '', sizes = '(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 480px', eager = false) => {
@@ -141,13 +149,22 @@ function ctx(lang) {
   const heroImg = (file, alt) => img(file, alt, '', '100vw', true);
 
   // ---------- navigation model
+  const langMenu = key => languages.map(l => `<a href="${urlIn(l.code, key)}" hreflang="${l.code}" lang="${l.code}"${l.code === lang.code ? ' aria-current="true"' : ''}>${l.name}</a>`).join('');
+  const curMenu = () => currencies.map(c => `<a href="#" data-cur="${c.code}" role="menuitem"><span>${c.code}</span><small>${c.symbol}</small></a>`).join('');
+  const switchers = () => `<div class="switch"><details class="dd dd-lang"><summary aria-label="${ui.language}">${I.globe}<span class="lang-code">${lang.code.toUpperCase()}</span>${I.chev}</summary><div class="dd-menu" role="menu">${langMenu(curKey)}</div></details><details class="dd dd-cur"><summary aria-label="${ui.currency}"><span class="cur-code">${lang.currency}</span>${I.chev}</summary><div class="dd-menu" role="menu">${curMenu()}</div></details></div>`;
+  let curKey = 'home';
+  const langMenuMobile = key => `<details class="dd dd-lang"><summary>${I.globe}<span>${lang.name}</span>${I.chev}</summary><div class="dd-menu" role="menu">${langMenu(key)}</div></details>`;
   const navDiving = groups.map(g => ({ g, hub: { trips: 'dayTrips', rec: 'courses', pro: 'professional', tech: 'technical', marine: 'marine' }[g], items: products.filter(p => p.group === g || p.alsoIn === g) }));
   const bookUrl = (p) => url('book') + (p ? `?program=${encodeURIComponent(text(p).name)}` : '');
 
   // ---------- layout
   function layout({ key, title, desc, body, jsonld = [], ogImage, cls = '', bodyLang }) {
+    curKey = key;
     const canonical = abs(key);
-    const alternates = languages.length > 1 ? languages.map(l => `<link rel="alternate" hreflang="${l.code}" href="${site.domain}${urlIn(l.code, key).slice(BASE.length)}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${site.domain}${urlIn('en', key).slice(BASE.length)}">` : `<link rel="alternate" hreflang="en" href="${canonical}">\n<link rel="alternate" hreflang="x-default" href="${canonical}">`;
+    desc = trunc(desc, 158);
+    const altLangs = isBlogKey(key) ? languages.filter(l => l.code === 'en') : languages;
+    const alternates = altLangs.map(l => `<link rel="alternate" hreflang="${l.code}" href="${site.domain}${urlIn(l.code, key).slice(BASE.length)}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${site.domain}${urlIn('en', key).slice(BASE.length)}">`;
+    const fonts = 'family=Outfit:wght@300;500;600;700;800&family=Manrope:wght@400;500;600;700' + (lang.code === 'th' || bodyLang === 'th' ? '&family=Noto+Sans+Thai:wght@400;500;700' : '') + (lang.code === 'zh' ? '&family=Noto+Sans+SC:wght@400;500;700' : '') + (lang.code === 'ru' ? '&family=Manrope:wght@400;500;600;700' : '');
     const ld = [orgLd(), ...jsonld].map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n');
     const mega = `<div class="mega"><div class="wrap mega-grid">${navDiving.map(({ g, hub, items }) => `<div class="mega-col"><a class="mega-head" href="${url(hub)}">${ui.groups[g]}${I.arrow}</a>${items.map(p => `<a href="${url(p.slug)}"${p.slug === key ? ' aria-current="page"' : ''}>${g === 'tech' && p.slug === 'sidemount' ? text(p).navTech : text(p).nav}</a>`).join('')}</div>`).join('')}<a class="mega-all" href="${url('diving')}">${ui.nav.allDiving}${I.arrow}</a></div></div>`;
     const aboutSub = `<div class="navsub"><a href="${url('about')}">${ui.nav.about}</a><a href="${url('team')}">${ui.nav.team}</a><a href="${url('locations')}">${ui.nav.locations}</a><a href="${url('boats')}">${ui.nav.boats}</a></div>`;
@@ -169,11 +186,11 @@ ${alternates}
 <meta name="theme-color" content="#071e3d">
 <link rel="icon" href="${BASE}/img/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="${BASE}/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?${fonts}&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${BASE}/assets/site.css">
 ${ld}
 </head>
-<body class="${cls}" data-lang="${lang.code}">
+<body class="${cls}" data-lang="${lang.code}" data-cur="${lang.currency}">
 <a class="skip" href="#main">${ui.skip}</a>
 <header class="top" id="top">
   <div class="topbar"><div class="wrap"><span>${I.clock}${site.hours}</span><a href="tel:${site.phone.replace(/\s+/g, '')}">${I.phone}${site.phone}</a><a href="mailto:${site.email}">${I.mail}${site.email}</a><span class="topbar-social"><a href="${site.social.facebook}" target="_blank" rel="noopener" aria-label="Facebook">${I.fb}</a><a href="${site.social.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${I.ig}</a><a href="${site.social.youtube}" target="_blank" rel="noopener" aria-label="YouTube">${I.yt}</a><a href="${site.social.tiktok}" target="_blank" rel="noopener" aria-label="TikTok">${I.tt}</a></span></div></div>
@@ -187,6 +204,7 @@ ${ld}
       <li><a href="${url('contact')}"${key === 'contact' ? ' aria-current="page"' : ''}>${ui.nav.contact}</a></li>
     </ul>
     <div class="nav-cta">
+      ${switchers()}
       <a class="btn btn-primary" href="${url('book')}">${ui.bookNow}</a>
       <button class="burger" aria-label="${ui.menu}" aria-controls="mm" aria-expanded="false">${I.menu}</button>
     </div>
@@ -199,10 +217,12 @@ ${ld}
   <details><summary>${ui.nav.about}${I.chev}</summary><div class="mm-sub"><a href="${url('about')}">${ui.nav.about}</a><a href="${url('team')}">${ui.nav.team}</a><a href="${url('locations')}">${ui.nav.locations}</a><a href="${url('boats')}">${ui.nav.boats}</a></div></details>
   <a href="${url('blog')}">${ui.nav.blog}</a>
   <a href="${url('contact')}">${ui.nav.contact}</a>
+  <div class="mm-row"><div class="mm-field"><span class="mm-label">${ui.language}</span>${langMenuMobile(key)}</div><div class="mm-field"><span class="mm-label">${ui.currency}</span><details class="dd dd-cur"><summary><span class="cur-code">${lang.currency}</span>${I.chev}</summary><div class="dd-menu" role="menu">${curMenu()}</div></details></div></div>
   <div class="mm-actions"><a class="btn btn-primary" href="${url('book')}">${ui.bookNow}</a><a class="btn btn-ghost" href="tel:${site.phone.replace(/\s+/g, '')}">${I.phone}${site.phone}</a></div>
 </div>
 <main id="main">${body}</main>
 ${footer(key)}
+<script>window.RATES=${JSON.stringify(rates.rates)};window.CURS=${JSON.stringify(currencies.map(c => c.code))};window.LOC=${JSON.stringify(ui.numberLocale || 'en-US')};</script>
 <script src="${BASE}/assets/site.js" defer></script>
 </body>
 </html>`;
@@ -226,7 +246,8 @@ ${footer(key)}
       <li><b>Bangkok</b><a href="${site.partners.equipmentStore}" target="_blank" rel="noopener">${locations[0].address}</a></li>
       <li><b>Koh Chang</b><a href="${site.partners.kohChang}" target="_blank" rel="noopener">${locations[2].address}</a></li></ul></div>
   </div>
-  <div class="foot-bottom"><span>© ${new Date().getFullYear()} ${site.legalName} · ${site.name}</span><span>${ui.footPreview}</span></div>
+  <div class="foot-langs">${languages.map(l => `<a href="${urlIn(l.code, key)}" hreflang="${l.code}" lang="${l.code}"${l.code === lang.code ? ' aria-current="true"' : ''}>${l.name}</a>`).join('')}</div>
+  <div class="foot-bottom"><span>© ${new Date().getFullYear()} ${site.legalName} · ${site.name}</span><span class="rates-note">${ui.ratesNote.replace('{date}', rates.date.slice(5, 16))}</span><span>${ui.footPreview}</span></div>
 </div></footer>`;
   }
 
@@ -330,7 +351,7 @@ ${statsBar()}
 </div></section>
 <section class="split"><div class="wrap split-grid">
   <div class="split-img rv">${img('divers-togethr.jpg', 'Divers together on the boat', '', '(max-width: 900px) 100vw, 50vw')}</div>
-  <div class="split-text rv"><span class="eyebrow">${ui.nav.about}</span><h2>${H.whyTitle}</h2><p>${H.whyText}</p><p><em>${PG.about.motto1} ${PG.about.motto2}</em></p><a class="btn btn-dark" href="${url('about')}" aria-label="${H.whyTitle} – ${ui.readMore}">${ui.readMore}${I.arrow}</a></div>
+  <div class="split-text rv"><span class="eyebrow">${ui.nav.about}</span><h2>${H.whyTitle}</h2><p>${H.whyText}</p><p><em>${PG.about.motto1} ${PG.about.motto2}</em></p><a class="btn btn-dark" href="${url('about')}">${ui.aboutMore}${I.arrow}</a></div>
 </div></section>
 <section class="split alt"><div class="wrap split-grid">
   <div class="split-text rv"><span class="eyebrow">${ui.nav.boats}</span><h2>${H.boatsTitle}</h2><p>${H.boatsText}</p><a class="btn btn-dark" href="${url('boats')}">${PG.boats.names.grace} & ${PG.boats.names.princess}${I.arrow}</a></div>
@@ -342,7 +363,7 @@ ${statsBar()}
 </div></section>
 <section><div class="wrap">
   <div class="section-head rv"><div><h2>${H.blogTitle}</h2><p class="sub">${H.blogText}</p></div><a class="link" href="${url('blog')}">${PG.blog.seeAll}${I.arrow}</a></div>
-  <div class="grid grid-3">${latest.map((p, i) => postCard(p, i)).join('')}</div>
+  <div class="grid grid-3"${lang.code !== 'en' ? ' lang="en"' : ''}>${latest.map((p, i) => postCard(p, i)).join('')}</div>
 </div></section>
 <section class="soft" id="contact"><div class="wrap contact-grid">
   <div class="rv"><h2>${H.contactInfo}</h2>${contactCard()}<h3>${H.stayConnected}</h3><p>${H.stayConnectedText}</p><div class="socials dark-links"><a href="${site.social.facebook}" target="_blank" rel="noopener">${I.fb}Facebook</a><a href="${site.social.instagram}" target="_blank" rel="noopener">${I.ig}Instagram</a><a href="${site.social.youtube}" target="_blank" rel="noopener">${I.yt}YouTube</a><a href="${site.social.tiktok}" target="_blank" rel="noopener">${I.tt}TikTok</a></div><a class="btn btn-primary" href="${url('book')}">${H.contactNow}</a></div>
@@ -393,10 +414,10 @@ ${statsBar()}
     const crumbItems = [[ui.nav.diving, 'diving'], [ui.groups[p.group], hubKey], [t.name, p.slug]];
     const upgrades = p.upgrades ? `<div class="upgrades">${p.upgrades.map(([slug, pr, save, note], i) => {
       const label = slug ? `${t.name} + <a href="${url(slug)}">${text(P[slug]).name}</a>` : (t.upgradeLabels || [])[i] || t.name;
-      return `<div class="upg"><span>${label}</span><b>${thb(pr)} ${ui.thb}</b>${save ? `<em>${ui.save.replace('{n}', thb(save))}</em>` : ''}${note ? `<small>${note}</small>` : ''}</div>`;
+      return `<div class="upg"><span>${label}</span><b>${money(pr)}</b>${save ? `<em>${ui.save.replace('{n}', thb(save))}</em>` : ''}${note ? `<small>${note}</small>` : ''}</div>`;
     }).join('')}</div>` : '';
     const upgradesText = t.upgradesText ? `<div class="upgrades">${t.upgradesText.map(([a, b, c]) => `<div class="upg"><span>${a}</span>${b ? `<small>${b}</small>` : ''}<b>${c}</b></div>`).join('')}</div>` : '';
-    const options = t.options ? `<section class="pblock" id="options"><h2>${t.optionsTitle || ui.sections.options}</h2><div class="upgrades">${t.options.map(([a, pr]) => `<div class="upg"><span>${a}</span><b>${thb(pr)} ${ui.thb}</b></div>`).join('')}</div></section>` : '';
+    const options = t.options ? `<section class="pblock" id="options"><h2>${t.optionsTitle || ui.sections.options}</h2><div class="upgrades">${t.options.map(([a, pr]) => `<div class="upg"><span>${a}</span><b>${money(pr)}</b></div>`).join('')}</div></section>` : '';
     const prereq = t.prerequisites ? `<section class="pblock"><h2>${ui.sections.prerequisites}</h2><ul class="ticks">${t.prerequisites.map(x => `<li>${rich(x)}</li>`).join('')}</ul></section>` : t.prerequisitesRich ? `<section class="pblock"><h2>${ui.sections.prerequisites}</h2>${blocks(t.prerequisitesRich)}</section>` : '';
     const isTrip = p.type === 'trip';
     const main = `
@@ -428,7 +449,8 @@ ${statsBar()}
 
   function pricingPage() {
     const R = PG.pricing;
-    const rows = list => `<table class="pt"><tbody>${list.map(([l, v]) => `<tr><td>${l}</td><td>${money(v)}</td></tr>`).join('')}</tbody></table>`;
+    const lbl = l => (R.labels && R.labels[l]) || l;
+    const rows = list => `<table class="pt"><tbody>${list.map(([l, v]) => `<tr><td>${lbl(l)}</td><td>${money(v)}</td></tr>`).join('')}</tbody></table>`;
     const pg = (id, open, body, hub, n) => `<details class="pgroup rv" id="${id}"${open ? ' open' : ''}><summary><h2>${R.sections[id]}</h2><span class="pcount">${n} ${R.items}</span><span class="chev">${I.chev}</span></summary><div class="pbody-p">${body}${hub ? `<a class="link" href="${url(hub)}">${ui.groups[{ dayTrips: 'trips', courses: 'rec', professional: 'pro', technical: 'tech', marine: 'marine' }[hub]]}${I.arrow}</a>` : ''}</div></details>`;
     const body = pageHero({ imgFile: 'koh-sak-island-aerial.jpg', alt: 'Koh Sak island, Pattaya', crumbItems: [[R.h1, 'pricing']], h1: R.h1, kicker: R.kicker,
       extra: `<nav class="jump" aria-label="${ui.jump}">${Object.entries(R.sections).map(([k, v]) => `<a href="#${k}">${v}</a>`).join('')}</nav>` }) + `
@@ -545,7 +567,7 @@ ${faqBlock(B.faq, B.faqTitle)}`;
 
   // ---------- blog
   const catName = slug => (categories.find(c => c.slug === slug) || {}).name;
-  const fmtDate = d => new Date(d + 'T00:00:00Z').toLocaleDateString(lang.code === 'en' ? 'en-GB' : lang.code, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const fmtDate = d => new Date(d + 'T00:00:00Z').toLocaleDateString(ui.dateLocale || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   function postCard(post, i = 0) {
     return `<a class="post-card rv" href="${url('post:' + post.slug)}" style="--d:${i * .06}s"${post.lang ? ` lang="${post.lang}"` : ''}><span class="pimg${post.imageSmall ? ' contain' : ''}">${img(post.image, post.title)}</span><span class="pbody"><span class="pmeta"><time datetime="${post.date}">${fmtDate(post.date)}</time>${post.category ? `<span>${catName(post.category)}</span>` : ''}</span><strong>${post.title}</strong><span class="pdesc">${post.excerpt}</span><span class="more">${PG.blog.readMore}${I.arrow}</span></span></a>`;
   }
@@ -595,10 +617,12 @@ for (const lang of languages) {
   page('pricing', c.pricingPage());
   page('about', c.aboutPage()); page('team', c.teamPage()); page('locations', c.locationsPage()); page('boats', c.boatsPage());
   page('contact', c.contactPage()); page('book', c.bookPage()); page('terms', c.termsPage());
-  page('blog', c.blogIndex());
-  for (const cat of categories) if (posts.some(p => p.category === cat.slug)) page('cat:' + cat.slug, c.blogIndex(cat.slug));
-  for (const post of posts) page('post:' + post.slug, c.postPage(post));
-  if (lang.code === 'en') write('404.html', c.notFound());
+  if (lang.code === 'en') {
+    page('blog', c.blogIndex());
+    for (const cat of categories) if (posts.some(p => p.category === cat.slug)) page('cat:' + cat.slug, c.blogIndex(cat.slug));
+    for (const post of posts) page('post:' + post.slug, c.postPage(post));
+    write('404.html', c.notFound());
+  }
 }
 
 // assets
@@ -613,7 +637,7 @@ if (fs.existsSync(path.join(__dirname, '.cache', 'apple-touch-icon.png'))) fs.co
 // sitemap, robots, redirects, headers
 const enCtx = ctx(languages[0]);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${written.map(([u, key, code]) => {
-  const alts = languages.length > 1 ? languages.map(l => `<xhtml:link rel="alternate" hreflang="${l.code}" href="${site.domain}${enCtx.urlIn(l.code, key).slice(BASE.length)}"/>`).join('') : '';
+  const alts = (isBlogKey(key) ? [] : languages).map(l => `<xhtml:link rel="alternate" hreflang="${l.code}" href="${site.domain}${enCtx.urlIn(l.code, key).slice(BASE.length)}"/>`).join('');
   const post = key.startsWith('post:') && posts.find(p => p.slug === key.slice(5));
   return `<url><loc>${site.domain}${u.slice(BASE.length)}</loc>${post ? `<lastmod>${post.date}</lastmod>` : ''}${alts}</url>`;
 }).join('\n')}\n</urlset>\n`;

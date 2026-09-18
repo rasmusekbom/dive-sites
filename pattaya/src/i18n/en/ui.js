@@ -1,6 +1,6 @@
 // UI strings (navigation, buttons, labels). Keep short; page copy lives in pages.js, products in products.js.
 module.exports = {
-  htmlLang: 'en',
+  htmlLang: 'en', numberLocale: 'en-US', dateLocale: 'en-GB',
   slugs: {
     diving: 'diving', dayTrips: 'day-trips', courses: 'courses', professional: 'professional', technical: 'technical', marine: 'marine-education',
     pricing: 'pricing', about: 'about', team: 'about/team', locations: 'about/locations', boats: 'about/boats',
@@ -10,7 +10,8 @@ module.exports = {
     diving: 'Diving', dayTrips: 'Day Trips', courses: 'Recreational Courses', professional: 'Professional Training', technical: 'Technical Training', marine: 'Marine Education and Conservation',
     pricing: 'Pricing', about: 'About Us', team: 'Team', locations: 'Our Locations', boats: 'Our Boats', blog: 'Blog', contact: 'Contact Us', book: 'Book now', terms: 'Terms and Conditions', allDiving: 'All diving options & prices',
   },
-  skip: 'Skip to content', menu: 'Menu', close: 'Close', language: 'Language',
+  skip: 'Skip to content', menu: 'Menu', close: 'Close', language: 'Language', currency: 'Currency', aboutMore: 'About Thai Ocean Academy',
+  ratesNote: 'Prices in THB; other currencies are approximate (rates {date}).',
   bookNow: 'Book now', bookNowBang: 'Book now!', readMore: 'Read More', enquire: 'Enquire', callUs: 'Call us', emailUs: 'Email us',
   from: 'from', perSpecialty: 'per specialty', thb: 'THB', day: 'day', days: 'days', dives: 'dives', dive: 'dive', depth: 'to {n} m', maxDepth: 'Max depth', duration: 'Duration', price: 'Price', priceRange: 'Price range',
   level: { none: 'No experience needed', certified: 'Certified divers', pro: 'Dive professionals', tech: 'Technical divers' },

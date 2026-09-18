@@ -50,6 +50,7 @@ maps every original image URL to its local file in `src/img/`.
 
 ## Still to do
 
-- Translations (TH, RU, ZH, DE…) – the build is i18n-ready (`src/i18n/<lang>.js` deep-merges over English).
+- Translations: DE, FR, SV, TH, RU, ZH are done for every page except the blog (English only; other languages link to it). Have a native speaker proofread – the tone is the client's (jokes included). `src/i18n/<lang>.js` deep-merges over English, so a missing key falls back to English.
+- Currency switcher converts THB prices client-side with rates in `src/rates.json` (THB base, open.er-api.com). The rates file is refreshed at build time when older than 7 days; the GitHub Actions workflow has a weekly cron rebuild for that.
 - Form backend on the production host (Netlify Forms works out of the box; Cloudflare Pages needs a function).
 - Client-supplied: Google Business review link, boat charter details (menu item only on the original), Samaesan location.

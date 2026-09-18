@@ -10,11 +10,14 @@
   --radius: 18px; --radius-s: 10px;
   --shadow: 0 10px 30px -12px rgba(7, 30, 61, .25); --shadow-lg: 0 30px 60px -20px rgba(7, 30, 61, .35);
   --wrap: 1200px; --gutter: clamp(16px, 4vw, 40px);
-  --font-h: 'Outfit', 'Noto Sans Thai', system-ui, sans-serif; --font-b: 'Manrope', 'Noto Sans Thai', system-ui, sans-serif;
+  --font-h: 'Outfit', 'Noto Sans Thai', 'Noto Sans SC', system-ui, sans-serif; --font-b: 'Manrope', 'Noto Sans Thai', 'Noto Sans SC', system-ui, sans-serif;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html[lang="th"] body { line-height: 1.8; }
+html[lang="th"] h1, html[lang="th"] h2, html[lang="th"] h3 { line-height: 1.3; letter-spacing: 0; }
+html[lang="zh"] h1, html[lang="zh"] h2 { letter-spacing: 0; }
 body { margin: 0; font-family: var(--font-b); font-size: 17px; line-height: 1.65; color: var(--ink); background: var(--bg); overflow-x: hidden; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--sky); text-decoration: none; }
@@ -132,6 +135,37 @@ section.dark .section-head .sub { color: #9fc3e0; }
 .mm-actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; position: sticky; bottom: 0; padding: 18px 0 0; background: linear-gradient(180deg, rgba(7, 30, 61, 0), var(--navy) 30%); }
 .mobile-menu { padding-bottom: 24px; }
 body.menu-open { overflow: hidden; }
+
+/* ---------- language / currency dropdowns (one segmented pill in the header) */
+.switch { display: inline-flex; align-items: stretch; height: 40px; border: 1px solid rgba(255, 255, 255, .22); border-radius: 999px; background: rgba(255, 255, 255, .06); overflow: visible; }
+.switch .dd + .dd { border-left: 1px solid rgba(255, 255, 255, .18); }
+.switch .dd:first-child summary { border-radius: 999px 0 0 999px; padding-left: 14px; }
+.switch .dd:last-child summary { border-radius: 0 999px 999px 0; padding-right: 12px; }
+.dd { position: relative; }
+.dd summary { list-style: none; display: inline-flex; align-items: center; gap: 7px; height: 100%; padding: 0 10px 0 12px; color: #dbe9f6; font-family: var(--font-h); font-weight: 600; font-size: 13px; letter-spacing: .04em; cursor: pointer; user-select: none; transition: background .15s, color .15s; }
+.dd summary::-webkit-details-marker { display: none; }
+.dd summary:hover, .dd[open] summary { background: rgba(255, 255, 255, .12); color: #fff; }
+.dd summary > svg:first-child { width: 15px; height: 15px; opacity: .85; }
+.dd summary > svg:last-child { width: 12px; height: 12px; opacity: .6; transition: transform .25s; }
+.dd[open] summary > svg:last-child { transform: rotate(180deg); }
+.dd-menu { position: absolute; right: 0; top: calc(100% + 10px); min-width: 180px; background: #fff; color: var(--ink); border-radius: 14px; box-shadow: var(--shadow-lg); padding: 8px; display: flex; flex-direction: column; z-index: 70; }
+.dd-menu a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 8px; color: var(--navy); font-weight: 600; font-size: 14px; }
+.dd-menu a:hover { background: var(--soft); text-decoration: none; }
+.dd-menu a[aria-current], .dd-menu a.active { background: var(--soft-2); }
+.dd-menu a small { color: var(--muted); }
+.dd-cur .dd-menu { max-height: 360px; overflow: auto; }
+.money small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); }
+.price.big .money small { font-size: 13px; }
+.pt td .money small { display: inline; margin-left: 6px; }
+.mm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.mm-field { display: grid; gap: 6px; }
+.mm-label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--sky-2); font-family: var(--font-h); font-weight: 600; }
+.mm-field .dd summary { width: 100%; height: 46px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, .22); background: rgba(255, 255, 255, .08); font-size: 15px; padding: 0 14px; }
+.mm-field .dd summary > svg:last-child { margin-left: auto; }
+.mm-field .dd-menu { left: 0; right: auto; min-width: 100%; max-height: min(44vh, 360px); overflow: auto; }
+.foot-langs { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 36px; font-size: 14px; }
+.foot-langs a[aria-current] { color: #fff; font-weight: 700; }
+@media (max-width: 1080px) { .nav-cta > .switch { display: none; } }
 
 /* ---------- hero (home) */
 .hero { position: relative; min-height: min(88vh, 860px); display: flex; flex-direction: column; justify-content: flex-end; color: #fff; padding-top: 120px; background: var(--navy); isolation: isolate; }
