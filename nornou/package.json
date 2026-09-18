@@ -1,0 +1,14 @@
+{
+  "name": "nornou-speedboat-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static multilingual site for Nornou (N. Kai Bae Hut) Speedboat, Koh Chang (nornouspeedboat.com)",
+  "scripts": {
+    "build": "node build-images.js && node build.js",
+    "check": "node check.js",
+    "serve": "node ../serve.js nornou 8767"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}

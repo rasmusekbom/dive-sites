@@ -1,12 +1,13 @@
 # dive-sites
 
-Rebuilt websites for dive centres, one folder per project. Each project is a dependency-free static
+Rebuilt websites for dive centres and boat operators, one folder per project. Each project is a dependency-free static
 site generator (Node) with its own `src/` (content, i18n, images) and `build.js` → `dist/`.
 
 | Project | Client | Demo |
 |---|---|---|
 | [`kohkood/`](kohkood/) | Koh Kood Divers, Thailand | https://rasmusekbom.github.io/dive-sites/kohkood/ |
 | [`pattaya/`](pattaya/) | Thai Ocean Academy Pattaya (pattaya-dive.com), Thailand | https://rasmusekbom.github.io/dive-sites/pattaya/ |
+| [`nornou/`](nornou/) | Nornou / N. Kai Bae Hut Speedboat (nornouspeedboat.com), Koh Chang, Thailand – transfers, snorkelling, charter | https://rasmusekbom.github.io/dive-sites/nornou/ |
 
 ## Working on a project
 
