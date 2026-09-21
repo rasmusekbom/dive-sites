@@ -8,6 +8,7 @@ site generator (Node) with its own `src/` (content, i18n, images) and `build.js`
 | [`kohkood/`](kohkood/) | Koh Kood Divers, Thailand | https://rasmusekbom.github.io/dive-sites/kohkood/ |
 | [`pattaya/`](pattaya/) | Thai Ocean Academy Pattaya (pattaya-dive.com), Thailand | https://rasmusekbom.github.io/dive-sites/pattaya/ |
 | [`nornou/`](nornou/) | Nornou / N. Kai Bae Hut Speedboat (nornouspeedboat.com), Koh Chang, Thailand – transfers, snorkelling, charter | https://rasmusekbom.github.io/dive-sites/nornou/ |
+| [`maximum/`](maximum/) | Maximum Freediving Siargao (no website – Instagram/Facebook only), General Luna, Philippines – freediving courses, fun dives, underwater shoots | https://rasmusekbom.github.io/dive-sites/maximum/ |
 
 ## Working on a project
 

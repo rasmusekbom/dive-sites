@@ -1,0 +1,14 @@
+{
+  "name": "maximum-freediving-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static multilingual site for Maximum Freediving Siargao (General Luna, Siargao) – freediving courses, fun dives, underwater shoots",
+  "scripts": {
+    "build": "node build-images.js && node build.js",
+    "check": "node check.js",
+    "serve": "node ../serve.js maximum 8768"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}
