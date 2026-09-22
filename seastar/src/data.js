@@ -36,8 +36,9 @@ const languages = [
   { code: 'en', path: 'en', name: 'English', htmlLang: 'en' },
 ];
 
-// Home page counters: [number, suffix, i18n key]
-const stats = [[5, '★', 'padi'], [10, '', 'instructors'], [4, '', 'languages'], [365, '', 'gas']];
+// Home page counters: [number, suffix, i18n key] – all four are straight off the PADI listing:
+// 5 Star IDC, 10 instructors, 4 languages, and 5 gases (air, nitrox, trimix, mixed, sorb).
+const stats = [[5, '★', 'padi'], [10, '', 'instructors'], [4, '', 'languages'], [5, '', 'gas']];
 
 // ---------------------------------------------------------------- COURSES
 // group: 'start' | 'con' | 'pro' | 'tec' | 'spec'

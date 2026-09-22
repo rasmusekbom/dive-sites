@@ -49,6 +49,34 @@ Once the client supplies a price list, set `price` in `src/data.js` and the cour
 | **Opening hours over the winter** | the PADI hours (Mon–Fri 10–18, Sat 11–15) may be summer hours |
 | **Danish and Norwegian** | PADI says staff speak both. Mentioned on the About page; not built as separate locales |
 
+## Written by me, not by them
+The client should read this before the site goes anywhere near production. Roughly:
+
+- **Their own words** (from the PADI listing / Instagram bio): the tagline "Hos oss blir du en stjärna i
+  vattnet, en SeaStar helt enkelt", the vision sentence, "Vi utbildar inom såväl sportdykning som teknisk
+  dykning", and the shorty/torrdräkt line on the About page. Plus every hard fact: address, phone, email,
+  hours, 10 instructors, languages, the rental/service/gas/facility/payment lists, and the 4 photos.
+- **PADI course standards** (identical worldwide, safe to state): prerequisites, minimum ages, depth limits,
+  course structure, what you learn, what is included.
+- **Everything else is copy I wrote in their voice.** The hero headline, all section text, the "Varför
+  Seastar" points, the FAQ answers, and the Utfärder/Klubb/Resor page bodies. It is written to be
+  defensible, but it is a proposal for how they could sound — not a quote.
+
+Specific inferences to confirm before publishing:
+| Claim on the site | What it is actually based on |
+|---|---|
+| "Vi har egen dykbåt och kör utfärder i Stockholms skärgård och Östersjön under säsong" | PADI lists "Dive boat" as a facility. The archipelago trips are an inference |
+| The dive club and dive travel sections | PADI lists "Dive club" and "Travel" as services. All the wording around them is mine |
+| "Kurserna går året runt" | inference |
+| "Alla kurser kan gå på engelska" | PADI lists English, Danish, Norwegian and Swedish. That every course runs in English is an inference |
+| "Vi fyller ... under butikens öppettider" and the FAQ answers about filling for non-members and servicing kit bought elsewhere | normal practice for a dive centre, but not stated anywhere by them |
+| The five TecRec courses (Tec 40/45/50/Trimix/CCR) | PADI lists "PADI TecRec" and "Rebreather/CCR" generically |
+| Baltic wooden wrecks / shipworm passage on the Utfärder page | general fact about the Baltic, not about them |
+
+**Corrected 2026-09-22:** the home page counter originally read "365 dagar om året med gas", which I had
+invented and which contradicts their own opening hours (closed Sundays). It now reads "5 gaser vi blandar",
+which is the count from PADI's own service list.
+
 ## What the new site does
 - **Swedish at the root, English under `/en/`**, 19 pages each = 38 pages plus a 404.
 - Courses hub grouped by Börja dyka / Fortsätt / Bli proffs / Specialkurser, with 8 course pages

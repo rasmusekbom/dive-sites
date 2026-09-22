@@ -67,7 +67,7 @@ module.exports = {
       heroLead: 'Vi lär dig dyka i vattnet som faktiskt finns utanför dörren – och tar dig sedan hela vägen till instruktör om du vill. Kurser, teknisk dykning, service, gas och utrustning under ett tak i Skrubba.',
       heroCtaPrimary: 'Hitta din kurs',
       heroCtaSecondary: 'Prova på först',
-      statLabels: { padi: 'PADI-center', instructors: 'Instruktörer', languages: 'Språk i klassrummet', gas: 'Dagar om året med gas' },
+      statLabels: { padi: 'PADI-center', instructors: 'Instruktörer', languages: 'Språk i klassrummet', gas: 'Gaser vi blandar' },
 
       pathsTitle: 'Var är du just nu?',
       pathsSub: 'Tre vägar in. Alla slutar i samma vatten.',

@@ -66,7 +66,7 @@ module.exports = {
       heroLead: 'We teach you to dive in the water that is actually outside your door – and take you all the way to instructor if you want. Courses, technical diving, servicing, gas and equipment under one roof in Skrubba.',
       heroCtaPrimary: 'Find your course',
       heroCtaSecondary: 'Try it first',
-      statLabels: { padi: 'PADI centre', instructors: 'Instructors', languages: 'Languages taught', gas: 'Days a year with gas' },
+      statLabels: { padi: 'PADI centre', instructors: 'Instructors', languages: 'Languages taught', gas: 'Gases we blend' },
 
       pathsTitle: 'Where are you right now?',
       pathsSub: 'Three ways in. They all end up in the same water.',
