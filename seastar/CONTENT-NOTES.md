@@ -11,8 +11,11 @@ sources and PADI course standards. Nothing has been confirmed with the client.
 > PADIs Tec kurser / PADIs Instruktörskurser. Kontakta oss på info@seastardiving.se"
 
 Findings worth putting in the pitch:
-- The images behind that page were uploaded in **December 2025** (`/wp-content/uploads/2025/12/`), so the
-  "we are updating the pages" notice has been up for roughly nine months.
+- The header image on that page is `/wp-content/uploads/**2023/06**/cropped-PA110004_exposure-scaled-1.jpg`.
+  The only 2025 uploads are the logo and favicons (`/uploads/2025/12/cropped-seastar_round_white.png`,
+  `cropped-orange-*.png`). So the placeholder most likely dates from **2023**, and December 2025 is just when
+  somebody changed the logo. Do not claim a precise duration — say "under lång tid" and let them fill it in.
+  (An earlier version of this file said "roughly nine months", based on the 2025 uploads alone. That was wrong.)
 - The page carries `<meta name='robots' content='noindex, nofollow'>` — WordPress's "Discourage search
   engines" box is ticked. **They are invisible on Google on purpose, by accident.**
 - `window._wca` is present, i.e. WooCommerce is installed. There is a shop behind the placeholder that
