@@ -1,0 +1,38 @@
+{
+ "diver-green-water-light.jpg": {
+  "mtime": 1790083197156,
+  "width": 480,
+  "height": 360,
+  "widths": [
+   480
+  ],
+  "fallback": 480
+ },
+ "tech-divers-lake-shore.jpg": {
+  "mtime": 1790083197078,
+  "width": 480,
+  "height": 640,
+  "widths": [
+   480
+  ],
+  "fallback": 480
+ },
+ "two-divers-autumn-shore.jpg": {
+  "mtime": 1790083197106,
+  "width": 480,
+  "height": 360,
+  "widths": [
+   480
+  ],
+  "fallback": 480
+ },
+ "under-the-ice-shallows.jpg": {
+  "mtime": 1790083197131,
+  "width": 480,
+  "height": 360,
+  "widths": [
+   480
+  ],
+  "fallback": 480
+ }
+}

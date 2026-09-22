@@ -4,6 +4,7 @@
     { "name": "kohkood", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "kohkood"], "port": 8765 },
     { "name": "pattaya", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "pattaya", "8766"], "port": 8766 },
     { "name": "nornou", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "nornou", "8767"], "port": 8767 },
-    { "name": "maximum", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "maximum", "8768"], "port": 8768 }
+    { "name": "maximum", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "maximum", "8768"], "port": 8768 },
+    { "name": "seastar", "runtimeExecutable": "node", "runtimeArgs": ["serve.js", "seastar", "8769"], "port": 8769 }
   ]
 }

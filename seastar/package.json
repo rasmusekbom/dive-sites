@@ -1,0 +1,14 @@
+{
+  "name": "seastar-diving-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static bilingual site for Seastar Diving, Stockholm – PADI courses, technical diving, servicing, gas and rental",
+  "scripts": {
+    "build": "node build-images.js && node build.js",
+    "check": "node check.js",
+    "serve": "node ../serve.js seastar 8769"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}
