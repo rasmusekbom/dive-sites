@@ -103,12 +103,26 @@ function ctx(lang) {
     const srcset = m.widths.map(w => `${BASE}/img/${name}-${w}.webp ${w}w`).join(', ');
     return `<img src="${BASE}/img/${name}-${m.fallback}.jpg" srcset="${srcset}" sizes="${sizes}" width="${m.width}" height="${m.height}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"'} ${extra}>`;
   };
+  // Art-directed hero: the wreck is a wide establishing shot and dies in a tall crop, so narrow screens get
+  // a portrait frame instead. Both are placeholders – see CONTENT-NOTES.md.
+  const srcsetOf = file => {
+    const m = IMG[file], name = file.replace(/\.[^.]+$/, '');
+    return m ? m.widths.map(w => `${BASE}/img/${name}-${w}.webp ${w}w`).join(', ') : '';
+  };
+  const heroPicture = (wide, tall) => `<picture>
+    <source media="(max-width: 940px)" srcset="${srcsetOf(tall)}" sizes="100vw">
+    <source srcset="${srcsetOf(wide)}" sizes="100vw">
+    ${img(wide, alt(wide), '', '100vw', true)}
+  </picture>`;
   // Photo credit/alt text – the four photos come from the centre's own PADI listing (see CONTENT-NOTES.md)
   const ALT = {
     'diver-green-water-light.jpg': { sv: 'Dykare i sidemount med lampa i grönt östersjövatten', en: 'Diver in sidemount with a torch in green Baltic water' },
     'tech-divers-lake-shore.jpg': { sv: 'Två tekniska dykare med dubbelpaket vid strandkanten', en: 'Two technical divers with twinsets at the water’s edge' },
     'two-divers-autumn-shore.jpg': { sv: 'Två dykare i torrdräkt på en klippa en höstdag', en: 'Two divers in dry suits on a rock on an autumn day' },
     'under-the-ice-shallows.jpg': { sv: 'Grunt vatten sett underifrån, med stenar och grenar', en: 'Shallow water seen from below, with stones and branches' },
+    // Placeholder photo (Pexels, Harvey Clements) – swap for one of their own wreck shots. See CONTENT-NOTES.md.
+    'hero-wreck-divers.jpg': { sv: 'Två dykare vid ett vrak på mörk botten', en: 'Two divers at a wreck on a dark seabed' },
+    'hero-diver-descending.jpg': { sv: 'Dykare på väg ner i djupt blått vatten', en: 'A diver descending into deep blue water' },
   };
   const alt = f => (ALT[f] || {})[lang.code] || '';
 
@@ -303,7 +317,9 @@ ${footer()}
     page('home', {
       title: H.title, desc: H.desc, ogImage: 'diver-green-water-light.jpg',
       body: `
-<section class="hero"><div class="wrap"><div class="hero-grid">
+<section class="hero">
+  <div class="hero-bg">${heroPicture('hero-wreck-divers.jpg', 'hero-diver-descending.jpg')}</div>
+  <div class="wrap"><div class="hero-grid">
   <div>
     <span class="kicker">${esc(H.heroKicker)}</span>
     <h1>${esc(H.heroTitle)}</h1>

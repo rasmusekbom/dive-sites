@@ -41,7 +41,7 @@ Once the client supplies a price list, set `price` in `src/data.js` and the cour
 | **Prices** for every course, gas fill, rental item and service job | missing entirely — the biggest gap |
 | **Course dates / schedule** | missing; the site currently says "ring så får du aktuella datum" |
 | **Company name and org.nr** for the footer | no company found in allabolag under "Seastar Diving" — `site.legalName` is a placeholder |
-| **Full-resolution photos** | the 4 photos in `src/img/` are 480 px wide (PADI's thumbnails are the only public copies). The hero is capped at 460 px so nothing is upscaled, but real photos would change the whole page. Ask for wreck shots, classroom, the boat and the workshop |
+| **Full-resolution photos** | their own 4 photos in `src/img/` are 480 px wide (PADI's thumbnails are the only public copies), so they are used at card size only. **The two hero photos are licensed stock placeholders and must be replaced** — see below. Ask for wreck shots, classroom, the boat and the workshop |
 | **The dive boat** | PADI lists "Dive boat" under facilities. Name, size, capacity and where it moors are all unknown — the Utfärder page is deliberately vague |
 | **Dive club** | listed by PADI as a service. Membership, cost and what members get are unknown |
 | **Dive travel** | listed by PADI. Destinations and whether they are the organiser or an agent are unknown |
@@ -79,6 +79,22 @@ Specific inferences to confirm before publishing:
 **Corrected 2026-09-22:** the home page counter originally read "365 dagar om året med gas", which I had
 invented and which contradicts their own opening hours (closed Sundays). It now reads "5 gaser vi blandar",
 which is the count from PADI's own service list.
+
+## Stock photos in the hero — replace before production
+Their own photos are 480 px wide and cannot carry a full-bleed hero, so the hero uses two placeholders under
+the [Pexels License](https://www.pexels.com/license/) (free for commercial use, no attribution required,
+may not be resold unaltered or used to imply endorsement):
+
+| File | Used for | Source |
+|---|---|---|
+| `src/img/hero-wreck-divers.jpg` | wide screens (> 940 px) | "Scuba Divers Swimming near Shipwreck" by Harvey Clements, [pexels.com/photo/15763623](https://www.pexels.com/photo/15763623/) |
+| `src/img/hero-diver-descending.jpg` | narrow screens (≤ 940 px) | "Faceless diver in equipment exploring blue ocean water" by Pia B, [pexels.com/photo/3113241](https://www.pexels.com/photo/3113241/) |
+
+Both were picked to avoid anything that would be a lie for a Stockholm dive school — no coral, no tropical
+fish, no bare legs; divers in full suits, dark water, a wreck. They are still not Seastar's own dives, and
+a customer who knows the Baltic will notice the water is too clear. **Swap them for their own wreck photos
+as soon as they send any.** The hero is art-directed with `<picture>`: the wide frame dies in a tall crop,
+so narrow screens get the portrait one instead.
 
 ## What the new site does
 - **Swedish at the root, English under `/en/`**, 19 pages each = 38 pages plus a 404.
