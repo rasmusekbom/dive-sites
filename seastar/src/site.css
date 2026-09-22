@@ -108,9 +108,13 @@ section.dark .link { color: var(--glow); }
 @media (max-width: 1040px) {
   .nav-links { display: none; }
   .burger { display: inline-flex; }
-  .nav-cta .btn { display: none; }
+  /* the burger is the only control in the bar, hard right – language lives inside the menu.
+     .nav-links carried the auto margin, so .nav-cta has to take it over once the links are gone. */
+  .nav-cta { margin-left: auto; }
+  .nav-cta .btn, .nav-cta .lang { display: none; }
 }
-.mobile-menu { position: fixed; inset: 0; background: var(--deep); z-index: 150; overflow-y: auto; padding: 18px var(--gutter) 40px; color: #fff; }
+.mobile-menu { position: fixed; inset: 0; background: var(--deep); z-index: 150; overflow-y: auto; padding: 18px var(--gutter) 0; color: #fff; display: flex; flex-direction: column; }
+.mobile-menu[hidden] { display: none; }   /* an author `display` beats the UA rule for [hidden] */
 .mm-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-weight: 700; }
 .mm-head .close { background: none; border: 0; color: #fff; font-size: 30px; line-height: 1; cursor: pointer; }
 .mobile-menu > a, .mobile-menu summary { display: flex; justify-content: space-between; align-items: center; padding: 14px 2px; border-bottom: 1px solid rgba(255, 255, 255, .12); color: #fff; font-size: 17px; font-weight: 500; cursor: pointer; }
@@ -119,8 +123,11 @@ section.dark .link { color: var(--glow); }
 .mobile-menu details[open] summary svg { transform: rotate(180deg); }
 .mm-sub { padding: 6px 0 12px 12px; display: flex; flex-direction: column; gap: 2px; }
 .mm-sub a { padding: 9px 0; color: #b9d3db; }
-.mm-actions { margin-top: 22px; display: grid; gap: 10px; }
 .mm-lang { margin-top: 20px; display: flex; gap: 8px; align-items: center; color: #9dc1cc; font-size: 14px; }
+/* Book + phone stay pinned to the bottom of the sheet, and stay put while the menu scrolls. */
+.mm-actions { margin-top: auto; position: sticky; bottom: 0; display: grid; gap: 10px;
+  padding: 16px 0 calc(16px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(180deg, rgba(7, 35, 48, 0), var(--deep) 22%); }
 
 /* ---------- hero */
 .hero { position: relative; background: radial-gradient(120% 90% at 78% 8%, #12576a 0%, #08303f 42%, var(--abyss) 100%); color: #fff; overflow: hidden; }
