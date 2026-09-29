@@ -17,6 +17,10 @@ const rates = JSON.parse(fs.readFileSync(RATES_FILE, 'utf8'));
 const OUT = process.env.DIST ? path.resolve(process.env.DIST) : path.join(__dirname, 'dist');
 const BASE = (process.env.BASE || '').replace(/\/$/, ''); // '' in production, e.g. '/dive-sites/kohkood' on GitHub Pages
 const DEMO = !!process.env.DEMO;
+// A demo is served from GitHub Pages under BASE: point every absolute URL there (canonical, og:url/og:image,
+// hreflang, sitemap, JSON-LD). Share sheets and chat apps use them as the link, and would otherwise send people to
+// the client's current site.
+if (DEMO) site.domain = (process.env.DEMO_ORIGIN || 'https://rasmusekbom.github.io') + BASE;
 const P = Object.fromEntries(products.map(p => [p.slug, p]));
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const thb = n => n.toLocaleString('en-US');
@@ -98,7 +102,7 @@ function ctx(lang) {
   // ---------- layout
   function layout({ key, title, desc, body, jsonld = [], ogImage }) {
     const canonical = abs(key);
-    const alternates = languages.map(l => `<link rel="alternate" hreflang="${l.code}" href="${site.domain}${urlIn(l.code, key)}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${site.domain}${urlIn('en', key)}">`;
+    const alternates = languages.map(l => `<link rel="alternate" hreflang="${l.code}" href="${site.domain}${urlIn(l.code, key).slice(BASE.length)}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${site.domain}${urlIn('en', key).slice(BASE.length)}">`;
     const ld = [localBusinessLd(), ...jsonld].map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n');
     const langMenu = languages.map(l => `<a href="${urlIn(l.code, key)}" hreflang="${l.code}" lang="${l.code}"${l.code === lang.code ? ' aria-current="true"' : ''}>${l.name}</a>`).join('');
     const curSel = `<details class="dd dd-cur"><summary aria-label="${ui.currency}"><span class="cur-code">${lang.currency}</span></summary><div class="dd-menu">${currencies.map(c => `<a href="#" data-cur="${c.code}"><span>${c.code}</span><small>${c.symbol}</small></a>`).join('')}</div></details>`;
@@ -480,7 +484,7 @@ for (const lang of languages) {
 }
 
 const today = new Date().toISOString().slice(0, 10);
-const alts = (key) => languages.map(l => `<xhtml:link rel="alternate" hreflang="${l.code}" href="${site.domain}${ctx(l).url(key)}"/>`).join('');
+const alts = (key) => languages.map(l => `<xhtml:link rel="alternate" hreflang="${l.code}" href="${site.domain}${ctx(l).url(key).slice(BASE.length)}"/>`).join('');
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${written.map(([u, key]) => `  <url><loc>${site.domain}${u.slice(BASE.length)}</loc><lastmod>${today}</lastmod><priority>${u === '/' ? '1.0' : key.startsWith('terms') ? '0.3' : '0.8'}</priority>${alts(key)}</url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', DEMO ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\nSitemap: ${site.domain}/sitemap.xml\n`);
 write('_redirects', [...redirects, ...extraRedirects].map(([a, b]) => `${a}  ${b}  301`).join('\n') + '\n');
