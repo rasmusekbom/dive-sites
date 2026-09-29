@@ -10,6 +10,7 @@ site generator (Node) with its own `src/` (content, i18n, images) and `build.js`
 | [`nornou/`](nornou/) | Nornou / N. Kai Bae Hut Speedboat (nornouspeedboat.com), Koh Chang, Thailand – transfers, snorkelling, charter | https://rasmusekbom.github.io/dive-sites/nornou/ |
 | [`maximum/`](maximum/) | Maximum Freediving Siargao (no website – Instagram/Facebook only), General Luna, Philippines – freediving courses, fun dives, underwater shoots | https://rasmusekbom.github.io/dive-sites/maximum/ |
 | [`seastar/`](seastar/) | Seastar Diving (seastardiving.se is a single "we are updating the pages" placeholder), Skrubba, Stockholm – PADI courses, technical diving, servicing, gas, rental | https://rasmusekbom.github.io/dive-sites/seastar/ |
+| [`magwill/`](magwill/) | Magwill AB (magwill.se), Göteborg – Microsoft Office training on site at companies across Sweden, Office/VBA consulting. Not a dive business, own design | https://rasmusekbom.github.io/dive-sites/magwill/ |
 
 ## Working on a project
 
