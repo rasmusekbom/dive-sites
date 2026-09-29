@@ -5,7 +5,8 @@
 // Screenshots come from src/screens/ (node shoot.js). A case with no screenshot pair for a view simply drops that view.
 const fs = require('fs');
 const path = require('path');
-const { site, plans, terms, steps, features, cases, faq } = require('./src/data.js');
+const { site, plans, terms, steps, features, faq } = require('./src/data.js');
+const cases = require('./src/data.js').cases.filter(c => !c.hidden);
 
 const OUT = process.env.DIST ? path.resolve(process.env.DIST) : path.join(__dirname, 'dist');
 const BASE = (process.env.BASE || '').replace(/\/$/, '');
@@ -59,7 +60,7 @@ function slider(c, { eager = false } = {}) {
   if (!v.length) {
     // No pair at all: show the after-shot alone if we have it, so the case still reads.
     const a = ['desktop', 'mobile'].find(x => has(shot(c.key, 'after', x)));
-    return a ? `<figure class="ba ba-solo"><div class="frame frame-${a}"><img src="${BASE}/screens/${shot(c.key, 'after', a)}" width="${DIMS[a][0]}" height="${DIMS[a][1]}" alt="${esc(c.name)}: den nya sajten" loading="lazy"></div></figure>` : '';
+    return a ? `<figure class="ba ba-solo">${a === 'desktop' ? '<div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>' : ''}<div class="frame frame-${a}"><img src="${BASE}/screens/${shot(c.key, 'after', a)}" width="${DIMS[a][0]}" height="${DIMS[a][1]}" alt="${esc(c.name)}: den nya sajten" loading="lazy"></div><figcaption>${esc(c.before.label)}</figcaption></figure>` : '';
   }
   const pane = (view, i) => {
     const [w, h] = DIMS[view];
@@ -92,7 +93,7 @@ function caseBlock(c, i, media = slider(c)) {
 }
 
 // ---------------------------------------------------------------- PAGE
-const hero = cases.find(c => views(c).length) || cases[0];
+const hero = cases.find(c => views(c).length === 2) || cases.find(c => views(c).length) || cases[0];
 const rest = cases.filter(c => c !== hero);
 const NAV = [['Exempel', '#exempel'], ['Så går det till', '#sa-gar-det-till'], ['Priser', '#priser'], ['Frågor', '#fragor']];
 const title = `${site.tagline}${site.name ? ' | ' + site.name : ''}: gratis utkast först`;
@@ -149,7 +150,7 @@ ${[faqLd, orgLd].filter(Boolean).map(o => `<script type="application/ld+json">${
 </div></section>
 
 <section class="band" id="exempel"><div class="wrap">
-  <div class="head"><p class="eyebrow">Före och efter</p><h2>Sex sajter vi har byggt om</h2><p class="lead">Dykcenter, båtbolag, en fridykningsskola och en utbildningsfirma. Dra i reglaget för att se skillnaden, eller öppna den nya sajten och klicka runt.</p></div>
+  <div class="head"><p class="eyebrow">Före och efter</p><h2>${['Noll', 'En', 'Två', 'Tre', 'Fyra', 'Fem', 'Sex', 'Sju', 'Åtta'][cases.length] || cases.length} sajter vi har byggt om</h2><p class="lead">Dykcenter, båtbolag, en fridykningsskola och en utbildningsfirma. Dra i reglaget för att se skillnaden, eller öppna den nya sajten och klicka runt.</p></div>
   ${caseBlock(hero, 0, has(shot(hero.key, 'after', 'desktop')) ? `<div class="case-shot"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div><img src="${BASE}/screens/${shot(hero.key, 'after', 'desktop')}" width="1440" height="900" alt="${esc(hero.name)}: den nya sajten" loading="lazy"></div>` : '')}
   ${rest.map((c, i) => caseBlock(c, i + 1)).join('\n  ')}
 </div></section>

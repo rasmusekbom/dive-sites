@@ -16,20 +16,45 @@
       if (tags[1]) tags[1].style.opacity = p > 84 ? 0 : 1;
     };
     const fromEvent = e => { const r = frame.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+    // Mouse: follows from the first press. Touch: only once the finger has clearly moved sideways, so a vertical
+    // swipe that starts on the image scrolls the page without jumping the handle.
+    let start = null, active = false;
     frame.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
       frame.dataset.touched = '1';
-      frame.classList.add('dragging');
+      start = { x: e.clientX, y: e.clientY };
+      active = e.pointerType === 'mouse';
       frame.setPointerCapture(e.pointerId);
+      if (active) { frame.classList.add('dragging'); fromEvent(e); }
+    });
+    frame.addEventListener('pointermove', e => {
+      if (!start) return;
+      if (!active) {
+        const dx = Math.abs(e.clientX - start.x), dy = Math.abs(e.clientY - start.y);
+        if (dy > dx) { start = null; return; }
+        if (dx < 6) return;
+        active = true;
+        frame.classList.add('dragging');
+      }
       fromEvent(e);
     });
-    frame.addEventListener('pointermove', e => { if (frame.classList.contains('dragging')) fromEvent(e); });
-    const stop = () => frame.classList.remove('dragging');
+    const stop = () => { start = null; active = false; frame.classList.remove('dragging'); };
     frame.addEventListener('pointerup', stop);
     frame.addEventListener('pointercancel', stop);
     range.addEventListener('input', () => { frame.dataset.touched = '1'; set(+range.value); });
     frame.set = set;
     set(50);
+  }
+
+  // ---------------------------------------------------------------- desktop / mobile toggle
+  for (const ba of document.querySelectorAll('.ba')) {
+    const btns = ba.querySelectorAll('.views button');
+    btns.forEach(b => b.addEventListener('click', () => {
+      btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+      ba.querySelectorAll('.pane').forEach(p => { p.hidden = p.dataset.view !== b.dataset.view; });
+    }));
+    // On a phone the phone comparison is the one that tells the story: start there.
+    if (matchMedia('(max-width: 600px)').matches) ba.querySelector('.views button[data-view="mobile"]')?.click();
   }
 
   // A short sweep the first time a slider comes into view, so people see that it moves. Stops as soon as they touch it.
@@ -55,15 +80,6 @@
       }
     }, { threshold: .6 });
     document.querySelectorAll('.ba .pane:not([hidden]) .frame').forEach(f => io.observe(f));
-  }
-
-  // ---------------------------------------------------------------- desktop / mobile toggle
-  for (const ba of document.querySelectorAll('.ba')) {
-    const btns = ba.querySelectorAll('.views button');
-    btns.forEach(b => b.addEventListener('click', () => {
-      btns.forEach(x => x.setAttribute('aria-pressed', x === b));
-      ba.querySelectorAll('.pane').forEach(p => { p.hidden = p.dataset.view !== b.dataset.view; });
-    }));
   }
 
   // ---------------------------------------------------------------- header

@@ -74,7 +74,8 @@ async function dismissBanners(page) {
       const res = await page.goto(url, { waitUntil: 'load', timeout: 60000 });
       if (!res || res.status() >= 400) throw new Error(`svarade ${res ? res.status() : 'inget'}`);
       await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
-      await dismissBanners(page);
+      // An embedded frame that never finishes (maps, video) can stall element queries: cap the banner hunt.
+      await Promise.race([dismissBanners(page), page.waitForTimeout(8000)]);
       // Lazy-loaded heroes and fade-in animations: nudge the page, then settle at the top with fonts and images in.
       await page.evaluate(() => window.scrollTo(0, 400)); await page.waitForTimeout(600);
       await page.evaluate(() => window.scrollTo(0, 0));
@@ -85,7 +86,15 @@ async function dismissBanners(page) {
         await wait(Promise.all(imgs.map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))), 15000);
         return imgs.filter(i => i.currentSrc && !i.naturalWidth).map(i => i.currentSrc);
       });
-      const body = (await page.innerText('body').catch(() => '')).trim();
+      // Bot walls (SiteGround, Cloudflare …) often let a real browser through after a few seconds: wait once.
+      const WALL = /checking the site connection|just a moment|verifying you are human|enable cookies|attention required|security check/i;
+      let body = (await page.innerText('body').catch(() => '')).trim();
+      if (WALL.test(body) && body.length < 600) {
+        await page.waitForNavigation({ timeout: 15000 }).catch(() => {});
+        await page.waitForTimeout(2000);
+        body = (await page.innerText('body').catch(() => '')).trim();
+        if (WALL.test(body) && body.length < 600) throw new Error('bot-spärr: ' + body.slice(0, 60).replace(/\s+/g, ' '));
+      }
       if (body.length < 200 && /upstream|request failed|forbidden|access denied|too many requests/i.test(body)) throw new Error(`fel-sida: "${body.slice(0, 60)}"`);
       if (broken.length) throw new Error(`${broken.length} bild(er) laddade inte, t.ex. ${broken[0]}`);
       await page.waitForTimeout(1200);

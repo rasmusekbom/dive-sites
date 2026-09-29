@@ -48,29 +48,16 @@ const features = [
 ];
 
 // Before/after cases. `before.shot` is what shoot.js screenshots; `before.label` is shown under the slider.
+// `hidden: true` keeps a case off the page. Order here = order on the page; the first case with screenshots is the hero.
 // These are concept rebuilds made on our own initiative. `concept: true` says so on the page, and should stay
 // until the business has become a client and agreed to be shown.
 const cases = [
-  {
-    key: 'seastar', name: 'Seastar Diving', place: 'Stockholm', kind: 'Dykskola och dykcenter', concept: true,
-    before: { shot: 'https://seastardiving.se/', label: 'Före: en platshållarsida med "vi håller på att uppdatera sidorna"' },
-    after: { url: '/seastar/' },
-    summary: 'Dykcentret hade bara en platshållarsida, och den var dessutom dold för Google. Nu finns en komplett sajt med alla kurser från prova-på till instruktör, teknisk dykning, verkstad och uthyrning.',
-    facts: [['38', 'sidor'], ['2', 'språk'], ['0 → alla', 'kurser på nätet']],
-  },
   {
     key: 'magwill', name: 'Magwill', place: 'Göteborg', kind: 'Office-utbildning för företag', concept: true,
     before: { shot: 'https://magwill.se/', label: 'Före: handskriven HTML med fast bredd, 11 px text och inte gjord för mobilen' },
     after: { url: '/magwill/' },
     summary: 'Samma kurser och samma innehåll, men nu går det att läsa i telefonen, jämföra kurser och skicka en intresseanmälan direkt från kurssidan.',
     facts: [['21', 'sidor'], ['790 px → mobil', 'layout'], ['1 klick', 'till intresseanmälan']],
-  },
-  {
-    key: 'maximum', name: 'Maximum Freediving', place: 'Siargao, Filippinerna', kind: 'Fridykningsskola', concept: true,
-    before: { shot: 'https://www.instagram.com/siargao.maximumfreediving/', label: 'Före: ingen hemsida, priserna fanns bara som bilder på Instagram' },
-    after: { url: '/maximum/' },
-    summary: 'Skolan hade bara Instagram. Nu finns en sajt med kurser, priser man kan söka på, dykplatser, vanliga frågor och ett bokningsformulär på sex språk.',
-    facts: [['126', 'sidor'], ['6', 'språk'], ['31', 'svar i FAQ']],
   },
   {
     key: 'nornou', name: 'Nornou Speedboat', place: 'Koh Chang, Thailand', kind: 'Båttransfer, snorkling och charter', concept: true,
@@ -87,7 +74,23 @@ const cases = [
     facts: [['278', 'sidor'], ['7', 'språk'], ['110', 'foton']],
   },
   {
+    key: 'seastar', name: 'Seastar Diving', place: 'Stockholm', kind: 'Dykskola och dykcenter', concept: true,
+    before: { shot: 'https://seastardiving.se/', label: 'Före: en platshållarsida med "vi håller på att uppdatera sidorna"' },
+    after: { url: '/seastar/' },
+    summary: 'Dykcentret hade bara en platshållarsida, och den var dessutom dold för Google. Nu finns en komplett sajt med alla kurser från prova-på till instruktör, teknisk dykning, verkstad och uthyrning.',
+    facts: [['38', 'sidor'], ['2', 'språk'], ['0 → alla', 'kurser på nätet']],
+  },
+  {
+    key: 'maximum', name: 'Maximum Freediving', place: 'Siargao, Filippinerna', kind: 'Fridykningsskola', concept: true,
+    before: { shot: 'https://www.instagram.com/siargao.maximumfreediving/', label: 'Före: ingen hemsida, priserna fanns bara som bilder på Instagram' },
+    after: { url: '/maximum/' },
+    summary: 'Skolan hade bara Instagram. Nu finns en sajt med kurser, priser man kan söka på, dykplatser, vanliga frågor och ett bokningsformulär på sex språk.',
+    facts: [['126', 'sidor'], ['6', 'språk'], ['31', 'svar i FAQ']],
+  },
+  {
     key: 'kohkood', name: 'Koh Kood Divers', place: 'Koh Kood, Thailand', kind: 'Dykcenter', concept: true,
+    // Hidden: their live site is already modern (checked 2026-09-29), so the before/after says little.
+    hidden: true,
     before: { shot: 'https://kohkooddivers.com/', label: 'Före: sajten som finns i dag' },
     after: { url: '/kohkood/' },
     summary: 'En flerspråkig sajt för ett dykcenter på en ö där de flesta gäster är utländska turister. Varje kurs har en egen sida med pris i gästens valuta och en direktlänk till bokningskalendern.',
