@@ -28,9 +28,9 @@ const plans = [
     items: ['Obegränsat antal sidor', 'Flera språk (till exempel svenska och engelska)', 'Bokningsförfrågan eller koppling till ert bokningssystem', 'Google-företagsprofil uppsatt och kopplad till sajten', 'Ändringar upp till 2 timmar per månad', 'Kvartalsrapport: besök, sökord och förfrågningar'],
   },
   {
-    key: 'kop', name: 'Köp loss', price: 14900, unit: 'kr engång', note: '+ 149 kr/mån för hosting',
+    key: 'kop', name: 'Köp loss', price: 7900, unit: 'kr engång', note: '+ 149 kr/mån för hosting',
     for: 'För den som hellre betalar en gång och sköter ändringarna själv.',
-    items: ['Samma sajt som Bas eller Plus', 'Ni får all källkod och allt innehåll', 'Ändringar i efterhand mot timpris'],
+    items: ['Samma sajt som i Bas, upp till 8 sidor', 'Ni får all källkod och allt innehåll', 'Flera språk eller bokning: fast pris efter offert', 'Ändringar i efterhand mot timpris'],
   },
 ];
 const terms = 'Månadsavgifterna gäller med 12 månaders avtal, sedan löpande med en månads uppsägning. Domänen står alltid i ert namn. Alla priser exklusive moms.';
