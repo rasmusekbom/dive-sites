@@ -6,7 +6,12 @@
 const fs = require('fs');
 const path = require('path');
 const { site, plans, terms, steps, features, faq } = require('./src/data.js');
-const cases = require('./src/data.js').cases.filter(c => !c.hidden);
+// Anonymised cases (site.anonymize, or per case `anonymize`) show alias/region instead of name/place, get a neutral id,
+// no demo link, and publish their screenshots under neutral file names.
+const cases = require('./src/data.js').cases.filter(c => !c.hidden).map(c => {
+  const anon = c.anonymize ?? site.anonymize;
+  return { ...c, anon, title: anon ? c.alias : c.name, where: anon ? c.region : c.place, id: anon ? c.slug : c.key };
+}).filter(c => !(c.anon && c.anonHide));
 
 const OUT = process.env.DIST ? path.resolve(process.env.DIST) : path.join(__dirname, 'dist');
 const BASE = (process.env.BASE || '').replace(/\/$/, '');
@@ -47,6 +52,9 @@ const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><re
 
 // ---------------------------------------------------------------- BEFORE / AFTER
 const shot = (key, side, view) => `${key}-${side}-${view}.jpg`;
+// Published name of a screenshot (the source file is always <key>-…; an anonymised case is published as <slug>-…).
+const published = new Map();
+const pub = (c, side, view) => { const f = `${c.id}-${side}-${view}.jpg`; published.set(f, shot(c.key, side, view)); return f; };
 const has = f => fs.existsSync(path.join(SCREENS, f));
 const views = c => ['desktop', 'mobile'].filter(v => has(shot(c.key, 'before', v)) && has(shot(c.key, 'after', v)));
 for (const c of cases) {
@@ -60,18 +68,18 @@ function slider(c, { eager = false } = {}) {
   if (!v.length) {
     // No pair at all: show the after-shot alone if we have it, so the case still reads.
     const a = ['desktop', 'mobile'].find(x => has(shot(c.key, 'after', x)));
-    return a ? `<figure class="ba ba-solo">${a === 'desktop' ? '<div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>' : ''}<div class="frame frame-${a}"><img src="${BASE}/screens/${shot(c.key, 'after', a)}" width="${DIMS[a][0]}" height="${DIMS[a][1]}" alt="${esc(c.name)}: den nya sajten" loading="lazy"></div><figcaption>${esc(c.before.label)}</figcaption></figure>` : '';
+    return a ? `<figure class="ba ba-solo">${a === 'desktop' ? '<div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>' : ''}<div class="frame frame-${a}"><img src="${BASE}/screens/${pub(c, 'after', a)}" width="${DIMS[a][0]}" height="${DIMS[a][1]}" alt="${esc(c.title)}: den nya sajten" loading="lazy"></div><figcaption>${esc(c.before.label)}</figcaption></figure>` : '';
   }
   const pane = (view, i) => {
     const [w, h] = DIMS[view];
-    const img = side => `<img src="${BASE}/screens/${shot(c.key, side, view)}" width="${w}" height="${h}" alt="${esc(c.name)}: ${side === 'before' ? 'sajten före' : 'den nya sajten'}${view === 'mobile' ? ' i mobilen' : ''}" ${eager && i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" draggable="false">`;
+    const img = side => `<img src="${BASE}/screens/${pub(c, side, view)}" width="${w}" height="${h}" alt="${esc(c.title)}: ${side === 'before' ? 'sajten före' : 'den nya sajten'}${view === 'mobile' ? ' i mobilen' : ''}" ${eager && i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" draggable="false">`;
     const chrome = view === 'desktop' ? `<div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>` : '';
     return `<div class="pane" data-view="${view}"${i ? ' hidden' : ''}>${chrome}<div class="frame frame-${view}">
       ${img('after')}
       <div class="before">${img('before')}</div>
       <span class="tag tag-l">Före</span><span class="tag tag-r">Efter</span>
       <div class="handle" aria-hidden="true"><span>${I.drag}</span></div>
-      <input class="range" type="range" min="0" max="100" value="50" step="1" aria-label="${esc(c.name)}: dra för att jämföra före och efter">
+      <input class="range" type="range" min="0" max="100" value="50" step="1" aria-label="${esc(c.title)}: dra för att jämföra före och efter">
     </div></div>`;
   };
   const toggle = v.length > 1 ? `<div class="views" role="group" aria-label="Visa som">${v.map((x, i) => `<button type="button" data-view="${x}" aria-pressed="${!i}">${I[x]}${x === 'desktop' ? 'Dator' : 'Mobil'}</button>`).join('')}</div>` : '';
@@ -79,14 +87,14 @@ function slider(c, { eager = false } = {}) {
 }
 
 function caseBlock(c, i, media = slider(c)) {
-  return `<article class="case${i % 2 ? ' flip' : ''}" id="${c.key}">
+  return `<article class="case${i % 2 ? ' flip' : ''}" id="${c.id}">
   <div class="case-text">
-    <p class="kicker">${esc(c.kind)} · ${esc(c.place)}</p>
-    <h3>${esc(c.name)}</h3>
+    <p class="kicker">${c.anon ? 'Koncept · ' + esc(c.kind) : esc(c.kind) + ' · ' + esc(c.where)}</p>
+    <h3>${esc(c.anon ? `${c.title} i ${c.where}` : c.name)}</h3>
     <p>${esc(c.summary)}</p>
     <dl class="facts">${c.facts.map(([n, l]) => `<div><dt>${esc(n)}</dt><dd>${esc(l)}</dd></div>`).join('')}</dl>
-    <a class="link" href="${esc(demoUrl(c))}" target="_blank" rel="noopener">Öppna den nya sajten ${I.ext}</a>
-    ${c.concept ? `<p class="concept">Koncept, byggt på eget initiativ. ${esc(c.name)} är inte kund hos oss.</p>` : ''}
+    ${c.anon ? '' : `<a class="link" href="${esc(demoUrl(c))}" target="_blank" rel="noopener">Öppna den nya sajten ${I.ext}</a>`}
+    ${c.anon ? '<p class="concept">Koncept, byggt på eget initiativ. Företaget är inte kund hos oss, så namn och kontaktuppgifter är dolda.</p>' : c.concept ? `<p class="concept">Koncept, byggt på eget initiativ. ${esc(c.name)} är inte kund hos oss.</p>` : ''}
   </div>
   ${media}
 </article>`;
@@ -98,7 +106,7 @@ const rest = cases.filter(c => c !== hero);
 const NAV = [['Exempel', '#exempel'], ['Så går det till', '#sa-gar-det-till'], ['Priser', '#priser'], ['Frågor', '#fragor']];
 const title = `${site.tagline}${site.name ? ' | ' + site.name : ''}: gratis utkast först`;
 const desc = 'Vi bygger snabba, mobilvänliga hemsidor för små företag som syns på Google och leder till bokningar. Ni får ett gratis utkast innan ni bestämmer er.';
-const ogImg = has(shot(hero.key, 'after', 'desktop')) ? `${site.domain}/screens/${shot(hero.key, 'after', 'desktop')}` : '';
+const ogImg = has(shot(hero.key, 'after', 'desktop')) ? `${site.domain}/screens/${pub(hero, 'after', 'desktop')}` : '';
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 const orgLd = site.name && { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: site.name, url: site.domain, email: site.email || undefined, telephone: site.phone || undefined, areaServed: 'SE', description: desc };
 
@@ -145,13 +153,13 @@ ${[faqLd, orgLd].filter(Boolean).map(o => `<script type="application/ld+json">${
   </div>
   <div class="hero-demo">
     ${slider(hero, { eager: true })}
-    <p class="hero-note"><b>${esc(hero.name)}</b>, ${esc(hero.place)}. Dra i reglaget. <a href="#${hero.key}">Läs om bygget</a></p>
+    <p class="hero-note"><b>${esc(hero.title)}</b>, ${esc(hero.where)}. Dra i reglaget. <a href="#${hero.id}">Läs om bygget</a></p>
   </div>
 </div></section>
 
 <section class="band" id="exempel"><div class="wrap">
-  <div class="head"><p class="eyebrow">Före och efter</p><h2>${['Noll', 'En', 'Två', 'Tre', 'Fyra', 'Fem', 'Sex', 'Sju', 'Åtta'][cases.length] || cases.length} sajter vi har byggt om</h2><p class="lead">Dykcenter, båtbolag, en fridykningsskola och en utbildningsfirma. Dra i reglaget för att se skillnaden, eller öppna den nya sajten och klicka runt.</p></div>
-  ${caseBlock(hero, 0, has(shot(hero.key, 'after', 'desktop')) ? `<div class="case-shot"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div><img src="${BASE}/screens/${shot(hero.key, 'after', 'desktop')}" width="1440" height="900" alt="${esc(hero.name)}: den nya sajten" loading="lazy"></div>` : '')}
+  <div class="head"><p class="eyebrow">Före och efter</p><h2>${['Noll', 'En', 'Två', 'Tre', 'Fyra', 'Fem', 'Sex', 'Sju', 'Åtta'][cases.length] || cases.length} sajter vi har byggt om</h2><p class="lead">Dykcenter, båtbolag, en fridykningsskola och en utbildningsfirma. Dra i reglaget för att se skillnaden${cases.some(c => !c.anon) ? ', eller öppna den nya sajten och klicka runt' : ''}.</p></div>
+  ${caseBlock(hero, 0, has(shot(hero.key, 'after', 'desktop')) ? `<div class="case-shot"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div><img src="${BASE}/screens/${pub(hero, 'after', 'desktop')}" width="1440" height="900" alt="${esc(hero.title)}: den nya sajten" loading="lazy"></div>` : '')}
   ${rest.map((c, i) => caseBlock(c, i + 1)).join('\n  ')}
 </div></section>
 
@@ -209,7 +217,7 @@ fs.copyFileSync(path.join(__dirname, 'src', 'site.js'), path.join(OUT, 'assets',
 fs.writeFileSync(path.join(OUT, 'favicon.svg'), FAVICON);
 fs.mkdirSync(path.join(OUT, 'screens'), { recursive: true });
 const used = new Set([...html.matchAll(/\/screens\/([\w-]+\.jpg)/g)].map(m => m[1]));
-for (const f of used) fs.copyFileSync(path.join(SCREENS, f), path.join(OUT, 'screens', f));
+for (const f of used) fs.copyFileSync(path.join(SCREENS, published.get(f) || f), path.join(OUT, 'screens', f));
 fs.writeFileSync(path.join(OUT, 'robots.txt'), DEMO ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\nSitemap: ${site.domain}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${site.domain}/</loc></url></urlset>\n`);
 fs.writeFileSync(path.join(OUT, '_redirects'), '');

@@ -16,10 +16,16 @@ npm run serve        # http://127.0.0.1:8771
 Fill in `site.name`, `site.email`, `site.phone` and `site.domain` in `src/data.js`. The build prints a TODO line
 for each one that is missing. Prices, plans and terms are in the same file and are a starting proposal.
 
-The six cases are concept rebuilds that none of the businesses ordered. The page says so under each case
-(`concept: true`). Keep it that way until a business has become a client and agreed to be shown. Before a
-case goes up on your own domain, ask the business whether they are OK with having their current site shown as
-the "before".
+The cases are concept rebuilds that none of the businesses ordered, so the page is **anonymous by default**
+(`site.anonymize: true`). Each case shows its `alias` and `region` ("Utbildningsföretag i Sverige") instead of the
+name, the demo links are left out, the screenshots are published under neutral file names, and `shoot.js` blurs
+every `mask` term (name, domain, phone, street, town) and any logo-sized image or SVG that names the business before
+it takes the shot. A case that cannot be anonymised well is kept off the page with `anonHide: true` (Nornou, whose
+boat name is painted on the photos). Once a business has become a client and agreed to be shown, set
+`anonymize: false` on that case and retake its screenshots (`node shoot.js <key> --force`).
+
+Check the screenshots by eye after every retake. The blur covers text and logos, but not a name that is part of a
+photo.
 
 ## Screenshots
 `shoot.js` takes, for every case in `src/data.js`, *before* (`before.shot`, their site today) and *after* (our demo)

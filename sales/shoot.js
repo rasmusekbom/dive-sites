@@ -52,6 +52,43 @@ async function dismissBanners(page) {
   }
 }
 
+// Anonymised cases (site.anonymize / case.anonymize): blur every `mask` term in the page before the shot – the words
+// themselves, any SVG that contains one, logo elements, and images whose alt/src/title names the business.
+async function maskPage(page, terms) {
+  await page.evaluate(terms => {
+    const re = new RegExp(terms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).sort((a, b) => b.length - a.length).join('|'), 'gi');
+    const hit = s => { re.lastIndex = 0; return re.test(s || ''); };
+    const blur = (el, px = 8) => { el.style.filter = `blur(${px}px)`; };
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) if (hit(walker.currentNode.nodeValue)) nodes.push(walker.currentNode);
+    for (const n of nodes) {
+      const svg = n.parentElement?.closest('svg');
+      if (svg) { blur(svg); continue; }
+      const v = n.nodeValue, frag = document.createDocumentFragment();
+      let last = 0, m;
+      re.lastIndex = 0;
+      while ((m = re.exec(v))) {
+        frag.append(v.slice(last, m.index));
+        const sp = document.createElement('span');
+        sp.textContent = m[0];
+        sp.style.cssText = 'display:inline-block;filter:blur(.32em)';
+        frag.append(sp);
+        last = m.index + m[0].length;
+      }
+      frag.append(v.slice(last));
+      n.replaceWith(frag);
+    }
+
+    // Only logo-sized images: a hero photo whose alt text happens to name the business stays sharp.
+    const small = el => { const r = el.getBoundingClientRect(); return r.width < 420 && r.height < 220; };
+    for (const el of document.querySelectorAll('img, svg, picture, [style*="background-image"]'))
+      if (small(el) && hit(['alt', 'src', 'srcset', 'aria-label', 'title', 'style'].map(a => el.getAttribute(a)).join(' '))) blur(el);
+    for (const el of document.querySelectorAll('[class*="logo" i], [id*="logo" i], .brand img, .brand svg')) if (small(el)) blur(el);
+  }, terms);
+  await page.waitForTimeout(300);
+}
+
 (async () => {
   const executablePath = findChrome();
   const browser = await pw.chromium.launch({ executablePath, args: ['--hide-scrollbars'] });
@@ -98,6 +135,7 @@ async function dismissBanners(page) {
       if (body.length < 200 && /upstream|request failed|forbidden|access denied|too many requests/i.test(body)) throw new Error(`fel-sida: "${body.slice(0, 60)}"`);
       if (broken.length) throw new Error(`${broken.length} bild(er) laddade inte, t.ex. ${broken[0]}`);
       await page.waitForTimeout(1200);
+      if ((c.anonymize ?? site.anonymize) && c.mask?.length) await maskPage(page, c.mask);
       await page.screenshot({ path: file, type: 'jpeg', quality: 78 });
       console.log('tagen  ', path.basename(file), '←', url);
     } catch (e) { failed = e.message.split('\n')[0]; }

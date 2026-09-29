@@ -9,6 +9,10 @@ const site = {
   domain: 'https://example.se', // TODO: canonical/og URL once you have a domain
   city: 'Sverige',
   demoBase: 'https://rasmusekbom.github.io/dive-sites',
+  // true: no business is named. Cases show `alias` and `region`, the demo links are left out, screenshot files get
+  // neutral names, and shoot.js blurs every `mask` term (names, logos, phone, e-mail) inside the screenshots.
+  // Set to false per case (or here) once a business has agreed to be shown by name.
+  anonymize: true,
 };
 
 // The offer. Prices are a starting proposal; change them freely.
@@ -54,6 +58,8 @@ const features = [
 const cases = [
   {
     key: 'magwill', name: 'Magwill', place: 'Göteborg', kind: 'Office-utbildning för företag', concept: true,
+    slug: 'utbildning', alias: 'Utbildningsföretag', region: 'Sverige',
+    mask: ['Magwill', 'magwill.se', '070-320 17 42', '0703201742', '070 320 17 42', 'Kvilletorget'],
     before: { shot: 'https://magwill.se/', label: 'Före: handskriven HTML med fast bredd, 11 px text och inte gjord för mobilen' },
     after: { url: '/magwill/' },
     summary: 'Samma kurser och samma innehåll, men nu går det att läsa i telefonen, jämföra kurser och skicka en intresseanmälan direkt från kurssidan.',
@@ -61,6 +67,10 @@ const cases = [
   },
   {
     key: 'nornou', name: 'Nornou Speedboat', place: 'Koh Chang, Thailand', kind: 'Båttransfer, snorkling och charter', concept: true,
+    // Kept off the anonymous page: the boat's name is painted on the photos (with customers' faces), and the location is in the copy.
+    anonHide: true,
+    slug: 'batbolag', alias: 'Båtbolag', region: 'Thailand',
+    mask: ['Nornou', 'Kaibaehut', 'Kai Bae Hut', 'KaiBae Hut', 'Kaibae Hut', 'N. Kai Bae', 'nornouspeedboat', '81 982 9870', '818176832', '081-982'],
     before: { shot: 'https://www.nornouspeedboat.com/', label: 'Före: Wix-sajt utan tidtabell eller priser för transfer' },
     after: { url: '/nornou/' },
     summary: 'Transfer var kärnverksamheten, men sajten saknade tidtabell och priser. Nu finns en ruttsökare, full tidtabell, en priskalkylator för charter och valutaväljare.',
@@ -68,6 +78,8 @@ const cases = [
   },
   {
     key: 'pattaya', name: 'Thai Ocean Academy', place: 'Pattaya, Thailand', kind: 'Dykcenter', concept: true,
+    slug: 'dykcenter-thailand', alias: 'Dykcenter', region: 'Thailand',
+    mask: ['Thai Ocean Academy', 'Thai Ocean', 'TOCo', 'thaioceanacademy', 'pattaya-dive', '99 690 0456', '996900456', 'Pattaya'],
     before: { shot: 'https://www.pattaya-dive.com/', label: 'Före: WordPress med prislistor gömda i dragspelsmenyer' },
     after: { url: '/pattaya/' },
     summary: 'Allt innehåll behölls, men dubbletter slogs ihop och dolda priser blev synliga. Mallens platshållartexter togs bort och varje gammal adress leder vidare till rätt ny sida.',
@@ -75,6 +87,8 @@ const cases = [
   },
   {
     key: 'seastar', name: 'Seastar Diving', place: 'Stockholm', kind: 'Dykskola och dykcenter', concept: true,
+    slug: 'dykcenter-sverige', alias: 'Dykcenter', region: 'Sverige',
+    mask: ['Seastar', 'seastardiving', '72 561 02 40', '072-561 02 40', 'Solkraftsvägen', 'Skrubba', 'Skarpnäck', 'Stockholm'],
     before: { shot: 'https://seastardiving.se/', label: 'Före: en platshållarsida med "vi håller på att uppdatera sidorna"' },
     after: { url: '/seastar/' },
     summary: 'Dykcentret hade bara en platshållarsida, och den var dessutom dold för Google. Nu finns en komplett sajt med alla kurser från prova-på till instruktör, teknisk dykning, verkstad och uthyrning.',
@@ -82,6 +96,8 @@ const cases = [
   },
   {
     key: 'maximum', name: 'Maximum Freediving', place: 'Siargao, Filippinerna', kind: 'Fridykningsskola', concept: true,
+    slug: 'fridykning', alias: 'Fridykningsskola', region: 'Filippinerna',
+    mask: ['Maximum Freediving', 'Maximum', 'maximumfreediving', '917 482 7514', '9174827514', 'Siargao', 'General Luna'],
     before: { shot: 'https://www.instagram.com/siargao.maximumfreediving/', label: 'Före: ingen hemsida, priserna fanns bara som bilder på Instagram' },
     after: { url: '/maximum/' },
     summary: 'Skolan hade bara Instagram. Nu finns en sajt med kurser, priser man kan söka på, dykplatser, vanliga frågor och ett bokningsformulär på sex språk.',
@@ -89,6 +105,8 @@ const cases = [
   },
   {
     key: 'kohkood', name: 'Koh Kood Divers', place: 'Koh Kood, Thailand', kind: 'Dykcenter', concept: true,
+    slug: 'dykcenter-o', alias: 'Dykcenter på en ö', region: 'Thailand',
+    mask: ['Koh Kood Divers', 'kohkooddivers', '85 698 4122', '856984122'],
     // Hidden: their live site is already modern (checked 2026-09-29), so the before/after says little.
     hidden: true,
     before: { shot: 'https://kohkooddivers.com/', label: 'Före: sajten som finns i dag' },
