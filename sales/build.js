@@ -149,11 +149,10 @@ ${[faqLd, orgLd].filter(Boolean).map(o => `<script type="application/ld+json">${
 <main id="main">
 <section class="hero"><div class="wrap hero-grid">
   <div class="hero-text">
-    <p class="eyebrow">Gratis utkast · fast månadspris</p>
     <h1>Er nya hemsida, klar <em>innan</em> ni betalar något.</h1>
     <p class="lead">Vi bygger snabba, mobilvänliga hemsidor som syns på Google och leder till bokningar. Ni får ett gratis utkast med ert eget innehåll först, och bestämmer sedan.</p>
     <div class="cta"><a class="btn btn-accent btn-lg" href="#kontakt">Få ett gratis utkast ${I.arrow}</a><a class="btn btn-ghost btn-lg" href="#exempel">Se före och efter</a></div>
-    <ul class="ticks">${['Ingen startavgift', 'Utkast inom en vecka', 'Ni äger domänen'].map(t => `<li>${I.check}${t}</li>`).join('')}</ul>
+    <ul class="ticks">${['Ingen startavgift', 'Ingen bindningstid', 'Utkast inom en vecka'].map(t => `<li>${I.check}${t}</li>`).join('')}</ul>
   </div>
   <div class="hero-demo">
     ${slider(hero, { eager: true })}
@@ -162,23 +161,23 @@ ${[faqLd, orgLd].filter(Boolean).map(o => `<script type="application/ld+json">${
 </div></section>
 
 <section class="band" id="exempel"><div class="wrap">
-  <div class="head"><p class="eyebrow">Före och efter</p><h2>${['Noll', 'En', 'Två', 'Tre', 'Fyra', 'Fem', 'Sex', 'Sju', 'Åtta'][cases.length] || cases.length} sajter vi har byggt om</h2><p class="lead">Dykcenter, båtbolag, en fridykningsskola och en utbildningsfirma. Dra i reglaget för att se skillnaden${cases.some(c => !c.anon) ? ', eller öppna den nya sajten och klicka runt' : ''}.</p></div>
+  <div class="head"><h2>${['Noll', 'En', 'Två', 'Tre', 'Fyra', 'Fem', 'Sex', 'Sju', 'Åtta'][cases.length] || cases.length} sajter vi har byggt om</h2><p class="lead">Dykcenter, båtbolag, en fridykningsskola och en utbildningsfirma. Dra i reglaget för att se skillnaden${cases.some(c => !c.anon) ? ', eller öppna den nya sajten och klicka runt' : ''}.</p></div>
   ${caseBlock(hero, 0, has(shot(hero.key, 'after', 'desktop')) ? `<div class="case-shot"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div><img src="${BASE}/screens/${pub(hero, 'after', 'desktop')}" width="1440" height="900" alt="${esc(hero.title)}: den nya sajten" loading="lazy"></div>` : '')}
   ${rest.map((c, i) => caseBlock(c, i + 1)).join('\n  ')}
 </div></section>
 
 <section class="section"><div class="wrap">
-  <div class="head"><p class="eyebrow">Det här får ni</p><h2>En hemsida som gör sitt jobb</h2></div>
+  <div class="head"><h2>En hemsida som gör sitt jobb</h2></div>
   <div class="features">${features.map(([ic, h, p]) => `<div class="feature"><span class="ic">${I[ic]}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('')}</div>
 </div></section>
 
 <section class="section alt" id="sa-gar-det-till"><div class="wrap">
-  <div class="head"><p class="eyebrow">Så går det till</p><h2>Ni ser resultatet innan ni bestämmer er</h2></div>
+  <div class="head"><h2>Ni ser resultatet innan ni bestämmer er</h2></div>
   <ol class="steps">${steps.map(([h, p]) => `<li><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join('')}</ol>
 </div></section>
 
 <section class="section" id="priser"><div class="wrap">
-  <div class="head"><p class="eyebrow">Priser</p><h2>Ett fast pris i månaden, allt ingår</h2><p class="lead">Hosting, uppdateringar och ändringar ingår, så att ni slipper få en faktura varje gång något ska bytas ut.</p></div>
+  <div class="head"><h2>Ett fast pris i månaden, allt ingår</h2><p class="lead">Hosting, uppdateringar och ändringar ingår, så att ni slipper få en faktura varje gång något ska bytas ut.</p></div>
   <div class="plans">${plans.map(p => `<div class="plan${p.featured ? ' featured' : ''}">${p.featured ? '<span class="badge">Vanligast</span>' : ''}
     <h3>${esc(p.name)}</h3><p class="price"><b>${kr(p.price)}</b> ${esc(p.unit)}</p><p class="pnote">${esc(p.note)}</p><p class="for">${esc(p.for)}</p>
     <ul>${p.items.map(t => `<li>${I.check}${esc(t)}</li>`).join('')}</ul>
@@ -187,12 +186,12 @@ ${[faqLd, orgLd].filter(Boolean).map(o => `<script type="application/ld+json">${
 </div></section>
 
 <section class="section alt" id="fragor"><div class="wrap narrow">
-  <div class="head"><p class="eyebrow">Vanliga frågor</p><h2>Frågor vi brukar få</h2></div>
+  <div class="head"><h2>Frågor vi brukar få</h2></div>
   <div class="faq">${faq.map(([q, a]) => `<details><summary>${esc(q)}${I.chev}</summary><p>${esc(a)}</p></details>`).join('')}</div>
 </div></section>
 
 <section class="contact" id="kontakt"><div class="wrap contact-grid">
-  <div><p class="eyebrow">Gratis utkast</p><h2>Berätta om ert företag, så bygger vi en startsida åt er.</h2><p class="lead">Det kostar ingenting, och ni förbinder er inte till något. Ni hör från oss inom två arbetsdagar.</p></div>
+  <div><h2>Berätta om ert företag, så bygger vi en startsida åt er.</h2><p class="lead">Det kostar ingenting, och ni förbinder er inte till något. Ni hör från oss inom två arbetsdagar.</p></div>
   ${contactForm}
 </div></section>
 </main>

@@ -18,12 +18,12 @@ const site = {
 // The offer. Prices are a starting proposal; change them freely.
 const plans = [
   {
-    key: 'bas', name: 'Bas', price: 595, unit: 'kr/mån', note: 'Ingen startavgift',
+    key: 'bas', name: 'Bas', price: 595, unit: 'kr/mån', note: 'Ingen startavgift, ingen bindningstid',
     for: 'För företaget som behöver en riktig hemsida i stället för en Facebook-sida eller en gammal sajt.',
     items: ['Upp till 8 sidor, byggda för mobilen först', 'Hosting, https och säkerhetsuppdateringar', 'Grundläggande Google-optimering (titlar, beskrivningar, karta, strukturerad data)', 'Kontaktformulär och klickbara telefon- och kartlänkar', 'Små ändringar när ni behöver, upp till 30 min per månad'],
   },
   {
-    key: 'plus', name: 'Plus', price: 995, unit: 'kr/mån', note: 'Ingen startavgift', featured: true,
+    key: 'plus', name: 'Plus', price: 995, unit: 'kr/mån', note: 'Ingen startavgift, ingen bindningstid', featured: true,
     for: 'För företaget som säljer upplevelser, kurser eller tjänster och vill ha bokningar via sajten.',
     items: ['Obegränsat antal sidor', 'Flera språk (till exempel svenska och engelska)', 'Bokningsförfrågan eller koppling till ert bokningssystem', 'Google-företagsprofil uppsatt och kopplad till sajten', 'Ändringar upp till 2 timmar per månad', 'Kvartalsrapport: besök, sökord och förfrågningar'],
   },
@@ -33,7 +33,7 @@ const plans = [
     items: ['Samma sajt som i Bas, upp till 8 sidor', 'Ni får all källkod och allt innehåll', 'Flera språk eller bokning: fast pris efter offert', 'Ändringar i efterhand mot timpris'],
   },
 ];
-const terms = 'Månadsavgifterna gäller med 12 månaders avtal, sedan löpande med en månads uppsägning. Domänen står alltid i ert namn. Alla priser exklusive moms.';
+const terms = 'Ingen bindningstid: månadsavgiften löper med en månads uppsägning. Domänen står alltid i ert namn. Alla priser exklusive moms.';
 
 const steps = [
   ['Vi tittar på er sajt', 'Vi går igenom sajten ni har i dag (eller Facebook-sidan) och vad som gör att kunder inte hittar er eller inte hör av sig.'],
@@ -48,7 +48,7 @@ const features = [
   ['search', 'Syns på Google', 'Rätt titlar och beskrivningar, sitemap, karta och strukturerad data, så att Google förstår vad ni gör och var ni finns.'],
   ['globe', 'Flera språk', 'Turister söker på sitt eget språk. Vi har byggt sajter på upp till åtta språk med rätt länkar mellan språken.'],
   ['cal', 'Från besök till bokning', 'Tydliga priser, en "Boka"-knapp på varje sida och formulär som är ifyllda i förväg med det kunden tittade på.'],
-  ['shield', 'Ni äger allt', 'Domänen står i ert namn och innehållet är ert. Slutar ni får ni med er hela sajten.'],
+  ['shield', 'Ni äger domänen', 'Domänen står i ert namn, och texter och bilder är era. Ni kan sluta när ni vill, och vill ni flytta sajten kan ni köpa loss den.'],
 ];
 
 // Before/after cases. `before.shot` is what shoot.js screenshots; `before.label` is shown under the slider.
@@ -122,7 +122,7 @@ const faq = [
   ['Vi har redan en hemsida. Behöver vi börja om?', 'Nej. Vi tar med allt innehåll som fungerar, och alla gamla adresser leder vidare till de nya sidorna, så att ni inte tappar det ni redan har på Google.'],
   ['Hur lång tid tar det?', 'Utkastet brukar vara klart inom en vecka. En hel sajt tar normalt två till fyra veckor, beroende på hur mycket innehåll som finns och hur snabbt vi får bilder och svar.'],
   ['Vem skriver texterna?', 'Vi utgår från det ni redan har skrivit: hemsida, Facebook, broschyrer. Vi skriver om och fyller på där det behövs, och ni godkänner allt innan det publiceras.'],
-  ['Vad händer om vi vill sluta?', 'Efter första året kan ni säga upp med en månads varsel. Domänen är er, och ni får med er sajten, så att ni kan flytta den till någon annan.'],
+  ['Vad händer om vi vill sluta?', 'Ni kan säga upp när som helst, med en månads uppsägningstid. Domänen är alltid er. Vill ni flytta själva sajten till någon annan kan ni köpa loss den.'],
   ['Kan ni koppla in vårt bokningssystem?', 'Ja. Vi har kopplat sajter till bland annat Rezdy, och de flesta bokningssystem går att länka eller bädda in. Har ni inget system gör vi ett förfrågningsformulär som hamnar i er mejl.'],
 ];
 
