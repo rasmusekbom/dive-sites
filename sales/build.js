@@ -23,6 +23,9 @@ const warn = [];
 if (!site.name) warn.push('site.name saknas – headern visar taglinen');
 if (!site.email) warn.push('site.email saknas – kontaktknapparna går till #kontakt utan mejladress');
 if (/example\./.test(site.domain)) warn.push('site.domain är fortfarande example.se');
+// Where this build will actually be served. A demo lives on GitHub Pages, so canonical/og:url/og:image must point
+// there: share sheets and chat apps use them as the link, and a placeholder domain would be what gets shared.
+const ORIGIN = DEMO ? new URL(site.demoBase).origin + BASE : site.domain;
 
 const brand = site.name || site.tagline;
 const mail = (subject, body = '') => site.email ? `mailto:${site.email}?subject=${encodeURIComponent(subject)}${body ? '&body=' + encodeURIComponent(body) : ''}` : '#kontakt';
@@ -106,9 +109,9 @@ const rest = cases.filter(c => c !== hero);
 const NAV = [['Exempel', '#exempel'], ['Så går det till', '#sa-gar-det-till'], ['Priser', '#priser'], ['Frågor', '#fragor']];
 const title = `${site.tagline}${site.name ? ' | ' + site.name : ''}: gratis utkast först`;
 const desc = 'Vi bygger snabba, mobilvänliga hemsidor för små företag som syns på Google och leder till bokningar. Ni får ett gratis utkast innan ni bestämmer er.';
-const ogImg = has(shot(hero.key, 'after', 'desktop')) ? `${site.domain}/screens/${pub(hero, 'after', 'desktop')}` : '';
+const ogImg = has(shot(hero.key, 'after', 'desktop')) ? `${ORIGIN}/screens/${pub(hero, 'after', 'desktop')}` : '';
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
-const orgLd = site.name && { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: site.name, url: site.domain, email: site.email || undefined, telephone: site.phone || undefined, areaServed: 'SE', description: desc };
+const orgLd = site.name && { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: site.name, url: ORIGIN, email: site.email || undefined, telephone: site.phone || undefined, areaServed: 'SE', description: desc };
 
 const contactForm = `<form class="form" id="utkast-form" data-email="${esc(site.email)}">
   <div class="row"><label>Ert namn<input name="namn" autocomplete="name" required></label><label>Företag<input name="foretag" autocomplete="organization" required></label></div>
@@ -125,8 +128,8 @@ const html = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">${DEMO ? '\n<meta name="robots" content="noindex, nofollow">' : ''}
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${site.domain}/">
-<meta property="og:type" content="website"><meta property="og:locale" content="sv_SE"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${site.domain}/">${ogImg ? `<meta property="og:image" content="${ogImg}">` : ''}
+<link rel="canonical" href="${ORIGIN}/">
+<meta property="og:type" content="website"><meta property="og:locale" content="sv_SE"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${ORIGIN}/">${ogImg ? `<meta property="og:image" content="${ogImg}">` : ''}
 <meta name="theme-color" content="#12202b">
 <link rel="icon" href="${BASE}/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,7 +222,7 @@ fs.mkdirSync(path.join(OUT, 'screens'), { recursive: true });
 const used = new Set([...html.matchAll(/\/screens\/([\w-]+\.jpg)/g)].map(m => m[1]));
 for (const f of used) fs.copyFileSync(path.join(SCREENS, published.get(f) || f), path.join(OUT, 'screens', f));
 fs.writeFileSync(path.join(OUT, 'robots.txt'), DEMO ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\nSitemap: ${site.domain}/sitemap.xml\n`);
-fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${site.domain}/</loc></url></urlset>\n`);
+fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${ORIGIN}/</loc></url></urlset>\n`);
 fs.writeFileSync(path.join(OUT, '_redirects'), '');
 console.log(`built ${path.relative(process.cwd(), OUT) || '.'}: 1 page, ${used.size} screenshots${BASE ? ', base ' + BASE : ''}${DEMO ? ', demo (noindex)' : ''}`);
 for (const w of warn) console.log('  TODO', w);
