@@ -50,8 +50,9 @@ const I = {
   shield: svg('<path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/>'),
   drag: svg('<path d="m9 7-5 5 5 5M15 7l5 5-5 5"/>'),
 };
-const MARK = `<svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M8 11h16M8 16h10M8 21h13" stroke="var(--paper)" stroke-width="2.6" stroke-linecap="round"/></svg>`;
-const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#12202b"/><path d="M8 11h16M8 16h10M8 21h13" stroke="#ff6b3d" stroke-width="2.6" stroke-linecap="round"/></svg>`;
+const WAVE = 'M7 17.5c2.3-2.6 4.5-2.6 6.8 0s4.5 2.6 6.8 0c1.3-1.5 2.6-2 4-1.6';
+const MARK = `<svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="currentColor"/><path d="${WAVE}" fill="none" stroke="var(--pop)" stroke-width="2.6" stroke-linecap="round"/></svg>`;
+const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#0e2629"/><path d="${WAVE}" fill="none" stroke="#c5ef5a" stroke-width="2.6" stroke-linecap="round"/></svg>`;
 
 // ---------------------------------------------------------------- BEFORE / AFTER
 const shot = (key, side, view) => `${key}-${side}-${view}.jpg`;
@@ -130,10 +131,10 @@ const html = `<!DOCTYPE html>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${ORIGIN}/">
 <meta property="og:type" content="website"><meta property="og:locale" content="sv_SE"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${ORIGIN}/">${ogImg ? `<meta property="og:image" content="${ogImg}">` : ''}
-<meta name="theme-color" content="#12202b">
+<meta name="theme-color" content="#0e2629">
 <link rel="icon" href="${BASE}/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${BASE}/assets/site.css">
 ${[faqLd, orgLd].filter(Boolean).map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n')}
 </head>
