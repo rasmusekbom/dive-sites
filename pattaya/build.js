@@ -18,6 +18,10 @@ const rates = JSON.parse(fs.readFileSync(RATES_FILE, 'utf8'));
 const OUT = process.env.DIST ? path.resolve(process.env.DIST) : path.join(__dirname, 'dist');
 const BASE = (process.env.BASE || '').replace(/\/$/, '');
 const DEMO = !!process.env.DEMO;
+// A demo is served from GitHub Pages under BASE: point every absolute URL there (canonical, og:url/og:image,
+// hreflang, sitemap, JSON-LD). Share sheets and chat apps use them as the link, and would otherwise send people to
+// the client's current site.
+if (DEMO) site.domain = (process.env.DEMO_ORIGIN || 'https://rasmusekbom.github.io') + BASE;
 const P = Object.fromEntries(products.map(p => [p.slug, p]));
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const trunc = (s, n = 155) => s.length <= n ? s : s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…';

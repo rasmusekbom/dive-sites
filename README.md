@@ -12,6 +12,11 @@ site generator (Node) with its own `src/` (content, i18n, images) and `build.js`
 | [`seastar/`](seastar/) | Seastar Diving (seastardiving.se is a single "we are updating the pages" placeholder), Skrubba, Stockholm – PADI courses, technical diving, servicing, gas, rental | https://rasmusekbom.github.io/dive-sites/seastar/ |
 | [`magwill/`](magwill/) | Magwill AB (magwill.se), Göteborg – Microsoft Office training on site at companies across Sweden, Office/VBA consulting. Not a dive business, own design | https://rasmusekbom.github.io/dive-sites/magwill/ |
 
+## Sidklar
+
+The sales site (sidklar.se) and the lead finder live in their own repo,
+[rasmusekbom/sidklar](https://github.com/rasmusekbom/sidklar). This repo keeps the client rebuilds and their demos.
+
 ## Working on a project
 
 ```bash
