@@ -1,9 +1,0 @@
-{
-  "name": "lead-finder",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Finds small Swedish businesses whose website is missing, broken or dated (OpenStreetMap + a site check). No dependencies.",
-  "scripts": {
-    "find": "node find.js"
-  }
-}
