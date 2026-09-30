@@ -1,12 +1,14 @@
 // Content for the sales page. Everything a visitor reads is here. build.js only lays it out.
-// Brand, contact details and prices are left for you to fill in; the build warns while one is missing.
+// The build warns while a contact detail is missing.
 
 const site = {
-  name: '',            // TODO: your business name, e.g. "Ekbom Webb". Empty → the header shows the tagline instead.
+  name: 'Sidklar',
   tagline: 'Nya hemsidor för små företag',
-  email: '',           // TODO: e.g. hej@dindomän.se, used by every contact button
-  phone: '',           // TODO: optional, e.g. 070-123 45 67
-  domain: 'https://example.se', // TODO: canonical/og URL once you have a domain
+  email: 'hej@sidklar.se',  // must exist before launch: Cloudflare Email Routing (free forward) or one.com mail
+  phone: '',                // optional, e.g. 070-123 45 67
+  domain: 'https://sidklar.se',
+  // Google Search Console, "HTML tag" method: paste only the content="…" value. Not needed with DNS verification.
+  googleVerification: '',
   city: 'Sverige',
   demoBase: 'https://rasmusekbom.github.io/dive-sites',
   // true: no business is named. Cases show `alias` and `region`, the demo links are left out, screenshot files get

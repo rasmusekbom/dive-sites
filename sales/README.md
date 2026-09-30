@@ -12,9 +12,26 @@ npm run check
 npm run serve        # http://127.0.0.1:8771
 ```
 
-## Before you publish it
-Fill in `site.name`, `site.email`, `site.phone` and `site.domain` in `src/data.js`. The build prints a TODO line
-for each one that is missing. Prices, plans and terms are in the same file and are a starting proposal.
+## Live site: sidklar.se on Cloudflare Pages
+Brand, domain and contact are set in `src/data.js` (`Sidklar`, `https://sidklar.se`, `hej@sidklar.se`). A plain
+`npm run build` is the production build: canonical/sitemap/robots point at sidklar.se, and it writes `_headers`
+(security headers + caching). `BASE=… DEMO=1` builds stay noindex and point at GitHub Pages.
+
+1. **Domain.** Register `sidklar.se` (one.com or any .se registrar).
+2. **Cloudflare.** Add the site `sidklar.se` (Free plan), then set the two Cloudflare nameservers at the registrar.
+   Cloudflare Registrar does not sell .se, so the domain stays at the registrar and only DNS moves.
+3. **Pages.** Workers & Pages → Create → Pages → Connect to Git → `rasmusekbom/dive-sites`:
+   - Production branch: `main`
+   - Root directory: `sales`
+   - Build command: `npm run build`
+   - Output directory: `dist`
+   (`sales/.node-version` pins Node 22.) Then Custom domains → add `sidklar.se` and `www.sidklar.se`, and add a
+   Redirect Rule `www.sidklar.se/*` → `https://sidklar.se/$1` (301).
+4. **E-mail.** Email → Email Routing → forward `hej@sidklar.se` to your own inbox (free). The contact form opens
+   the visitor's mail app addressed to it, so it must exist before launch.
+5. **Search Console.** Add a *Domain* property `sidklar.se`. Choose the Cloudflare option when Google offers it,
+   or paste the TXT record into Cloudflare DNS. Then Sitemaps → submit `https://sidklar.se/sitemap.xml`. (The HTML-tag
+   method also works: put the code in `site.googleVerification` and rebuild.)
 
 The cases are concept rebuilds that none of the businesses ordered, so the page is **anonymous by default**
 (`site.anonymize: true`). Each case shows its `alias` and `region` ("Utbildningsföretag i Sverige") instead of the

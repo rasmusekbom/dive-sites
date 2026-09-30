@@ -108,7 +108,7 @@ function caseBlock(c, i, media = slider(c)) {
 const hero = cases.find(c => views(c).length === 2) || cases.find(c => views(c).length) || cases[0];
 const rest = cases.filter(c => c !== hero);
 const NAV = [['Exempel', '#exempel'], ['Så går det till', '#sa-gar-det-till'], ['Priser', '#priser'], ['Frågor', '#fragor']];
-const title = `${site.tagline}${site.name ? ' | ' + site.name : ''}: gratis utkast först`;
+const title = site.name ? `${site.name}: nya hemsidor för små företag, gratis utkast först` : `${site.tagline}: gratis utkast först`;
 const desc = 'Vi bygger snabba, mobilvänliga hemsidor för små företag som syns på Google och leder till bokningar. Ni får ett gratis utkast innan ni bestämmer er.';
 const ogImg = has(shot(hero.key, 'after', 'desktop')) ? `${ORIGIN}/screens/${pub(hero, 'after', 'desktop')}` : '';
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
@@ -131,7 +131,7 @@ const html = `<!DOCTYPE html>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${ORIGIN}/">
 <meta property="og:type" content="website"><meta property="og:locale" content="sv_SE"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${ORIGIN}/">${ogImg ? `<meta property="og:image" content="${ogImg}">` : ''}
-<meta name="theme-color" content="#0e2629">
+<meta name="theme-color" content="#0e2629">${site.googleVerification && !DEMO ? `\n<meta name="google-site-verification" content="${esc(site.googleVerification)}">` : ''}
 <link rel="icon" href="${BASE}/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
@@ -223,6 +223,17 @@ const used = new Set([...html.matchAll(/\/screens\/([\w-]+\.jpg)/g)].map(m => m[
 for (const f of used) fs.copyFileSync(path.join(SCREENS, published.get(f) || f), path.join(OUT, 'screens', f));
 fs.writeFileSync(path.join(OUT, 'robots.txt'), DEMO ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\nSitemap: ${site.domain}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${ORIGIN}/</loc></url></urlset>\n`);
-fs.writeFileSync(path.join(OUT, '_redirects'), '');
+// Cloudflare Pages / Netlify: security headers everywhere, long cache for the screenshots (their names change when
+// a case changes), short for CSS/JS (not fingerprinted).
+fs.writeFileSync(path.join(OUT, '_headers'), `/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+/screens/*
+  Cache-Control: public, max-age=2592000
+/assets/*
+  Cache-Control: public, max-age=3600
+`);
 console.log(`built ${path.relative(process.cwd(), OUT) || '.'}: 1 page, ${used.size} screenshots${BASE ? ', base ' + BASE : ''}${DEMO ? ', demo (noindex)' : ''}`);
 for (const w of warn) console.log('  TODO', w);
